@@ -12,5 +12,6 @@ jobs:
       - run: python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
       - run: python -m pip install -e './aiq_bench_repo[dev]' -r requirements.txt
       - run: python tools/verify_research.py
+      - run: python tools/verify_science_program.py --download
       - run: python tools/render_example.py --output build/soa_async_v1.html
       - run: python -m pytest aiq_rl/tools/tests aiq_rl/tools/test_kb_jobs.py aiq_bench_repo/tools/tests/test_sample_kb_science_release.py aiq_bench_repo/tests -q

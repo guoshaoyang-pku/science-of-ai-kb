@@ -1,0 +1,24 @@
+{
+  "owner": "activation_path",
+  "status": "completed_for_release",
+  "completed_studies": [
+    "C01_activation_scale",
+    "C02_parity_ood",
+    "C03_hidden_boundary",
+    "C04_noise_generalization",
+    "C05_risk_ood"
+  ],
+  "new_recipe_runs": 624,
+  "new_head_trajectories": 1136,
+  "new_model_calls": 0,
+  "OOD": [
+    "C02_parity_ood",
+    "C05_risk_ood"
+  ],
+  "latest_evidence": "target-specific activation parity; hidden escape boundary; spectral noise-risk forecast OOD",
+  "pending": "independent release audit and public packaging",
+  "updated_at": 1791224838.34366,
+  "solver_evaluation": "not_run",
+  "process": null,
+  "next_action": "Wait for user new objective; current C studies and handoff complete"
+}

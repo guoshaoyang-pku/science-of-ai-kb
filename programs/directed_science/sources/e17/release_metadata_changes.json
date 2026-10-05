@@ -1,0 +1,20 @@
+[
+  {
+    "file": "base_results/mvar_02036a_c2.json",
+    "original_sha256": "15e7dce17386a03f0cdc5df0c2fe68a011307899cdfcd79f941c8977f808fc16",
+    "public_sha256": "839bab66a1bd12cc057f15f395948cdf78357f9457c35460787362a1a49b6747",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "base_results/mvar_071e42_c2.json",
+    "original_sha256": "56a82cd2af4e8e6934258242ce537571cc7dfae7e08148e920849fa91a2ec9b7",
+    "public_sha256": "1499a797e44ebc774ea5e57b7ebf31377a55a5acb5931d081733c066f83a2a67",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "base_results/mvar_0852dd_c2.json",
+    "original_sha256": "2364e5a6a6e26cf30f21b4033dcb0fd43a20f47e84c5e0b5c2d04ccf3b00cfa5",
+    "public_sha256": "4c0553a236ea9830a3e2fcdb1d59ed626f955419338efc10941f48d59ac05b6e",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  }
+]

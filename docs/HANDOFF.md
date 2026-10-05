@@ -2,6 +2,8 @@
 
 This is the completed inspection/reproduction snapshot of the KB prototype. A new experimental objective should start from its contracts and evidence, without assuming that the original question stream or private model environment is bundled.
 
+Version 0.2 also delivers [directed science](../programs/directed_science/HANDOFF.md): A01–A04, B01–B03 and C01–C05, seven concise KB entries, source pins and prospective predictions. The raw measurement assets are fetched and verified by `python tools/verify_science_program.py --download`. These studies produced no new solver score; their handoff lists failed predictions and narrower theory boundaries.
+
 ## Saved state
 
 | Item | State |

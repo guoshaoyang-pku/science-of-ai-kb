@@ -17,3 +17,5 @@ SANITIZATION_REPORT.md
 FORK_INPUT_MANIFEST.json
 build/
 *.egg-info/
+programs/directed_science/studies/*/results/
+programs/directed_science/state/current.json

@@ -1,0 +1,122 @@
+[
+  {
+    "file": "AGENTS.md",
+    "original_sha256": "8aba21004c65bc9a63463e83a385e9d4d44a5853edc1dbe8e060b509bb071be1",
+    "public_sha256": "7181c257b4cb41168b8886c338dda08bb5f5344f342cbbf93fc871562b163e7b",
+    "reason": "machine metadata normalization; numeric data/executed code unchanged; portable execution guide"
+  },
+  {
+    "file": "sources/config.json",
+    "original_sha256": "b36094e20a1af2e4e684228c5d47607caa02d712eaaadf1ff2295711559c99f7",
+    "public_sha256": "b5301186192421c5bf580440bb46f1338d4f82d67af5a353ca423025527b4cae",
+    "reason": "machine metadata normalization; numeric data/executed code unchanged; nonredistributed runtime location"
+  },
+  {
+    "file": "sources/kb_live.json",
+    "original_sha256": "94b6bb60a7efb6c316d842cc86ecbe09afa31b03128d6418e970df6064956581",
+    "public_sha256": "7125fe3b0971e04fff068b4b3bdb6e63dc50599004b57b2804b0e85f5daef09a",
+    "reason": "machine metadata normalization; numeric data/executed code unchanged"
+  },
+  {
+    "file": "studies/A01_head_mediation/current.json",
+    "original_sha256": "ab4fef8b257d407bb61c0890f50dd26ddc8cadc82241c0c59485d0d29863168b",
+    "public_sha256": "63eb6a52d4d65d3ffd036b5f58d9e524c20df1a3b373ceccb66d7e202be71c45",
+    "reason": "machine metadata normalization; numeric data/executed code unchanged"
+  },
+  {
+    "file": "studies/A02_ood_residual/current.json",
+    "original_sha256": "7a2e88f2eb3f6de8d71de739427c9f5c61954b356fcf149b0aab256c5d3f6f29",
+    "public_sha256": "c2a287b6eb2e4d3caacd017cf576ba9c739ed9c619f8a01040f52f2d063d6a46",
+    "reason": "machine metadata normalization; numeric data/executed code unchanged"
+  },
+  {
+    "file": "studies/A03_ln_width/current.json",
+    "original_sha256": "c266dc3498a98e87cdca75988e49ba2bff2511675ad337632430ebfbe6f99ed4",
+    "public_sha256": "9e1ba1b5e716284746235a024d62aad5b28e9ca8e3ea01ce6380983656a22ad8",
+    "reason": "machine metadata normalization; numeric data/executed code unchanged"
+  },
+  {
+    "file": "studies/A04_ln_affine/current.json",
+    "original_sha256": "b63341d32e58a47a2ef942748d1c2953057dc175ebcd4c7948a48cb483058686",
+    "public_sha256": "ea4ae04940035cc1885a7cee6c4ee413322c78caff5c4cfbc4cce6832e0c0e00",
+    "reason": "machine metadata normalization; numeric data/executed code unchanged"
+  },
+  {
+    "file": "studies/B01_effective_time/current.json",
+    "original_sha256": "d4be38a8b55836b61b212bd2870b6f06a95cbd0bc0fad679f10d8e69b33eca0a",
+    "public_sha256": "e1ea340852a97c6e4903a409e203372db29e320b34398a64f1139408d9f45618",
+    "reason": "machine metadata normalization; numeric data/executed code unchanged"
+  },
+  {
+    "file": "studies/B02_nonlinear_clock/current.json",
+    "original_sha256": "4b4fb315e71c2ddbfe3703b27731c4548dd7c748161f8e9aa66a800cb5fabda1",
+    "public_sha256": "7d9a81e69ab84f12bf48f78042272179e0a3e98f519efffa28329af58b60af5e",
+    "reason": "machine metadata normalization; numeric data/executed code unchanged"
+  },
+  {
+    "file": "studies/B03_kernel_direction/current.json",
+    "original_sha256": "4b9d6acddca184db5cdee1334e7654cfc4d2765eac575db8a59424d614284fc2",
+    "public_sha256": "ba5cc42c7dbc5b685ec37c815cc942664a935b484fa1dd56ba924e0b643c74a8",
+    "reason": "machine metadata normalization; numeric data/executed code unchanged"
+  },
+  {
+    "file": "studies/C01_activation_scale/current.json",
+    "original_sha256": "cb1d2f8a06f96783e9b212b0803973918fed174e8327b50625257c9637aabe3e",
+    "public_sha256": "184ee7c68b8c6079290eb3923793dccbd6b38a7a748e331f4c8de5fa82661c8f",
+    "reason": "machine metadata normalization; numeric data/executed code unchanged"
+  },
+  {
+    "file": "studies/C02_parity_ood/current.json",
+    "original_sha256": "d64c15536a2da9865ab8015de89fda5dcd13bbc0efaaad39a181f4a7da3d56cc",
+    "public_sha256": "b4a90c62e27ad8ea83bf25619d4116463a4986e4fcaf430bebca78a2c85196a5",
+    "reason": "machine metadata normalization; numeric data/executed code unchanged"
+  },
+  {
+    "file": "studies/C03_hidden_boundary/current.json",
+    "original_sha256": "7f003c7ac0bceb8740abfc981bc103607e3c0ac8ea5aee0bd2a64e5a268fb975",
+    "public_sha256": "1bc4697742b859682ceb28587bae832f5b86d4f8efbb92317fcee7f3ff2df136",
+    "reason": "machine metadata normalization; numeric data/executed code unchanged"
+  },
+  {
+    "file": "studies/C04_noise_generalization/current.json",
+    "original_sha256": "337080290c378ebc197c201c6d39669bfeba0901fdfa75dff2d3437b712137bd",
+    "public_sha256": "c762d23eb82ee615a1f28b61d4f1b9bae3f2aa40e5c54f6e5229a5baa9613dae",
+    "reason": "machine metadata normalization; numeric data/executed code unchanged"
+  },
+  {
+    "file": "studies/C05_risk_ood/current.json",
+    "original_sha256": "d2b492f600de0ddaab3bc9a5b49bc490db1b58df05e4f30d09ed5a18c4ae5696",
+    "public_sha256": "7a06f1639c9205132e2cc2f24751a2b4a47ea1d84fb49f2dae3c51f04596ec06",
+    "reason": "machine metadata normalization; numeric data/executed code unchanged"
+  },
+  {
+    "file": "README.md",
+    "original_sha256": "c2e0c58677e6ab107a6851c62f22deae8e7f68547bda9da970e7eb88a7015127",
+    "reason": "portable release documentation",
+    "public_sha256": "bf1a26c0e75583ab08f276c2503581f7253b2f044586d73f988b2e7528b0046a"
+  },
+  {
+    "file": "directions/B_effective_time_capacity/references.json",
+    "original_sha256": "ccf37e6bbe0cbe74b82669cac3205f26693bc5da156247e5a44f19c1b275f773",
+    "reason": "portable release documentation",
+    "public_sha256": "d63679e8e8d26ce2b8832ae6f21fbfb026b6f11c58962e619972c2e69dd5a9df"
+  },
+  {
+    "file": "kb.json",
+    "original_sha256": "9f1f2cab543855c3819497453e06a2258a7b9b25bea11953d1703a329b0f4335",
+    "reason": "evidence qualifier",
+    "public_sha256": "9f1f2cab543855c3819497453e06a2258a7b9b25bea11953d1703a329b0f4335"
+  },
+  {
+    "file": "HANDOFF.md",
+    "original_sha256": "6ccf080bd9631ccebd1cd0c2666047744ca7f53573b0a205d4f7c071b83e9c41",
+    "public_sha256": "6ccf080bd9631ccebd1cd0c2666047744ca7f53573b0a205d4f7c071b83e9c41",
+    "reason": "release handoff and science qualifiers"
+  },
+  {
+    "file": "studies/C05_risk_ood/report.md",
+    "original_sha256": "47eca65be145fc15545114817795c6989fbe73a1b5c6a7918a222db40e10bbca",
+    "public_sha256": "47eca65be145fc15545114817795c6989fbe73a1b5c6a7918a222db40e10bbca",
+    "reason": "independent evidence qualifiers"
+  }
+]

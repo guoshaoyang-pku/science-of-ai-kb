@@ -6,6 +6,7 @@
 ./setup.sh
 . .venv/bin/activate
 python tools/verify_research.py
+python tools/verify_science_program.py --download
 python tools/render_example.py --output build/soa_async_v1.html
 python -m pytest aiq_rl/tools/tests aiq_rl/tools/test_kb_jobs.py aiq_bench_repo/tools/tests/test_sample_kb_science_release.py aiq_bench_repo/tests -q
 ~~~
@@ -22,6 +23,7 @@ python -m pytest aiq_rl/tools/tests aiq_rl/tools/test_kb_jobs.py aiq_bench_repo/
 | aiq_rl/tools/kb_publish.py | Publication recovery and HTTP/hash verification |
 | aiq_bench_repo/src/architecture_iq/ | Included benchmark runtime and process recorder |
 | examples/soa_async_v1/ | Saved records, snapshots, reports and portable studies |
+| programs/directed_science/ | Twelve directed studies, seven claims, sealed predictions; raw cells in pinned release assets |
 
 ## Contracts
 

@@ -2,7 +2,19 @@
 
 A research prototype that grows an explicit knowledge base while a frozen model solves neural network training questions. Solvers receive short claims and can open linked reports; researchers and curators run as persistent jobs, with changes attributed to their originating epoch.
 
-This release includes the runtime, concrete KB, 15 epochs of saved training records, and two controlled studies. It reproduces these artifacts without establishing a general training theory or a significant held-out score gain.
+This release includes the runtime, concrete KB, 15 epochs of saved training records, and controlled studies. Version 0.2 adds a directed research program with 12 studies and seven concise claims. It reproduces these artifacts without establishing a general training theory or a significant held-out score gain.
+
+## Directed science
+
+[Study index and findings](programs/directed_science/README.md) links the residual, effective-time/capacity and activation/generalization research chains. Reports include failed predictions, prospective OOD conditions, archived execution sources and evidence limits. No new solver evaluation was run.
+
+After setup, download the versioned raw measurements and recompute all saved analyses without training or model calls:
+
+~~~sh
+python tools/verify_science_program.py --download
+~~~
+
+Three release assets carry the original numerical arrays and per-cell records. The repository contains their SHA256 manifest, predictions and analyses; the verifier refuses changed arrays or mismatched statistics. See the [program handoff](programs/directed_science/HANDOFF.md).
 
 ## Inspect the results
 
