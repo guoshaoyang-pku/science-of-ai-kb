@@ -93,7 +93,7 @@
     "file": "README.md",
     "original_sha256": "c2e0c58677e6ab107a6851c62f22deae8e7f68547bda9da970e7eb88a7015127",
     "reason": "portable release documentation",
-    "public_sha256": "24fc1e6807d749f89e180e735706980beb7702ec990edc6580f7db957e858701"
+    "public_sha256": "9f759dd768625e586472b49e632fdbaccdb5e7a9f4ce0d8daabc362cc49a2743"
   },
   {
     "file": "directions/B_effective_time_capacity/references.json",

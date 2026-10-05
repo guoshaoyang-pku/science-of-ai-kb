@@ -5360,16 +5360,52 @@
           "url": "https://github.com/guoshaoyang-pku/science-of-ai-kb/releases/download/v0.2.0/directed-science-C-v0.2.0.tar.gz.part05"
         },
         {
-          "name": "directed-science-C-v0.2.0.tar.gz.part06",
-          "bytes": 67108864,
-          "sha256": "4e2b1cdcbd610ccc3130488ca2f22bdc88768819119c75d28ef2b615784efab2",
-          "url": "https://github.com/guoshaoyang-pku/science-of-ai-kb/releases/download/v0.2.0/directed-science-C-v0.2.0.tar.gz.part06"
+          "name": "directed-science-C-v0.2.0.tar.gz.part06a",
+          "bytes": 16777216,
+          "sha256": "708a4d9bf587202533c0af31bfc36826a770fbc4bad7af915f4f1b4372b0e31d",
+          "url": "https://github.com/guoshaoyang-pku/science-of-ai-kb/releases/download/v0.2.0/directed-science-C-v0.2.0.tar.gz.part06a"
         },
         {
-          "name": "directed-science-C-v0.2.0.tar.gz.part07",
-          "bytes": 67108864,
-          "sha256": "ae95a22b4f5962bc1e106febc639d3504041a5e5fe38b1e65f4a0377f801ae83",
-          "url": "https://github.com/guoshaoyang-pku/science-of-ai-kb/releases/download/v0.2.0/directed-science-C-v0.2.0.tar.gz.part07"
+          "name": "directed-science-C-v0.2.0.tar.gz.part06b",
+          "bytes": 16777216,
+          "sha256": "6f18e69e3684efdba7a14204f9f150b189607e072d8b18094c34d7f24287bbd3",
+          "url": "https://github.com/guoshaoyang-pku/science-of-ai-kb/releases/download/v0.2.0/directed-science-C-v0.2.0.tar.gz.part06b"
+        },
+        {
+          "name": "directed-science-C-v0.2.0.tar.gz.part06c",
+          "bytes": 16777216,
+          "sha256": "b2009ec690f927a4e65e5c4ab27c868a2151be2dda73891fbf0341fa9ca5d376",
+          "url": "https://github.com/guoshaoyang-pku/science-of-ai-kb/releases/download/v0.2.0/directed-science-C-v0.2.0.tar.gz.part06c"
+        },
+        {
+          "name": "directed-science-C-v0.2.0.tar.gz.part06d",
+          "bytes": 16777216,
+          "sha256": "5b710e761524d8b051d7f8fa6fe7bad2f0a462acdab925e9b560793d01ef72de",
+          "url": "https://github.com/guoshaoyang-pku/science-of-ai-kb/releases/download/v0.2.0/directed-science-C-v0.2.0.tar.gz.part06d"
+        },
+        {
+          "name": "directed-science-C-v0.2.0.tar.gz.part07a",
+          "bytes": 16777216,
+          "sha256": "e1312e664abd9e15453cb66de40a637512b947bb98cb75924cc8c457acd35ef1",
+          "url": "https://github.com/guoshaoyang-pku/science-of-ai-kb/releases/download/v0.2.0/directed-science-C-v0.2.0.tar.gz.part07a"
+        },
+        {
+          "name": "directed-science-C-v0.2.0.tar.gz.part07b",
+          "bytes": 16777216,
+          "sha256": "94976713b77fcd9100ea2deae8dd7c05c8cf6ba26af84d8669b17cfb9844470f",
+          "url": "https://github.com/guoshaoyang-pku/science-of-ai-kb/releases/download/v0.2.0/directed-science-C-v0.2.0.tar.gz.part07b"
+        },
+        {
+          "name": "directed-science-C-v0.2.0.tar.gz.part07c",
+          "bytes": 16777216,
+          "sha256": "7c87f8dfa6d3f6e05b5769222d1d43468490109f712a8fdca121bdb7bf176e97",
+          "url": "https://github.com/guoshaoyang-pku/science-of-ai-kb/releases/download/v0.2.0/directed-science-C-v0.2.0.tar.gz.part07c"
+        },
+        {
+          "name": "directed-science-C-v0.2.0.tar.gz.part07d",
+          "bytes": 16777216,
+          "sha256": "84ca88bff69cb0d57a00043f3f71782ef8f5b43fe92d7c47e977d5a80cbe0181",
+          "url": "https://github.com/guoshaoyang-pku/science-of-ai-kb/releases/download/v0.2.0/directed-science-C-v0.2.0.tar.gz.part07d"
         },
         {
           "name": "directed-science-C-v0.2.0.tar.gz.part08",

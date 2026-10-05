@@ -25,7 +25,7 @@
 python tools/verify_science_program.py --download
 ~~~
 
-首次下载三个v0.2.0测量包；C包分八个release附件传输，下载器逐片校验后重组原归档，再校验完整归档及逐文件SHA256。在临时副本重算全部15份analysis/summary，并核对B/C的源码、data、contracts及谱。后续可省略--download，全程不训练或调用模型。只检查完整证据hash可加--hash-only。没有结果附件时脚本会明确提示缺文件。
+首次下载三个v0.2.0测量包；C包分14个release附件传输，下载器逐片校验后重组原归档，再校验完整归档及逐文件SHA256。在临时副本重算全部15份analysis/summary，并核对B/C的源码、data、contracts及谱。后续可省略--download，全程不训练或调用模型。只检查完整证据hash可加--hash-only。没有结果附件时脚本会明确提示缺文件。
 
 sources/保存e16/e17成功测量和KB的development导入；sources/manifest.json核对公开版本，original_sha256保留来源身份。恢复研究请使用原study/run.py或run_study.py，先匹配执行源码/data/recipe。成功cell直接复用；不要在已用OOD上改预测后重新称为首次验证。
 

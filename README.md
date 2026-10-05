@@ -14,7 +14,7 @@ After setup, download the versioned raw measurements and recompute all saved ana
 python tools/verify_science_program.py --download
 ~~~
 
-Three measurement bundles carry the original numerical arrays and per-cell records. The C bundle is delivered as eight smaller release parts; the verifier downloads and hashes each part, reassembles the original archive and verifies its full SHA256 before extraction. The repository contains the manifest, predictions and analyses; the verifier refuses changed arrays or mismatched statistics. See the [program handoff](programs/directed_science/HANDOFF.md).
+Three measurement bundles carry the original numerical arrays and per-cell records. The C bundle is delivered as fourteen smaller release parts; the verifier downloads and hashes each part, reassembles the original archive and verifies its full SHA256 before extraction. The repository contains the manifest, predictions and analyses; the verifier refuses changed arrays or mismatched statistics. See the [program handoff](programs/directed_science/HANDOFF.md).
 
 ## Inspect the results
 
