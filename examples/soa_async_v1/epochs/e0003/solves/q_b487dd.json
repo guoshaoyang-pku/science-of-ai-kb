@@ -1,0 +1,80 @@
+{
+  "kb_queries": [],
+  "kb_retrieved": [],
+  "kb_explained": [],
+  "solver_snapshot": "solve_e0003",
+  "kb_snapshot": "01775f610136dd467d4aaf988d40ca54f6e1689638490c03d15f28bd59c9511f",
+  "report_versions": {
+    "R7dd7d943d3": "4b55a660e0615effa0770f7a78e6aac418dadeb7",
+    "R634304faf1": "cb0e75d15229971b3a9c8351d8cec00903ca3df2",
+    "R04f88f629b": "0c676d9d5b42ccf0b715c62f8996ab9f0c124039",
+    "R2ffac818b0": "1ca756a4c129f87cf61f647e42436f7736ec9775",
+    "Rc5401dd3c0": "a8c1b1ba9c833458b28c37809aae6526b065ebfb",
+    "R1dd74ea5c0": "443e941de2fd8864a9a5f8f12efc7a33b8f59997"
+  },
+  "question_id": "q_b487dd",
+  "epoch": 3,
+  "source": "ranking_v2",
+  "task": "ranking",
+  "type": "optimizer_only",
+  "family": "spiral_classification",
+  "group": "Gd872a7d639196030a054996d",
+  "answer": "B<A<E<D<C",
+  "prediction": "B<A<E<D<C",
+  "score": 1.0,
+  "inversions": 0,
+  "correct": true,
+  "cited": [
+    "K1001",
+    "K1002",
+    "K1005",
+    "K1070",
+    "K1096"
+  ],
+  "explanation": "<cited>K1001,K1002,K1005,K1070,K1096</cited>\n<answer>B<A<E<D<C</answer>",
+  "solution": "<cited>K1001,K1002,K1005,K1070,K1096</cited>\n<answer>B<A<E<D<C</answer>",
+  "solver_reasoning": null,
+  "solve_usage": {
+    "input_tokens": 28237,
+    "cached_input_tokens": 7808,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 135,
+    "reasoning_output_tokens": 98
+  },
+  "solve_secs": 12.9,
+  "finish": "stop",
+  "solver_backend": "codex",
+  "solve_refused_tool_calls": 0,
+  "discover_effort": "low",
+  "discover_model": "gpt-6.1-sol",
+  "skipped": false,
+  "comment": "Identical architectures made optimizer progress and late-stage rate sensitivity decisive. K1001/K1002 supported D over the much slower Adagrad C, and B over both. For the trained group, B's AdamW recipe was preferred over high-rate, coupled-decay RMSprop; A's lower RMSprop rate was preferred over E's larger displacement at 1024 steps. K1070 cautioned against a universal RMSprop advantage, while K1096 provided only indirect easy-spiral support because its budget was shorter. The gold supports this recipe-specific ordering, not a general RMSprop learning-rate ceiling or an isolated weight-decay effect.",
+  "hypothesis": null,
+  "discover_final": "<comment>Identical architectures made optimizer progress and late-stage rate sensitivity decisive. K1001/K1002 supported D over the much slower Adagrad C, and B over both. For the trained group, B's AdamW recipe was preferred over high-rate, coupled-decay RMSprop; A's lower RMSprop rate was preferred over E's larger displacement at 1024 steps. K1070 cautioned against a universal RMSprop advantage, while K1096 provided only indirect easy-spiral support because its budget was shorter. The gold supports this recipe-specific ordering, not a general RMSprop learning-rate ceiling or an isolated weight-decay effect.</comment>",
+  "discover_trace": [
+    {
+      "turn": 0,
+      "content": "<comment>Identical architectures made optimizer progress and late-stage rate sensitivity decisive. K1001/K1002 supported D over the much slower Adagrad C, and B over both. For the trained group, B's AdamW recipe was preferred over high-rate, coupled-decay RMSprop; A's lower RMSprop rate was preferred over E's larger displacement at 1024 steps. K1070 cautioned against a universal RMSprop advantage, while K1096 provided only indirect easy-spiral support because its budget was shorter. The gold supports this recipe-specific ordering, not a general RMSprop learning-rate ceiling or an isolated weight-decay effect.</comment>",
+      "reasoning": null,
+      "tool_calls": [],
+      "usage": {
+        "input_tokens": 56943,
+        "cached_input_tokens": 35840,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 273,
+        "reasoning_output_tokens": 98
+      },
+      "secs": 11.5
+    }
+  ],
+  "discover_usage": {
+    "input_tokens": 56943,
+    "cached_input_tokens": 35840,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 273,
+    "reasoning_output_tokens": 98
+  },
+  "discover_secs": 11.5,
+  "discover_reasoning": null,
+  "experiments": []
+}

@@ -1,0 +1,87 @@
+{
+  "kb_queries": [],
+  "kb_retrieved": [],
+  "kb_explained": [],
+  "solver_snapshot": "solve_e0005",
+  "kb_snapshot": "0cf301ea3b6c6a908cda0a25364212f36916c258a03e5aedbdccdb871b52373f",
+  "report_versions": {
+    "R7dd7d943d3": "4b55a660e0615effa0770f7a78e6aac418dadeb7",
+    "R634304faf1": "cb0e75d15229971b3a9c8351d8cec00903ca3df2",
+    "R04f88f629b": "0c676d9d5b42ccf0b715c62f8996ab9f0c124039",
+    "R2ffac818b0": "1ca756a4c129f87cf61f647e42436f7736ec9775",
+    "Rc5401dd3c0": "a8c1b1ba9c833458b28c37809aae6526b065ebfb",
+    "R1dd74ea5c0": "443e941de2fd8864a9a5f8f12efc7a33b8f59997",
+    "Rb40ff6b901": "9d3c0ad9072c184d44fc17aa205f296ee04baf73",
+    "R58d9d83b4f": "06ecd64a2ab063d3dff07b7b2e6ccc044ba81863",
+    "Raeabecdef0": "ae6d69367cad3a29cf6b646767899be6502c61a6",
+    "R838be7703a": "70e0a68febde661330b5e779d12713df22e19ebc",
+    "Rfd410c853b": "f15f4c9f39df0f2e604bc23438af62ba10fc472b",
+    "R63d34ce484": "b0c328a25e046227be56a91508d0fe6756b416d3",
+    "R5e6506510f": "e7c9af9862207fd6bd921d6d10a2d1a0d26751e6",
+    "Rd2f1faba9e": "367fb00eab8a50bcf8005b95d3c5cf76575842d1"
+  },
+  "question_id": "q_7eb480",
+  "epoch": 5,
+  "source": "ranking_v2",
+  "task": "ranking",
+  "type": "optimizer_only",
+  "family": "multivariate_regression",
+  "group": "G22da6303efe49f02fd0b7b95",
+  "answer": "D<E<A<B<C",
+  "prediction": "D<E<A<B<C",
+  "score": 1.0,
+  "inversions": 0,
+  "correct": true,
+  "cited": [
+    "K1001",
+    "K1002",
+    "K1003",
+    "K1019"
+  ],
+  "explanation": "<cited>K1001,K1002,K1003,K1019</cited>\n<answer>D<E<A<B<C</answer>",
+  "solution": "<cited>K1001,K1002,K1003,K1019</cited>\n<answer>D<E<A<B<C</answer>",
+  "solver_reasoning": null,
+  "solve_usage": {
+    "input_tokens": 30882,
+    "cached_input_tokens": 7808,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 107,
+    "reasoning_output_tokens": 73
+  },
+  "solve_secs": 13.6,
+  "finish": "stop",
+  "solver_backend": "codex",
+  "solve_refused_tool_calls": 0,
+  "discover_effort": "low",
+  "discover_model": "gpt-6.1-sol",
+  "skipped": false,
+  "comment": "The shared architecture made optimizer progress the deciding factor. Adam at 0.001 and AdamW at 0.0003 had much larger displacement than either low-rate Adagrad choice, yielding D<E. Momentum SGD’s MSE-calibrated progress placed A between AdamW and Adagrad. Within Adagrad, the higher rate favored B over C. K1001, K1002, K1003, and K1019 supported the complete ranking. No new general rule emerged; this short-budget result agrees with the existing undertraining guidance and does not establish a displacement ordering near saturation.",
+  "hypothesis": null,
+  "discover_final": "<comment>The shared architecture made optimizer progress the deciding factor. Adam at 0.001 and AdamW at 0.0003 had much larger displacement than either low-rate Adagrad choice, yielding D<E. Momentum SGD’s MSE-calibrated progress placed A between AdamW and Adagrad. Within Adagrad, the higher rate favored B over C. K1001, K1002, K1003, and K1019 supported the complete ranking. No new general rule emerged; this short-budget result agrees with the existing undertraining guidance and does not establish a displacement ordering near saturation.</comment>",
+  "discover_trace": [
+    {
+      "turn": 0,
+      "content": "<comment>The shared architecture made optimizer progress the deciding factor. Adam at 0.001 and AdamW at 0.0003 had much larger displacement than either low-rate Adagrad choice, yielding D<E. Momentum SGD’s MSE-calibrated progress placed A between AdamW and Adagrad. Within Adagrad, the higher rate favored B over C. K1001, K1002, K1003, and K1019 supported the complete ranking. No new general rule emerged; this short-budget result agrees with the existing undertraining guidance and does not establish a displacement ordering near saturation.</comment>",
+      "reasoning": null,
+      "tool_calls": [],
+      "usage": {
+        "input_tokens": 62205,
+        "cached_input_tokens": 38528,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 234,
+        "reasoning_output_tokens": 73
+      },
+      "secs": 14.0
+    }
+  ],
+  "discover_usage": {
+    "input_tokens": 62205,
+    "cached_input_tokens": 38528,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 234,
+    "reasoning_output_tokens": 73
+  },
+  "discover_secs": 14.0,
+  "discover_reasoning": null,
+  "experiments": []
+}

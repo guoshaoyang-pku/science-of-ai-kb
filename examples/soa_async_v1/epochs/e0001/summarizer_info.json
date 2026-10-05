@@ -1,0 +1,13 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "calls": 62,
+  "usage": {
+    "input_tokens": 1524617,
+    "cached_input_tokens": 1435136,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 25409,
+    "reasoning_output_tokens": 8482
+  },
+  "finished": true
+}

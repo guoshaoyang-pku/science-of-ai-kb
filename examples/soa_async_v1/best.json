@@ -1,0 +1,17 @@
+{
+  "label": "kb_0015",
+  "epoch": 15,
+  "accepted_at": "2026-10-04T23:40:50+00:00",
+  "review": {
+    "epoch": 15,
+    "label": "kb_0015",
+    "val_mean": 0.7008,
+    "val_vs_nokb": 0.0421,
+    "val_se": 0.0237,
+    "n_q": 105,
+    "vs_best": "kb_0010",
+    "delta_best": 0.0056,
+    "se_best": 0.0171
+  },
+  "strikes": 0
+}

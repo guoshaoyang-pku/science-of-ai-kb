@@ -1,0 +1,52 @@
+[
+  {
+    "id": "Jd09d39a4add3",
+    "kind": "summarizer",
+    "origin_epoch": 1,
+    "current_epoch": 1,
+    "member_epoch": 1,
+    "label": "e0001",
+    "status": "completed",
+    "report_id": null
+  },
+  {
+    "id": "Jbb8de54d2489",
+    "kind": "research",
+    "origin_epoch": 1,
+    "current_epoch": 2,
+    "member_epoch": 1,
+    "label": "e0001",
+    "status": "running",
+    "report_id": "R7dd7d943d3"
+  },
+  {
+    "id": "J290340c95a93",
+    "kind": "research",
+    "origin_epoch": 1,
+    "current_epoch": 2,
+    "member_epoch": 1,
+    "label": "e0001",
+    "status": "running",
+    "report_id": "R04f88f629b"
+  },
+  {
+    "id": "J15dc9d06803c",
+    "kind": "research",
+    "origin_epoch": 1,
+    "current_epoch": 2,
+    "member_epoch": 1,
+    "label": "e0001",
+    "status": "running",
+    "report_id": "R634304faf1"
+  },
+  {
+    "id": "J50bc0cf08c29",
+    "kind": "research",
+    "origin_epoch": 1,
+    "current_epoch": 1,
+    "member_epoch": 1,
+    "label": "e0001",
+    "status": "queued",
+    "report_id": null
+  }
+]

@@ -1,0 +1,87 @@
+{
+  "kb_queries": [],
+  "kb_retrieved": [],
+  "kb_explained": [],
+  "solver_snapshot": "solve_e0005",
+  "kb_snapshot": "0cf301ea3b6c6a908cda0a25364212f36916c258a03e5aedbdccdb871b52373f",
+  "report_versions": {
+    "R7dd7d943d3": "4b55a660e0615effa0770f7a78e6aac418dadeb7",
+    "R634304faf1": "cb0e75d15229971b3a9c8351d8cec00903ca3df2",
+    "R04f88f629b": "0c676d9d5b42ccf0b715c62f8996ab9f0c124039",
+    "R2ffac818b0": "1ca756a4c129f87cf61f647e42436f7736ec9775",
+    "Rc5401dd3c0": "a8c1b1ba9c833458b28c37809aae6526b065ebfb",
+    "R1dd74ea5c0": "443e941de2fd8864a9a5f8f12efc7a33b8f59997",
+    "Rb40ff6b901": "9d3c0ad9072c184d44fc17aa205f296ee04baf73",
+    "R58d9d83b4f": "06ecd64a2ab063d3dff07b7b2e6ccc044ba81863",
+    "Raeabecdef0": "ae6d69367cad3a29cf6b646767899be6502c61a6",
+    "R838be7703a": "70e0a68febde661330b5e779d12713df22e19ebc",
+    "Rfd410c853b": "f15f4c9f39df0f2e604bc23438af62ba10fc472b",
+    "R63d34ce484": "b0c328a25e046227be56a91508d0fe6756b416d3",
+    "R5e6506510f": "e7c9af9862207fd6bd921d6d10a2d1a0d26751e6",
+    "Rd2f1faba9e": "367fb00eab8a50bcf8005b95d3c5cf76575842d1"
+  },
+  "question_id": "q_7d22f3",
+  "epoch": 5,
+  "source": "ranking_v3",
+  "task": "ranking",
+  "type": "architecture_only",
+  "family": "multivariate_regression",
+  "group": "G69b6f99656f68bea4cd0c360",
+  "answer": "C<E<D<B<A",
+  "prediction": "C<E<D<B<A",
+  "score": 1.0,
+  "inversions": 0,
+  "correct": true,
+  "cited": [
+    "K1006",
+    "K1008",
+    "K1022",
+    "K1076"
+  ],
+  "explanation": "<cited>K1006,K1008,K1022,K1076</cited>\n<answer>C<E<D<B<A</answer>",
+  "solution": "<cited>K1006,K1008,K1022,K1076</cited>\n<answer>C<E<D<B<A</answer>",
+  "solver_reasoning": null,
+  "solve_usage": {
+    "input_tokens": 30848,
+    "cached_input_tokens": 22400,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 131,
+    "reasoning_output_tokens": 97
+  },
+  "solve_secs": 15.1,
+  "finish": "stop",
+  "solver_backend": "codex",
+  "solve_refused_tool_calls": 0,
+  "discover_effort": "low",
+  "discover_model": "gpt-6.1-sol",
+  "skipped": false,
+  "comment": "All candidates shared Adam and nominal displacement 0.0768, so architecture decided the ranking. K1006 and K1008 supported C: two normalized blocks with ReLU beat the less-normalized SiLU alternatives. K1022 weakly supported E’s later normalization, but could not directly settle E versus D because their residual status differed. D’s extra depth plausibly helped relative to B, while A’s unnormalized plain stack was least favorable at this budget. K1076 was supporting context, not a complete ordering rule. The gold confirms this recipe ordering, but does not isolate a new general effect.",
+  "hypothesis": null,
+  "discover_final": "<comment>All candidates shared Adam and nominal displacement 0.0768, so architecture decided the ranking. K1006 and K1008 supported C: two normalized blocks with ReLU beat the less-normalized SiLU alternatives. K1022 weakly supported E’s later normalization, but could not directly settle E versus D because their residual status differed. D’s extra depth plausibly helped relative to B, while A’s unnormalized plain stack was least favorable at this budget. K1076 was supporting context, not a complete ordering rule. The gold confirms this recipe ordering, but does not isolate a new general effect.</comment>",
+  "discover_trace": [
+    {
+      "turn": 0,
+      "content": "<comment>All candidates shared Adam and nominal displacement 0.0768, so architecture decided the ranking. K1006 and K1008 supported C: two normalized blocks with ReLU beat the less-normalized SiLU alternatives. K1022 weakly supported E’s later normalization, but could not directly settle E versus D because their residual status differed. D’s extra depth plausibly helped relative to B, while A’s unnormalized plain stack was least favorable at this budget. K1076 was supporting context, not a complete ordering rule. The gold confirms this recipe ordering, but does not isolate a new general effect.</comment>",
+      "reasoning": null,
+      "tool_calls": [],
+      "usage": {
+        "input_tokens": 62161,
+        "cached_input_tokens": 53120,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 263,
+        "reasoning_output_tokens": 97
+      },
+      "secs": 13.6
+    }
+  ],
+  "discover_usage": {
+    "input_tokens": 62161,
+    "cached_input_tokens": 53120,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 263,
+    "reasoning_output_tokens": 97
+  },
+  "discover_secs": 13.6,
+  "discover_reasoning": null,
+  "experiments": []
+}

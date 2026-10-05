@@ -1,0 +1,675 @@
+[
+  {
+    "turn": 0,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "kb_view",
+        "arguments": "{\"ids\": [\"K1001\", \"K1002\", \"K1003\", \"K1004\", \"K1005\", \"K1006\", \"K1009\", \"K1018\", \"K1038\", \"K1040\"], \"limit\": 12}"
+      }
+    ],
+    "results": [
+      "[K1002] cred=0.688 s=56.75 f=25.25 ep=0 src=[]\nAdagrad vs Adam/AdamW on the SAME architecture/budget: Adagrad Δ≈2·lr·√T, so comparable progress needs lr≈√T/2 (8-23×) higher. At lr_Adagrad/lr_Adam≤3, Adam-family wins65/70; ratio10 is mixed4/7; ratio≥30 Adagrad wins9/9. For shared-architecture Adagrad rate comparisons, larger lr usually wins (original40/41; broader univariate lab73/78, history13/16), not always; lr3e-3 is not a universal safety guarantee. Do not use this rate preference to settle LN/activation changes (q_cd8a07). At lr≤1e-4, Δ≤0.01 over T≤2048 indicates little progress relative to adaptive rates≥3e-5, but freezing is approximate.\n[K1003] cred=0.673 s=27.25 f=12.75 ep=0 src=[]\nNormalized MLPs or bigram LMs,SGD vs adaptive BELOW saturation: plain SGD is often slow,NOT automatically frozen or last. It lost138/141 pairs when adaptiveDelta>15x its estimate(K1019); old all-family appearance wins~8% are pooled,not same-model controls. Momentum.9 lr.001-.003 is a contender,not guaranteed winner: general Adam-equivalent rate~lr/10,bigram~lr/30,MSE~lr/3. At lr<=.0003 it usually loses to same-lr adaptive below saturation. Calibration is a proxy,NOT proof momentum beats plain at equal lr/(1-m);q_0a12ba favors plain at parity,with decay differing. Deep zeroLN smooth MLPs need task-specific scope(K1038).\n[K1001] cred=0.667 s=81.00 f=40.00 ep=0 src=[]\nOptimizer comparison,SAME model/data/budget: use Delta as a progress proxy ONLY below task/model saturation. T256 can be32epochs; neither step count nor nominal parity proves adaptive or max-Delta wins. Adam/AdamW/RMSprop:lr*T;Adagrad:2*lr*sqrt(T);SGD:lr*T*|g|/(1-m),g~.01 (bigram.003,momentumMSE.03,K1019). Check K1004/K1071-K1073 and target/batch first;close mixed-recipe estimates:K1012. Old largerDelta~85% backtests were ceiling-filtered,not a law. Byte-identical q_561d81/q_21a335 recipes reverse winners on different targets/splits. Long XOR optimizer reversal K1119 is NOT a low-rate rule;no universal ceiling.\n[K1038] cred=0.656 s=4.25 f=1.75 ep=0 src=[]\nSGD vs adaptive,SGD calibrated Delta>=3x rival,rivalDelta<.1: deep(>=3) ZERO-LN smooth MLPs are task-dependent, not automatically frozen. Explicit plain-MSE/CE base-lab: deep SGD wins11/30 in11sets,loss ratio1.056; plain3/15(1.897),residual8/15(.991). Regression5/21; spiral4/5; XOR2/4: do NOT apply a universal penalty. Almost all use m=.9; budgets4096/8192samples; no deep rectifier cases. With >=1LN,SGD wins413/471(ratio.578). Older broader21/60 and493/563 use different filters. Keep residual,task,activation and budget scope; loss ratios do not measure parameter motion. Calibration:K1019.\n[K1005] cred=0.634 s=26.25 f=14.75 ep=0 src=[]\nMatched-network/data optimizer recipes: pooled decay/beta counts do NOT supply a universal lower-decay tie-break. Below saturation,clear undertraining gaps may matter more; minor-knob direction is uncertain. Older higher-wd3/13 had gaps<1%,Adam/AdamW5/10,beta2.95/.9997/11. Bigram q_f8e6aa's GRU64x2,V32/L24,T512/b32,AdamW .001/(.9,.95): wd.001 beats1e-5 with all else identical (ordinal10-seed mean,no CE margin); one comparison,not a decay law. Easy-spiral coupled-Adam penalties require matched recipes(K1040); other rates/nets cannot be ranked from decay alone. Do not blindly maximize Delta in converged CE or long budgets.\n[K1009] cred=0.620 s=14.50 f=8.50 ep=0 src=[]\nTabular CE,1024rows,shared optimizer/lr/T: low-Delta LN count cannot force a rank; identical SiLU1LN/Leaky2LN recipes reverse across sparse/smooth targets(K1146). At Delta>=.1 shallow and smooth are separate preferences;fewerLN depends on rule/budget. Old shallow21/26,smooth16/16;moreLN wins piecewise9/17(CEratio.987),smooth5/13(1.196),sparse0/10(1.495),mixed architecture/decay,T256,b16/32,not32epochs. Below.1 old moreLN41/45,deeper35/52 are confounded,not universal. Depth schedule:K1033/K1121;activation:K1056/K1122;rate:K1073. Do not discard residual+LN for width/smoothness or sum architecture scores.\n[K1006] cred=0.589 s=52.00 f=36.00"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 1,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "kb_open",
+        "arguments": "{\"targets\": [\"Rac262f1c3a\", \"R79e71854c8\", \"R760974e919\", \"Rb10114c248\"]}"
+      }
+    ],
+    "results": [
+      "# R760974e919: Tabular architecture reversal: batch/schedule and LN-activation interactions (9642ada41063c751f267dc92ec1fe8036270ae18)\n# Tabular Architecture Reversal: Conditional Phase Table\n## Finding\nEpochs alone do not govern the tested reversal. At matched Δ=.0768 and matched E16/E32, changing batch/exposure scheduling reverses depth2-versus4 on both sparse8 datasets, but not either smooth16 dataset. Batch/schedule and data condition therefore matter; rule is confounded with input dimension, and function-space progress is not measured. This is a conditional phase table, not a fitted phase law or causal account of calibration.\n## Frozen Sources and Definitions\nRead R04f88f629b, Rc5401dd3c0, Rd2f1faba9e and K1009/K1033/K1056/K1073/K1083/K1089/K1094/K1095/K1113. Initial snapshots contain 983 history records, 73 claims and 11,673 lab candidates, including preexisting experiments. Both checkpoint refreshes pinned `Jfac834ef8be1_research_e0005`, retaining 983 records and no new question IDs. Only allowed training history and lab datasets were used; no evaluation-answer files. Initial and checkpoint inputs remain separate.\nDepth counts hidden width-to-width blocks, excluding projection/head. LN masks refer to hidden blocks; residual addition is a separate factor. Nominal exposure epochs E=T×batch/1024 count with-replacement presentations, not complete passes. AdamW Δ=lr×T is a nominal rate proxy, not measured parameter displacement, fitting progress or logit motion.\nS1/S2 are eight-feature sparse-interaction `stabcls_0db74c`/`stabcls_17011f`; A1/A2 are sixteen-feature smooth-additive `stabcls_2173ed`/`stabcls_28e027`. All have 1,024 train/2,048 test rows. Instance/point seeds are respectively 33092035/33093035, 145092376/145093376, 108092265/108093265 and 34433205/34434205. Exact active features, coefficients, thresholds and sampling metadata are preserved in `research/lab.json` and candidate specs. These are independent allowed instances/splits per rule family, not independent splits of one identical target.\n## Methods and Preregistered Predictions\nDefault initialization, plain CE, AdamW(.9,.999), weight decay 1e-5 and training seeds 0–9 are fixed. The reference factorial crosses widths64/128 and depths1/2/3/4 with plain LeakyReLU(.01), all-LN, T256/batch64, Δ=.0768. Depth changes still change LN count and parameter count. The progress grid fixes width64 and compares depth2/4 at Δ=.03/.0768/.1/.3, T256/512/2048, batch64, plus Δ=.0768, T256/512/1024/2048, batch16. Rates equal Δ/T. Controls fix depth3/width64, T256/batch64, Δ=.0768 and cross residual/plain, LeakyReLU/SiLU, and LN000/100/010/001/111.\nPredictions were saved and published before outcomes: no universal shallow advantage at Δ=.0768; sparse depth3 may retain its recipe advantage; smooth depth2-versus4 may favor shallow at E32; equal Δ need not collapse schedules; LN was expected to improve sparse over zero-LN, but not all placements equally. Each condition is retained. The runner’s 12-variant limit caused rejected, untrained requests; regrouping kept depth contrasts within one returned set. Cached anchors enable batch/exposure and activation comparisons within sets and are not independent replications.\n## Reference Factorial\nEach vector is mean test CE for depths1/2/3/4, with ten seeds per cell. Depth2 is lowest in 8/8 dataset-width cells; depth4 loses to depth2 in 80/80 paired seed comparisons. This is a minimum on the tested grid, not an architecture optimum.\n| Dataset | Width64 CE d1/d2/d3/d4 | Width128 CE d1/d2/d3/d4 |\n|---|---|---|\n| S1 | .358637/.214313/.218640/.287738 | .212574/.160155/.193479/.260531 |\n| S2 | .347093/.213258/.227849/.294967 | .214247/.159668/.210316/.268331 |\n| A1 | .337778/.289937/.316600/.395313 | .271468/.233365/.313001/.414527 |\n| A2 | .387627/.349690/.380867/.470815 | .346229/.313643/.401941/.544510 |\nAt width64, depth3−depth1 CE differences are −.139997/−.119244 on S1/S2; paired-seed bootstrap 95% intervals are [−.156497,−.125540]/[−.1337"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 2,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"kb=load_kb()\\nprint('claims',len(kb))\\nfor k in kb:\\n if k['id'] in ['K1057','K1063','K1075','K1124','K1125','K1127','K1128','K1131','K1133','K1134','K1135','K1136','K1137','K1144','K1146','K1147','K1149','K1150','K1151']:\\n  print(k['id'],k['text'])\\n  print('SCIENCE', {f:k.get(f) for f in ['mechanism','regime','phase','report_ids']})\"}"
+      }
+    ],
+    "results": [
+      "2f1c3a']}\nK1137 At Delta.01 on bg_313ea4(.8)/bg_05e970(1.4),V24/L16/plainCE/default post-LN TF,FF128/heads4,AdamW(.9,.999)/wd0,T256/b16,n10: d32-depth2 minus d64-depth1 CE=+.01114/+.02338;depth3=-.01646/-.00789(all four95%CI include0);depth4=-.04289/-.02363(both pointwiseCI negative). Width preference crosses in means at a2-layer gap,but requires3 layers for pointwise95% evidence on this grid. Pair seeds are shared,not batches or weights;no generic depth override.\nSCIENCE {'mechanism': None, 'regime': {'family': ['bigram_lm'], 'model_type': ['transformer_lm'], 'optimizer': ['AdamW'], 'steps': [256, 256], 'note': 'Default post-LN GELU,heads4/FF128,wd0,b16,one independent table each at alpha.8/1.4;10seeds.'}, 'phase': None, 'report_ids': ['Rac262f1c3a']}\nK1144 On oscillatory8D mvar_0e8e34(seed1066203715),MSE,T512/b64: residual d2w96 GELU/zeroLN+AdamW .0003 wins over plain d2w96 SiLU/2LN+AdamW .001 and plain d4w48 ReLU/3LN+RMSprop .0003. Mean MSE1.42054 vs1.60630/1.68626 (11.6%/15.8% lower);10seeds/candidate,0failures,2 comparisons sharing1winner. q_cbd81f exact-instance set_randomcf_hard500_18_163_1066194796,matching all three recipes,not an analogous-target replay. Betas/decay/activation/width/skips/rates differ;extra LN or ReLU did not rank this bundle. No general zero-LN residual preference or measured overfitting/scale-preservation mechanism.\nSCIENCE {'mechanism': 'Unmeasured. Endpoint MSE does not establish preserved feature scale, fitting progress, overfitting or individual LN/activation/residual effects.', 'regime': {'family': 'multivariate_regression', 'optimizer': ['AdamW', 'RMSprop'], 'steps': 512, 'budget': 32768, 'loss': 'mse', 'note': 'Exactmvar0e8e34/seed1066203715,8D,train/test256,b64,defaultinit. A resd2w96GELU0LN/.0003;B plaind2w96SiLU2LN/.001;C plaind4w48ReLU3LN/RMS.0003. One split,mixed knobs.'}, 'phase': 'mvar_0e8e34/set_randomcf_hard500_18_163_1066194796:A MSE1.4205434 SD.0212215,B1.6063018 SD.0593711,C1.6862627 SD.0702707;ratiosA/B.884356,A/C.842421,reductions.185758/.265719.10seeds/candidate,0failed. q_cbd81f lab matches exactpointseed and3recipes;not general zeroLN preference.', 'report_ids': None}\nK1146 Dim16 sparse CE,1024/2048 rows,default plain d2w192 Leaky(.01),LN10,T2048/b16: full A=AdamW(.001,beta2.999,wd.001), B=AdamW(3e-5,.95,1e-5), C=Adam(.003,.95,0),beta1.9. Two allowed instances stabcls_254b70/3ba70f give A/B/C CE .413544/.416901/.807531 and .325835/.407879/.537058;A-B=-.003357/-.082044,paired95%[-.026824,.023157]/[-.096987,-.067933],A wins6/10 and10/10 seeds. C loses to both40/40 paired comparisons;zero failures. Rc093b78e4e: A wins both means,but first lead uncertain;not rate-only or a depth/rule-wide law.\nSCIENCE {'mechanism': None, 'regime': None, 'phase': None, 'report_ids': None}\nK1147 Dim16 piecewise CE,1024/2048 rows,default plain d2w192 Leaky(.01),LN10,T2048/b16: A=AdamW(.001,beta2.999,wd.001),B=AdamW(3e-5,.95,1e-5),C=Adam(.003,.95,0),beta1.9. stabcls_06550f/0a47cf give A/B/C CE .325305/.378657/.637561 and .408881/.403906/.798934. A-B=-.053352/+.004974,paired95%[-.076951,-.028471]/[-.017986,.028225],A wins8/10 and5/10 seeds. Predicted B transfer failed first instance;second mean lead uncertain. C loses to both40/40 pairs;zero failures. Rc093b78e4e: rule label does not guarantee B;no rate-only/calibration mechanism.\nSCIENCE {'mechanism': None, 'regime': None, 'phase': None, 'report_ids': None}\nK1149 Bigram V32/L12/alpha.8,train800/test200,default post-LN GELU d128/layers4/heads2/FF256,plain CE,T256/bs64: C=Adam3e-5/betas(.9,.95)/wd1e-4 beats B=AdamW.0003/same betas/wd0 on bg_206d10/bg_2e7010. C CE3.411027/3.417451; B3.456420/3.464073 nats; B/C1.013308/1.013642. Paired B-C95% t9 intervals [.034519,.056266]/[.032038,.061204], C wins20/20 paired seeds; all four cells n10/fail0. Full recipes, two tables/splits only; opposite alpha1 ordering retained, not universal low-rate superiority or causal alpha cutoff.\nSCIENCE {'mechanism': None, 'regime': None, 'phase': None, 'report_ids': ['Rb10114"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 3,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "research",
+        "arguments": "{\"topic\": \"e10_mse_target_rate_phase_consolidation\", \"focus\": \"K1001/K1012/K1072/K1111/K1114/K1115/K1117; correct log-Delta over-selection without a universal low-rate rule\", \"question\": \"Consolidate the SAME-model MSE rate cluster into a falsifiable conditional phase model, not another pooled tendency. Existing R1e820ab3a7, Rd72f26bd7e, R63d34ce484, K1111/K1114/K1115/K1117 use overlapping saved controls: do NOT repeat them or count them as independent. Read current KB and reports first. Fixed plain d3w256 Leaky(.01),LN101,AdamW(.9,.999),wd1e-5,b16 shows low-rate late wins on two polynomials but HIGH-rate late wins on two nested-oscillatory targets. Test whether target frequency/curvature or scale predicts the sign on fresh allowed datasets with matching dim/range and recipe, map lr3e-5/.0001/.0003/.001 at T256/512/1024/2048 selectively around crossing. Separate T/exposure from batch; use paired seeds, within-set comparisons, train/test diagnostics and actual function/update motion ONLY if runner really exposes them. Test a prospective held-out-training-dataset prediction before outcomes. If scale/centering or scheduled-rate intervention is unsupported, record it once and continue endpoint phase mapping, not repeated capability probes. Keep nonlinear target type, offset, initialization, width, LN and batch gates. Quantitatively reproduce original means (explicit reuse) and new effects before proposing a mechanism law or merging; a failed law is valuable. Publish report early, report sample sizes, uncertainty, failures and provenance. Never access evaluation answers.\"}"
+      }
+    ],
+    "results": [
+      "research J5b324e3673c9 launched asynchronously; topic=e10_mse_target_rate_phase_consolidation; origin=e0010"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 4,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "research",
+        "arguments": "{\"topic\": \"e10_bigram_rms_adagrad_weak_signal_boundary\", \"focus\": \"K1102/K1071/K1149/K1150 and q_f4462d; distinguish FF/heads/batch/table effects from alpha stories\", \"question\": \"Investigate one focused contradiction: default d128 post-LN bigram RMSprop.003 vs conservative Adagrad<=.0001. q_f4462d alpha.8 favors RMSprop, whereas K1102's V24/L16 alpha1.4,heads4/FF64,b32,T256 favors Adagrad on2tables; K1149/K1150 use a DISTINCT d128x4 heads2/FF256,b64,V32/L12 recipe and Adam rivals, so do not pool. Read exact training record q_f4462d and R aeabecdef0 (Raeabecdef0), Rb10114c248/current claims. Reuse K1102 cells. Replay q_f4462d's exact recipes on fresh allowed tables nearest to BOTH alpha.8 and1.4; retain original V,L,FF,heads,batch,T,defaultinit and all knobs. Map rate boundary with SAME optimizer/rate-only contrasts on at least2 tables per condition, then one-factor shape/batch bridge only where needed to discriminate a predictor (FF64 vs256 or b32 vs64). Alpha/table cannot be causal unless table construction is explicitly matched. Test prospectively whether the exact full-recipe RMS win transfers to weak-signal tables; record rejected predictions. Measure CE change vs no-update initial baseline if supported; never infer uniform logits/representation disruption from CE≈lnV. Keep conservative Adam evidence separate. Propose replacement K1102 text only after numerical audit; no universal high-rate, low-rate, alpha or optimizer law. Persistent report early with effects, paired seed outcomes, failures, cache provenance and distinct table count; no evaluation answers.\"}"
+      }
+    ],
+    "results": [
+      "research J6fe3befeca0f launched asynchronously; topic=e10_bigram_rms_adagrad_weak_signal_boundary; origin=e0010"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 5,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "research",
+        "arguments": "{\"topic\": \"e10_tabular_ln_activation_rule_dimension\", \"focus\": \"negative solver utility K1006/K1009 and K1121/K1122/K1151; isolate dimension from data rule\", \"question\": \"Can a conditional LN×activation law predict a NEW tabular setting without the harmful shallow-wide-smooth or LN-first default? Current K1006 utility-.07/n33,K1009-.06/n22; bias underselects depth/LN. Read R760974e919/K1121/K1122/K1151, keep existing cache/provenance and do not rerun identical cells. Existing sparse8 vs smooth16 confounds dimension with rule; at AdamW Delta.0768,T256/b64,d3w64 plain,SiLU loses to Leaky(.01) with zeroLN but wins with early/allLN on both sparse8. New exact Adam.0001,T256/b32,residuald3w256,SiLU LN010 vs Leaky LN011 reverses sparse4/smooth4. Test a minimal factorial using allowed datasets with BOTH sparse and smooth at SAME dimension (prefer4 or8; >=2tables/splits per rule), fixed recipe/optimizer/budget/defaultinit; isolate activation, LN mask,count and residual in separate comparisons. Reuse existing cells when matching. Map one neighboring Delta (.0256 vs.0768 or.1) and one batch/exposure condition only as needed. Preregister numerical sign predictions for fresh rule/dimension combinations; preserve failures. Calibration or gradient-geometry mechanism must be measured by supported intervention, not declared from endpoint CE; unsupported instrumentation is already known, do not waste repeated probes. Summarize a compact phase table reproducing inherited numbers with explicit reuse and new results, including mean accuracy vs CE, seed uncertainty, cache/failure counts. Do not merge K1009/K1056/K1033 without quantitatively faithful law; publish report early and draft condition-first solver text <=700chars only for independently useful gates.\"}"
+      }
+    ],
+    "results": [
+      "research J596ff967ab24 launched asynchronously; topic=e10_tabular_ln_activation_rule_dimension; origin=e0010"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 6,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "research",
+        "arguments": "{\"topic\": \"e10_xor2_sgd_architecture_interaction\", \"focus\": \"falsify q_b204a3 interaction score; K1039 MSE must not leak into XOR CE\", \"question\": \"Audit and experimentally falsify the q_b204a3 hypothesis, NOT merely fit its five-way gold rank. It claims XOR2,T256,plain momentum-free SGD lr~3e-4 needs interaction scoring: rectifier advantage, skips, selective LN, deep smooth zeroLN last. Read exact q_b204a3 plus q_f74790, current K1006/K1018/K1039/K1065,K1133 and Refa052dfdc/Reb8454abdf. K1039 is MSE-only; do not export it to XOR. Backtest preregistered pair predictions excluding focal record and distinguish eligible optimizer-config matches from bundled pairs. Use controlled fixed-width MLP XOR2 factorial (depth2/4,plain/residual,SiLU/GELU/Leaky(.01),zeroLN/oneLN/allLN) selectively on>=2fresh allowed splits at SGD m0,.0003,T256,bs matching record; keep initialization and head semantics exact. Compare one lr neighbor .003 and XOR8 only if needed to map regime boundary. Do not fabricate scalar score from heterogeneous ranks; report mean CE margins even if tiny, paired-seed uncertainty, initial baseline if available, failures and dependency counts. Falsifiable new-setting prediction required. Publish report early; no new universal LN/residual/activation law unless numbers plus phase table reproduce observed pair signs. Mechanism report-only unless diagnostic intervention exists. Never evaluation answers.\"}"
+      }
+    ],
+    "results": [
+      "research Je8247e6fbbc4 launched asynchronously; topic=e10_xor2_sgd_architecture_interaction; origin=e0010"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 7,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "research",
+        "arguments": "{\"topic\": \"e10_spiral_equal_ln_residual_depth_boundary\", \"focus\": \"K1020/K1066 equal-LN overreach in q457/q796, q07 and same-RMS depth reversal q3e4\", \"question\": \"Find a predictive boundary for spiral depth/residual comparisons at EQUAL LN, not an LN-count heuristic. Read q_457ab7,q_79695d,q_07bc60,q_3e4d33 and current K1020/K1066/K1077/K1120/K1123/K1097/K1099/K1112. Existing equalLN lowAdamW controls favor plain at1turn; some hard recipes favor residual; Leaky slope .1 controls are NOT .01 exact transfer. Do not repeat old controls or claim terminal preLN normalizes the residual stream/head. Choose one exact architecture-only optimizer regime from the focal misses and preregister pair signs on>=2allowed splits each easy/hard; isolate residual at fixed depth,width,activation,LNmask, then depth gap at equalLN, sparse vs terminal placement. Keep original lr,T,batch/betas/decay/defaultinit. Minimal activation bridge SiLU/GELU versus rectifier only when needed. Mixed optimizer RMSprop-vs-Adam bundles are a distinct comparison, not a shallow-over-deep rule. Test whether terminal-branch vs residual-stream scale explains loss ONLY if an actual supported instrumentation/intervention exists; endpoints alone cannot identify radius information or head conditioning. Report CE differences/ratios, seed uncertainty, independent split count, cached reuse and failures. Quantify where residual/depth shortcut fails and prospectively test another setting. Preserve K1066 MORE-LN scope; replace/merge cluster only with faithful numeric phase law. Publish persistent report early.\"}"
+      }
+    ],
+    "results": [
+      "research Jd9b956477b38 launched asynchronously; topic=e10_spiral_equal_ln_residual_depth_boundary; origin=e0010"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 8,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "research",
+        "arguments": "{\"topic\": \"e10_univariate_rmsprop_transient_phase\", \"focus\": \"K1057/K1063 late proposal R0d5af46860; explain low-rate budget reversal rather than categorical optimizer rule\", \"question\": \"Consolidate low-rate univariate RMSprop evidence, using R0d5af46860's exact completed controls and current K1057/K1063. Do not repeat the20/20 paired RMS-wins3e-5/T256 then Adam-winsT512 on sym_bca7ef/b41081,d4w192residualGELU LN0101,wd0,b32,Adam(.9,.95); these are two datasets,not40independent replications. Legacy78/88 Adam wins and9/42 higher-RMS wins have underreconstructed filters and must stay separate. Test the candidate RMSprop startup-transient explanation with an actual optimizer-state or schedule intervention if the allowed runner supports it; otherwise use no-update baseline and dense neighboring endpoints (T128/256/384/512,lr3e-5/.0001) on at least2FRESH one-cycle targets and a matched four-cycle counterpart. Keep architecture/normalization/batch/init and target scale fixed where possible; log target/split changes explicitly. Predict crossover bracket prospectively, then validate withheld allowed dataset (training evidence only). Larger RMS rate can win; map the condition rather than restore universal lower-lr or Adam default. Record paired means/CI/seeds/failures, absolute effects and cache reuse. Do not call test curves training curves or infer jitter/generalization from endpoint loss. One report may cover both claims; propose one law only if mechanism+phase reproduces all scoped numeric facts, else retain useful conditional facts and open mechanism.\"}"
+      }
+    ],
+    "results": [
+      "research J3e0943cc6b0d launched asynchronously; topic=e10_univariate_rmsprop_transient_phase; origin=e0010"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 9,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "research",
+        "arguments": "{\"topic\": \"e10_bigram_width_depth_phase_prediction\", \"focus\": \"K1017/K1068/K1071/K1135-K1137; prospectively validate width-depth rate law\", \"question\": \"Test whether Rac262f1c3a's matched bigram width/depth phase table supports one predictive law instead of width-first or depth-first heuristics. Existing AdamW(.9,.999),wd0,default postLN GELU,FF128/heads4,V24/L16,T256/b16 on bg313ea4(.8)/05e970(1.4),d32/64/128,depth1/4 shows d128 beats64 atDelta.05,loses at.3;at.1 wider winsdepth1 but losesdepth4,then .768d128 can beat64 again. sqrt(64/d) lr scaling only PARTIALLY rescues wide; no sharp.1 law. Read K1135/K1136/K1137, current K1017/K1068/K1071 and report; reuse all existing measurements. Preregister exact sign and effect-range predictions on >=2FRESH allowed tables, one per alpha and preferably two each, atDelta.05/.1/.3,depth1/4,width64/128. Test a competing joint width×depth rate scale against unchanged rates, train a fit only on inherited tables and predict new ones before seeing outcomes. Initial logit/functional-step mediation only if supported diagnostics; matching default init is not matching logits or minibatches. A no-update baseline may rule out initial-loss-only explanation but not identify mechanism. Keep FF/head/batch/optimizer/loss fixed; do not transfer to RMS/Adagrad or different vocab/context. Report means,ratios,CI,failures/dependent cells and whether original exact numbers are reproduced via reuse. Merge law only if numerically faithful,otherwise retain threshold-rich facts plus falsified candidate theory. Publish report early.\"}"
+      }
+    ],
+    "results": [
+      "research Jd9512fd4ed54 launched asynchronously; topic=e10_bigram_width_depth_phase_prediction; origin=e0010"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 10,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "research",
+        "arguments": "{\"topic\": \"e10_coupled_decay_condition_gate\", \"focus\": \"K1040 utility-.12/n16; seek empirical absolute-loss gate, not blanket Adam penalty\", \"question\": \"Investigate K1040 negative solver utility (-.12/n16) through visible training records and the matched decay cluster K1005/K1040/K1127/K1128/K1130,R841140f690,Rfd410c853b. Current condition-first text already prohibits mixed-recipe Adam penalty; preserve it. Find eligible misapplications and distinguish wording harm from changing measurement truth. Scientific question: does coupled Adam decay harm depend on converged absolute CE,architecture or target difficulty? Reuse existing wd1e-5/1e-4 easy d2w256controls and d3w48 one/three-turn controls; never count reports sharing exp3dbc82 as replication. Test matched Adam/AdamW at SAME lr/BETAS/model/budget/defaultinit across wd0/1e-5/1e-4/.001 on >=2FRESH allowed easy/hard splits with one fixed architecture. Use CE/accuracy and numerical flooring explicitly, absolute nats before ratios; test a prospective gate based on independently measured wd0 fitting level, not choose a posthoc threshold. Decay-gradient/logit-margin mechanism requires measured supported diagnostic,otherwise report competing causes. Avoid known unsupported tensor instrumentation probes. No new universal decay threshold or pooled easy/hard law unless one phase model reproduces old and fresh numeric cells. Propose concise condition-first text only if it improves actual usage scope. Publish unfinished report early; no evaluation answers.\"}"
+      }
+    ],
+    "results": [
+      "research J00862cd94f1b launched asynchronously; topic=e10_coupled_decay_condition_gate; origin=e0010"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 11,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"h=load_history();k=load_kb();lab=load_lab()\\nprint('sizes',len(h),len(k),len(lab)); print('historykeys',list(h[0]));print('labkeys',list(lab[0]));print('kbkeys',list(k[0]))\\nfor cid in ['K1057','K1063','K1075']:\\n c=next(v for v in k if v['id']==cid)\\n print(cid,c['text']); print('scientific', {f:c.get(f) for f in ['regime','phase','mechanism','report_ids']})\"}"
+      }
+    ],
+    "results": [
+      "sizes 1133 97 13429\nhistorykeys ['question_id', 'epoch', 'source', 'task', 'type', 'family', 'question', 'answer', 'prediction', 'score', 'inversions', 'cited', 'explanation', 'comment', 'hypothesis', 'imported_from', 'question_provenance']\nlabkeys ['family', 'dataset_id', 'set_id', 'candidate_id', 'dataset', 'budget', 'params', 'model_type', 'd_model', 'num_layers', 'num_heads', 'd_ff', 'model', 'optimizer', 'loss', 'metric', 'mean', 'std', 'failed_seeds', 'excluded']\nkbkeys ['id', 'text', 'support_count', 'failure_count', 'credibility', 'created_epoch', 'sources', 'merged_from', 'origin', 'mechanism', 'phase', 'last_evaluated_epoch', 'report_ids', 'regime']\nK1057 Univariate MSE,SAME MLP/data/budget: do NOT categorically prefer Adam/AdamW to RMSprop at tiny rates. Training history equal lr3e-5 favors RMSprop5/6 pairs across5questions (T2564/4 in3,T5121/2 in2;wd/betas differ),including q_5604c0. RMSprop rate>=Adam rate wins19/24 across15questions;ordinal only,no margins. Older matched lab Adam78/88 (ratio.06),equal-rate21/24 is a different recipe/target sample,mostlyT256/w64-192. Broader T256 equal-rate3e-5 lab RMS15/25 across12sets lacks exact-model controls. Rate,target,shape,batch,decay and betas matter; no replacement RMSprop law or measured early-step mechanism. Overshoot risk is comparative(K1072);multivariate excluded.\nscientific {'regime': {'family': ['univariate_regression'], 'model_type': ['mlp'], 'optimizer': ['Adam', 'AdamW', 'RMSprop'], 'lr': [3e-05, 0.003], 'steps': [256, 2048], 'loss': ['mse'], 'note': 'History:Model/Loss AST,T,batch matched,wd/betas may differ. Broad base-lab equal-lr strata:T256,mixed architecture. Legacy matched lab mostlyT256/w64-192;no multivariate.'}, 'phase': 'Base-only T256 equal-rate RMS wins:3e-5 15/25 in12sets;.001 4/23 in12sets;.003 0/14 in11sets. Architectures/decay differ. Equal3e-5 strict-model history5/6 in5questions,T2564/4,T5121/2. Rate>=Adam history19/24,15questions,includes oneT2048;not a pooled winner rule.', 'mechanism': \"RMSprop's uncorrected accumulator is an implementation distinction, but faster fitting, early-step amplification and basin disruption were not measured in these ordinal training comparisons. No categorical optimizer superiority is identified.\", 'report_ids': ['R0d5af46860']}\nK1063 Univariate MSE,SAME MLP/RMSprop recipe except lr: lower lr is a short-budget wide-net tendency,NOT a universal tiny-rate rule. Old lab higher-lr wins9/42;T256/w>=128 3/24 (median MSE ratio3.6),.0001 vs3e-5 3/11;T1024/narrow4/9. Exact training lr-only controls atT512/b64 favor HIGHER2/2: q_b97423,d3w192 residualSiLU/all3LN,.0001>3e-5; q_9d6733,d1w24 plainReLU/LN,.001>3e-5. Gold supplies no margins; different shapes/targets,not a T512 law. Older RMS>=.0003 vsAdam0/21 is a separate lab sample,not categorical family evidence(K1057). Do not infer overshoot or initialization kicks from held-out ordering; multivariate excluded.\nscientific {'regime': {'family': ['univariate_regression'], 'model_type': ['mlp'], 'optimizer': ['RMSprop'], 'lr': [3e-05, 0.003], 'steps': [256, 1024], 'width': [24, 256], 'loss': ['mse'], 'note': 'Lower-rate evidence mainly old T256/w>=128. T512/b64 exact lr-only ordinal counterexamples are separately scoped; no multivariate transfer.'}, 'phase': 'Legacy T256 wide-net lower-rate preference; exact T512 higher-rate counterexamples on two distinct architectures and targets. No continuous or universal rate threshold.', 'mechanism': \"RMSprop's zero-init square average without bias correction is an implementation fact. Initial kicks, basin disruption or overshoot were not measured in these held-out rate rankings; budget/width/target interaction remains unresolved.\", 'report_ids': ['R0d5af46860']}\nK1075 Bigram GRU vs post-LN transformer,shared Adam(.9,.999),wd0/lr/T: no universal Delta=.02 switch. Default-init V48/L12,bs16,d64x2,TF heads4/FF128,T256/1024: at Delta.0256 GRU/TF CE ratios .9914/.9917 on alpha.8 split5ea2a7,1.0163/1.0164 on alpha1.4 split424569. Ten seeds"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 12,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "read_record",
+        "arguments": "{\"question_id\": \"q_6142b7\", \"fields\": [\"question\", \"comment\"]}"
+      }
+    ],
+    "results": [
+      "{\n \"question_id\": \"q_6142b7\",\n \"epoch\": 10,\n \"source\": \"dataflip500\",\n \"task\": \"select\",\n \"family\": \"multivariate_regression\",\n \"question\": \"You are taking the ArchitectureIQ benchmark.\\n\\nEach question describes one **dataset instance** and several **choices** (each choice is one **candidate**: model, optimizer, loss, and training budget). All choices train on the same dataset instance. Each choice's training budget (`total_samples_seen`) is stated in the prompt — either shared across all choices or specified per choice in the Sample budget section. Your task is to identify which choice will achieve the **best test metric** on the held-out test set after its stated training budget — using architecture and learning-mechanics reasoning only (no training results are provided).\\n\\nAnswer format is specified in the final section (\\\"Your answer\\\"): end your reply with a short `<explanation></explanation>` paragraph followed by a single letter in `<answer></answer>` tags.\\n\\n## Dataset\\nMultivariate regression on `[0, 1]^n`: input is a vector `x ∈ R^n`, target is a scalar `y ∈ R` from a fixed symbolic expression. Train and test splits are fixed before any candidate training.\\n\\n### Synthesis (PyTorch)\\n```python\\ndef target(x: torch.Tensor) -> torch.Tensor:\\n    return x[:, 0] ** 6 + x[:, 7] ** 3 + x[:, 0] * x[:, 2] + x[:, 2] * x[:, 4] + x[:, 3] ** 2 + x[:, 5] ** 2 + torch.cos(2 * torch.pi * x[:, 1]) + torch.sin(2 * torch.pi * x[:, 2]) + x[:, 4] + x[:, 6] + 2.5\\n\\n\\ndef synthesize(\\n    *,\\n    train_size: int = 256,\\n    test_size: int = 256,\\n    point_seed: int = 1066195796,\\n    input_dim: int = 8,\\n    domain_low: float = 0.0,\\n    domain_high: float = 1.0,\\n) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:\\n    gen = torch.Generator().manual_seed(point_seed)\\n    train_x = torch.rand(train_size, input_dim, generator=gen) * (domain_high - domain_low) + domain_low\\n    test_x = torch.rand(test_size, input_dim, generator=gen) * (domain_high - domain_low) + domain_low\\n    train_y = target(train_x)\\n    test_y = target(test_x)\\n    return train_x, train_y.unsqueeze(-1), test_x, test_y.unsqueeze(-1)\\n```\\n\\n### Data splits and training protocol\\n- Target expression (canonical): `x0**6 + x7**3 + x0*x2 + x2*x4 + x3**2 + x5**2 + cos(2*pi*x1) + sin(2*pi*x2) + x4 + x6 + 2.5`\\n- Input dimension: 8\\n- Train split size: 256 fixed `(x, y)` pairs\\n- Test split size: 256 fixed `(x, y)` pairs (held out)\\n- Input domain: [0.0, 1.0] per coordinate, uniform sampling\\n- Point-sampling seed: 1066195796\\n- Evaluation: **test MSE** on the held-out split\\n- Reference device: cpu\\n\\n## Sample budget (same for all choices)\\n- total_samples_seen: 32768\\n\\nEach choice specifies its own `training_steps` and `batch_size` below; they must satisfy `training_steps × batch_size = total_samples_seen`.\\n\\n## Evaluation metric\\n- Ground-truth ranking uses **test_mse** on the held-out test split.\\n- Each choice is trained independently for **10** seeds (`0`..`9`), one `torch.manual_seed(seed)` per run.\\n- Execution device: cpu.\\n- The correct choice has the lowest **mean** test_mse across seeds.\\n\\n## Choices\\n\\n### Choice A\\n\\n**Training schedule**\\n- training_steps: 512\\n- batch_size: 64\\n- total_samples_seen: 32768 (= training_steps × batch_size)\\n\\n**Model (natural language)**\\n- Type: MLP\\n- Input dimension: 8\\n- Depth: 2 hidden Linear layers of width 96, between the input projection and the output head (4 nn.Linear layers in total)\\n- Width: 96 (all hidden layers)\\n- Residual connections: True\\n- Layer norm per layer: [False, False]\\n- Activation: gelu (one activation, shared by every layer)\\n- Initialization: PyTorch Linear defaults\\n\\n**Model code**\\n```python\\nclass MLPBlock(nn.Module):\\n    \\\"\\\"\\\"One hidden layer: gelu(x + Linear(norm(x))).\\\"\\\"\\\"\\n\\n    def __init__(self, width: int, use_layer_norm: bool) -> None:\\n        super().__init__()\\n        self.norm = nn.LayerNorm(width) if use_layer_norm else nn.Identity()\\n        self.linea"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 13,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "read_record",
+        "arguments": "{\"question_id\": \"q_f4462d\", \"fields\": [\"question\", \"comment\"]}"
+      }
+    ],
+    "results": [
+      "{\n \"question_id\": \"q_f4462d\",\n \"epoch\": 10,\n \"source\": \"dataflip500\",\n \"task\": \"select\",\n \"family\": \"bigram_lm\",\n \"question\": \"You are taking the ArchitectureIQ benchmark.\\n\\nEach question describes one **dataset instance** and several **choices** (each choice is one **candidate**: model, optimizer, loss, and training budget). All choices train on the same dataset instance. Each choice's training budget (`total_samples_seen`) is stated in the prompt — either shared across all choices or specified per choice in the Sample budget section. Your task is to identify which choice will achieve the **best test metric** on the held-out test set after its stated training budget — using architecture and learning-mechanics reasoning only (no training results are provided).\\n\\nAnswer format is specified in the final section (\\\"Your answer\\\"): end your reply with a short `<explanation></explanation>` paragraph followed by a single letter in `<answer></answer>` tags.\\n\\n## Dataset\\nBigram language modeling: each example is a length-`L` window of token IDs. Labels are the next token at each position, sampled from a **single fixed** bigram law `P(y|x)` shared by train and test. Only the random windows differ between splits.\\n\\n### Synthesis (PyTorch)\\n```python\\ndef target(seq: torch.Tensor) -> torch.Tensor:\\n    \\\"\\\"\\\"Next-token labels: input sequence shifted by one (seq shape [N, L+1] -> [N, L]).\\\"\\\"\\\"\\n    return seq[:, 1:].to(torch.int64)\\n\\n\\ndef build_transition(\\n    *,\\n    table_seed: int = 1210677482,\\n    vocab_size: int = 24,\\n    alpha: float = 0.8,\\n) -> tuple[np.ndarray, np.ndarray]:\\n    rng = np.random.default_rng(table_seed)\\n    logits = rng.standard_normal((vocab_size, vocab_size)) * alpha\\n    logits -= logits.max(axis=1, keepdims=True)\\n    probs = np.exp(logits)\\n    probs = (probs / probs.sum(axis=1, keepdims=True)).astype(np.float64)\\n\\n    pi = np.full(vocab_size, 1.0 / vocab_size, dtype=np.float64)\\n    for _ in range(256):\\n        pi = pi @ probs\\n        pi /= pi.sum()\\n    return probs, pi\\n\\n\\ndef synthesize(\\n    *,\\n    train_size: int = 800,\\n    test_size: int = 200,\\n    sequence_seed: int = 1210667482,\\n    table_seed: int = 1210677482,\\n    vocab_size: int = 24,\\n    context_length: int = 16,\\n    alpha: float = 0.8,\\n    layout: str = 'lm',\\n) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:\\n    def _sample_sequences(n: int, length: int, probs: np.ndarray, pi: np.ndarray, seed: int):\\n        rng = np.random.default_rng(seed)\\n        v = probs.shape[0]\\n        seq = np.empty((n, length), dtype=np.int64)\\n        for i in range(n):\\n            s = [int(rng.choice(v, p=pi))]\\n            while len(s) < length:\\n                s.append(int(rng.choice(v, p=probs[s[-1]])))\\n            seq[i] = np.asarray(s, dtype=np.int64)\\n        return seq\\n\\n    probs, pi = build_transition(\\n        table_seed=table_seed,\\n        vocab_size=vocab_size,\\n        alpha=alpha,\\n    )\\n    if layout == \\\"lm\\\":\\n        seq_train = _sample_sequences(train_size, context_length + 1, probs, pi, sequence_seed)\\n        seq_test = _sample_sequences(test_size, context_length + 1, probs, pi, sequence_seed + 1)\\n    else:\\n        raise ValueError(\\\"Only layout='lm' is supported in generated synthesize.py\\\")\\n\\n    train_seq = torch.from_numpy(seq_train)\\n    test_seq = torch.from_numpy(seq_test)\\n    x_train = train_seq[:, :-1].to(torch.int64)\\n    y_train = target(train_seq)\\n    x_test = test_seq[:, :-1].to(torch.int64)\\n    y_test = target(test_seq)\\n    return x_train, y_train, x_test, y_test\\n```\\n\\n### Data splits and training protocol\\n- Vocab size: 24\\n- Context length: 16\\n- Layout: causal LM windows (`x` shape `[N, L]`, `y` shape `[N, L]`)\\n- One fixed bigram transition matrix `P(y|x)` shared by train and test\\n- Train rows: 800; test rows: 200\\n- Sequence seed: 1210667482; table seed: 1210677482\\n- Evaluation: **test cross-entropy** on held-out windows\\n- Reference device: cpu\\n\\n## Sample budget ("
+    ],
+    "usage": null
+  },
+  {
+    "turn": 14,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "read_record",
+        "arguments": "{\"question_id\": \"q_b204a3\", \"fields\": [\"question\", \"hypothesis\"]}"
+      }
+    ],
+    "results": [
+      "{\n \"question_id\": \"q_b204a3\",\n \"epoch\": 10,\n \"source\": \"ranking_v3\",\n \"task\": \"ranking\",\n \"family\": \"xor_classification\",\n \"question\": \"You are taking the ArchitectureIQ benchmark.\\n\\nEach question describes one **dataset instance** and several **choices** (each choice is one **candidate**: model, optimizer, loss, and training budget). All choices use the same materialized dataset instance. Depending on the question, one or more training axes may vary; read each choice's complete setup and code rather than assuming an axis is shared.\\n\\nYour task is to **rank every choice** by its held-out test metric, from lowest to highest (a lower loss is better), using architecture and learning-mechanics reasoning only — no training results are provided.\\n\\nThe reply format is defined once, in the final \\\"Your answer\\\" section.\\n\\n## Dataset\\nXOR binary classification on tabular features. Features are drawn i.i.d. from a standard normal; the label depends on the *sign agreement* of two active coordinates, so no linear function of the inputs separates the classes at all — a model must compose the two coordinates multiplicatively. Any remaining coordinates are pure distractors. The dataset card below states the active coordinates and the exact label rule. Every candidate trains on the same materialized train/test splits.\\n\\n### Data-generating and classification rule\\n- Rule family: `xor`; active coordinates: `x_0`, `x_1`\\n- Feature distribution: every coordinate is sampled independently from `Normal(0, 1)`.\\n- Latent score:\\n  - `s(x) = -x_0·x_1`\\n- Label rule: `y = 1` exactly when `s(x) > 0`; otherwise `y = 0`.\\n- XOR interpretation: `x` is class 1 exactly when its two active coordinates have opposite signs, and class 0 when they share a sign.\\n- Bayes decision boundary: `s(x) = 0`; labels are an exact function of `x`, so this boundary is attainable.\\n- Threshold calibration: `0` was chosen from 4096 independent calibration rows as the closest round value to the 50% quantile of `s(x)`; on those 4096 rows it labels 50.5% of them class 1.\\n- Reproducibility: point seed `2011868035`, calibration seed `2011869035`.\\n\\n### Data splits and training protocol\\n- Task: binary classification on one fixed synthetic tabular train/test split.\\n- Input shape: float32 `[N, 2]`; labels: int64 `[N]` in `{0, 1}`.\\n- Train rows: 1024; held-out test rows: 2048.\\n- Every choice receives the same materialized split; minibatches sample train indices uniformly with replacement.\\n- Evaluation: **test cross-entropy** is primary; test accuracy is auxiliary only.\\n- Reference device: cpu\\n\\n## Sample budget (same for all choices)\\n- training_steps: 256\\n- batch_size: 16\\n- total_samples_seen: 4096 (= training_steps × batch_size)\\n\\n## Evaluation metric\\n- Ground-truth ranking uses **test_ce** on the held-out test split.\\n- Each choice is trained independently for **10** seeds (`0`..`9`), one `torch.manual_seed(seed)` per run.\\n- Execution device: cpu.\\n- Rank all candidates by their mean test_ce over seeds; lower is better, so write the order from lowest to highest.\\n\\n## Choices\\n\\n### Choice C\\n\\n**Model (natural language)**\\n- Type: MLP\\n- Input dimension: 2\\n- Output logits: 2\\n- Depth: 4 hidden Linear layers of width 192, between the input projection and the output head (6 nn.Linear layers in total)\\n- Width: 192 (all hidden layers)\\n- Residual connections: True\\n- Layer norm per layer: [False, False, False, False]\\n- Activation: silu (one activation, shared by every layer)\\n- Initialization: PyTorch Linear defaults\\n\\n**Model code**\\n```python\\nclass MLPBlock(nn.Module):\\n    \\\"\\\"\\\"One hidden layer: silu(x + Linear(norm(x))).\\\"\\\"\\\"\\n\\n    def __init__(self, width: int, use_layer_norm: bool) -> None:\\n        super().__init__()\\n        self.norm = nn.LayerNorm(width) if use_layer_norm else nn.Identity()\\n        self.linear = nn.Linear(width, width)\\n        self.act = nn.SiLU()\\n\\n    def forward(self, x: torch.Tensor) -> torch.Tensor:\\n        h = self.linear"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 15,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"h=load_history()\\nfor cid in ['K1040','K1006','K1009','K1018','K1038']:\\n rs=[r for r in h if cid in (r.get('cited') or []) and float(r.get('score',1))<1]\\n print('\\\\n',cid,'misses',len(rs))\\n for r in rs[-6:]:\\n  print(r['question_id'],r['family'],r['score'],r.get('comment','')[:520])\"}"
+      }
+    ],
+    "results": [
+      ". A also changes depth and removes normalization, so activation alone cannot explain all comparisons. I misapplied K1006/K1009’s low-progress LN tendency as a decisive ranking; their scope warnings should have prevented that. K1056 helped identify smooth activation as relevant, but its low-progress evidence is only directional. The revealed winner establishes a full-recipe advantage, not a measured optimiz\nq_9e5a60 synthetic_tabular_classification 0.0 Choice B won because this was a low-progress tabular CE regime where the smooth-activation advantage does not apply. The piecewise-linear ReLU network’s greater depth matched the kinked rule better than A’s SiLU residual network, while C was too shallow. I overextended K1056’s smooth-activation preference and residual-optimization intuition; K1009 explicitly scopes shallow/smooth preferences and does not establish a total architecture ranking. K1056’s threshold condition (Delta>=.1) was the key missed qualifier.\n\n K1018 misses 18\nq_099d20 xor_classification 0.0 C’s shallow residual architecture beat both deeper residual recipes; smooth activation and additional normalization did not compensate for depth. E and A also beat D, showing that deep plain networks were not automatically disadvantaged. I overextended K1018’s smooth-activation tendency and K1065’s depth evidence into a complete ordering; K1016 correctly cautioned against capacity-based ranking. Backtests at matched adaptive optimizer/rate and nominal Δ≥.05 favored shallow residual over depth≥4 residual: history 13\nq_9b562b xor_classification 0.75 A versus E decided the error: identical recipes except activation, and ReLU beat LeakyReLU(0.01). I assumed improved negative-side gradient flow would help; that was unsupported. Hard gating might help isolate XOR sign regions, but the gold provides no causal evidence or loss margin. K1018/K1065 supported low-dimensional depth considerations; K1016 discouraged capacity-based ranking. None establishes LeakyReLU superiority. Backtesting found no activation-only matched pairs in 107 historical XOR questions or the lab\nq_84145f xor_classification 0.5 I promoted B using an implicit extra-LN advantage, overlooking that its depth-5/width-64 bundle could lose to C’s shallower terminal-LN residual network and D’s shallower SiLU network. Gold establishes those two losses, but not their causal mechanism. K1006 warns against LN scoring; K1018 and K1065 explicitly exclude extrapolation to Adagrad, so my application overreached. Backtesting found no matching high-dimensional, T256, lr=.003 Adagrad depth pairs in history or lab. At lr=.0001, deeper extra-LN residual Adagr\nq_448af0 xor_classification 0.25 I over-weighted terminal LN and under-weighted residual signal propagation. E and B beat C despite C’s fully normalized plain stack; D’s terminal LN did not compensate for its deep, mostly unnormalized SiLU stack, and A beat D. Signal attenuation is plausible, not measured. K1059 and K1061 misled through overextension across depth, activation, and LN-count differences; K1018’s adaptive-optimizer evidence was inapplicable to SGD. Backtesting low-progress SGD residual candidates with at least equal LN against termina\nq_c9cbae xor_classification 0.75 B’s residual, unnormalized LeakyReLU–Adagrad recipe beat C’s normalized SiLU–AdamW recipe despite nominal progress proxies of 0.192 versus 1.024. I overextended K1002’s same-architecture optimizer preference and K1018’s shared-optimizer smoothness tendency across differing recipes. K1001/K1012 correctly warn that greater displacement need not improve held-out CE after substantial training. Adagrad’s decaying updates might improve late-stage generalization, but the gold ordering does not establish that mechanism. Ba\nq_f74790 xor_classification 0.5 I over-weighted B’s three LayerNorms and assumed A’s rectifier would outperform E’s smooth residual network. D’s GELU curvature plus terminal normalization plausibly supports interaction learning; E’s skips p"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 16,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"h=load_history()\\nfor cid in ['K1040','K1006']:\\n rs=[r for r in h if cid in (r.get('cited') or []) and r.get('score',1)<1]\\n print(cid,len(rs))\\n for r in rs[-6:]:print(r['question_id'],r['score'],r.get('comment','')[:400])\\nk=load_kb(); c=next(x for x in k if x['id']=='K1009');print('K1009fields',c.get('regime'),c.get('phase'),c.get('mechanism'))\"}"
+      }
+    ],
+    "results": [
+      "K1040 2\nq_fb4a7f 0.0 A’s moderate-rate recipe beat B’s tenfold-higher rate and decay; C’s smaller rate provided insufficient progress. The plausible missed mechanism is late-stage refinement: larger displacement need not improve cross-entropy after learning an easy spiral boundary. However, the revealed winner cannot distinguish learning-rate instability from coupled-decay effects. K1001 and K1004 misled by treating t\nq_9c93cb 0.0 B wins despite A’s 3.33× larger nominal displacement; at 2048 steps, progress is not a reliable cross-entropy ranking. Lower-rate RMSprop may refine this network better, but ordinal gold cannot establish instability or overconfidence as the cause. C’s coupled decay remains a plausible disadvantage (K1040), not an explanation for B beating decay-free A. I overextended K1001 and treated K1070’s limi\nK1006 57\nq_816bf7 0.75 I overvalued C’s residual pathway and larger presumed head-feature scale. D beat C despite both having one LN and rectifier activations; its shallower normalized pathway is a plausible explanation, not an established mechanism. At nominal Adagrad progress ≈0.00192, initialization and normalization geometry may matter substantially. K1002 correctly identified low progress; K1006 and K1074 supported\nq_256505 0.5 The missed mechanism was normalization depth in the low-progress Adagrad regime. B's four LayerNorm blocks preserve signal through a deeper nonlinear stack and beat D's single normalized block despite SiLU; D then beats A because A has no normalization. I over-applied K1008's rectifier-over-SiLU tendency, which is weaker than K1006's low-Delta normalization preference here. E remains best from Lea\nq_769be5 0.0 I overextended K1006’s more-LN tendency into a decisive ranking. C’s residual LeakyReLU path plausibly preserves input-dependent features useful for this positive, monotone target; the revealed winner does not establish that mechanism. K1008 supports rectifiers only at equal LN count, not C over A. Backtesting residual-rectifier versus same-depth plain-smooth candidates with one extra LN and share\nq_6142b7 0.0 B’s normalized SiLU network and 3.33× higher AdamW rate evidently fit this additive polynomial-plus-sinusoidal target better than A’s zero-LN residual recipe. This is a plausible optimization explanation, not a measured mechanism. I over-transferred K1144: its identical recipes favor A on a substantially different, nested-oscillatory target. Backtesting found only one eligible historical compariso\nq_02fb2e 0.75 B–D decided the error: the two-LN GELU momentum-SGD model beat the one-LN LeakyReLU RMSprop model despite its smaller calibrated progress estimate. Additional normalization and terminal-block LN are plausible contributors, but the gold ordering does not isolate their mechanism. I overweighted RMSprop’s estimated progress and rectifier activation. K1019 helped calibrate momentum SGD; K1012 warned t\nq_e6c6b4 0.75 The sole error was A versus D: I imposed an unsupported plain-network preference. A’s residual path preserves input-dependent features alongside the normalized branch, plausibly helping fit the target’s linear component; width also changes, so the gold ordering cannot isolate that mechanism. K1074 helped identify E; K1006 and K1016 did not justify D>A. Backtesting found no exact shallow, one-LN, R\nK1009fields {'family': ['synthetic_tabular_classification'], 'model_type': ['mlp'], 'data': ['1024rows', '2-16features', 'smooth_additive', 'sparse_interaction', 'piecewise_boundary'], 'note': 'Shared optimizer/lr/T. New LN audit:T256,bs16/32,4/8epochs; matched type/lr,other axes confounded. Not32epochs.'} HighDelta>=.1 moreLN: piecewise9/17,17sets,ratio.986533; smooth5/13,11sets,1.196075; sparse0/10,5sets,1.495315. At lowDelta:38/56,.951267;24/40,.948398;29/45,.956133. All base-only same optimizer type/lr,mixed architectures. Old corpus shallow21/26,smooth16/16. No universal LN,depth or smoothness precedence. Matched candidate recipes reverse ordinal outcomes"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 17,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "kb_view",
+        "arguments": "{\"ids\": [\"K1096\", \"K1098\", \"K1097\", \"K1099\", \"K1100\", \"K1105\", \"K1106\", \"K1135\", \"K1136\", \"K1140\", \"K1141\", \"K1145\"], \"sort\": \"id\", \"limit\": 12}"
+      }
+    ],
+    "results": [
+      "[K1096] cred=0.667 s=1.00 f=0.00 ep=3 src=['q_7e1811', 'q_95fe03']\nSpiral CE,d4/w24 residual default LeakyReLU,LN[1,1,0,0],lr.003,T256,bs16: Adam(.9,.95),wd1e-5 vs RMSprop,wd1e-4 favors Adam on1turn (Adam/RMS CE ratios .0475/.0905),RMS on2turns (3.1243/2.5635). R1dd74ea5c0:4/4 contrasts across4 allowed datasets,10seed means;matches q_7e1811/q_95fe03 direction. At EQUAL wd1e-4 Adam wins only1/2 easy and0/2 hard;beta2.999 makes it lose both easy cases. Thus the original recipe pattern transfers,but no turns-only or optimizer-only switch is established. Point seed/coordinate scale differ with turns;lab slope is default/null,not independently verified as history's .01. Base mixed-net13/15 is not a causal optimizer estimate.\n[K1097] cred=0.500 s=0.00 f=0.00 ep=3 src=['q_611798', 'q_bca005']\nSpiral CE,AdamW(.9,.999),lr3e-5,wd0,T1024,bs16: A=d5/w192 residual SiLU/terminalLN vs B=d3/w256 plain ReLU/terminalLN favors B on1turn,A on2turns. Controlled R1dd74ea5c0 replicates4/4 contrasts on4datasets,10seed means:1turn A/B CE2.729 (.004396/.001611),2.408 (.003844/.001596);2turn .871 (.428003/.491567),.863 (.436894/.506405). This matches q_611798/q_bca005 but does not isolate turns:point seed/scale and architectural bundles differ. Fixed width192/SiLU deep-residual vs shallow-plain wins ALL4 datasets,so neither shallow-on-easy nor residual+depth is universal. Default lab initialization;LN count alone cannot rank these recipes.\n[K1098] cred=0.500 s=0.00 f=0.00 ep=3 src=['q_7e1811', 'q_95fe03']\nSpiral CE, allowed splits05d021/06bcc2 (1turn),016ff9/01793b (2turn), T256 bs16: fixed residual d4w24 default LeakyReLU LN[1,1,0,0], lr.003, Adam(.9,.95) wd1e-5 beats RMSprop wd1e-4 on both easy splits but loses on both hard splits (ratios .0475/.0905 vs3.124/2.563). Equal wd1e-4 easy ratios .330/1.693, hard3.136/2.529: decay matters. At T1024 equal-decay hard ratios7.205/.059: no universal late-precision trend. Ten-seed means, large SDs near zero; turns/seed/scale confounded. This transfers q7e1811/q95fe03 recipes, not a causal turns rule.\n[K1099] cred=0.500 s=0.00 f=0.00 ep=3 src=['q_611798', 'q_bca005']\nSpiral CE, AdamW(.9,.999) lr3e-5 wd0 T1024 bs16: deep residual d5w192 SiLU last-LN vs plain d3w256 ReLU last-LN reverses on four preregistered splits: deep/plain CE2.729/2.408 at1turn, .871/.863 at2turn. Both have one LN; width/activation/depth/skips bundled. Fixed w192/SiLU: d5 skip/plain1.099/1.230 easy, .922/.900 hard; d3 skip/plain3.089/3.051 easy,1.117/1.124 hard (plain wins4/4). Matched d5res/d3plain wins4/4, with stronger ratio benefit easy (.685/.673 vs .864/.882), contradicting simple complexity scaling. Ten-seed means,2datasets/turn; no causal turns law.\n[K1100] cred=0.500 s=0.00 f=0.00 ep=4 src=['q_b3f618', 'q_fe080b']\nSpiral CE,T2048,bs16,1024train rows,default-init d3w256/all3LN: residual ReLU+Adam(.9,.95) lr.001/wd.001 wins at3turns; plain SiLU+AdamW(.9,.95) lr.0003/wd0 wins at1turn. Byte-identical choices in q_b3f618/q_fe080b; 2datasets,10seed mean gold/dataset,ordinal effects only (no CE margins). Depth,width,LN,budget match, but skips/activation/optimizer/lr/decay are bundled; turns and point seed change together. Neither maximum Delta nor smooth/zero-decay preference orders both. Do not generalize a causal turns threshold; original full-recipe transfer is under investigation.\n[K1105] cred=0.500 s=0.00 f=0.00 ep=5 src=['q_fe080b', 'q_b3f618']\nThree-turn allowed spirals0717d7/0cfa0b,bs16,T256/2048: original q_b3f618 C (d3w256 residual ReLU,3LN,Adam .001,betas.9/.95,wd.001) beats A (same depth/width/LN,plain SiLU,AdamW .0003,wd0). Ten-seed C/A CE ratios .9948/.9039 atT256 and .07036/.01950 atT2048;T256 first margin .00291 is small versus seed SD. Preexisting hard rule audit was history1/1 and lab2/2 atT256(.914/.992),excluding focal q. Activation,skips,rate,optimizer and decay remain bundled;no universal >=3x-rate or residual rule.\n[K1106] cred=0.500 s=0.00 f=0.00 ep=5 src=['q_fe080b', 'q_b3f618']\nOne/three-turn spirals,T2048,bs16: byt"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 18,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1144\"], \"text\": \"8D MSE,T512/b64: these exact recipes REVERSE across targets; do NOT export the zero-LN winner to additive polynomial+sin targets. q_cbd81f/mvar_0e8e34 nested oscillation: A=res d2w96 GELU/0LN,AdamW .0003 beats B=plain d2w96 SiLU/2LN,AdamW .001 and C=plain d4w48 ReLU/3LN,RMSprop .0003; MSE1.42054/1.60630/1.68626 (A11.6%/15.8% lower),n10/fail0. This lab set IS the historical instance,not replication. Identical full recipes on additive+2.5-offset q_6142b7 select B (ordinal only). Betas/decay/LN/skips/activation differ;2target/split outcomes,not a target-only mechanism or general A/B rule.\", \"reason\": \"Epoch10 q614 exact recipe reversal exposes K1144 over-transfer (KB0 versus noKB1). Lead with target dependence; preserve exact lab means and disclose no independent replication.\", \"regime\": {\"family\": [\"multivariate_regression\"], \"steps\": [512], \"batch_size\": [64], \"loss\": [\"mse\"], \"data\": [\"8features\", \"256train/256test\", \"nested oscillatory versus additive polynomial+sin\"], \"note\": \"Exact A/B/C full recipes of qcbd81f/q6142b7; targets and point split differ; knobs bundled. Lab means only on original nested instance.\"}, \"phase\": \"Nested qcbd81f/mvar0e8e34: A/B/C MSE1.4205434/1.6063018/1.6862627,10seeds each,0failures; one lab set matches same historical instance. Additive q6142b7 target x0^6+x7^3+x0*x2+x2*x4+x3^2+x5^2+cos(2pi*x1)+sin(2pi*x2)+x4+x6+2.5,pointseed1066195796 favors B,ordinal only. Two target/split observations,not independent lab replication or target causal effect.\", \"mechanism\": \"Full-recipe target/split reversal observed. Signal preservation, nonlinear target spectrum, normalization, optimizer progress and baseline scale remain competing,unmeasured causes.\"}"
+      }
+    ],
+    "results": [
+      "rejected: unknown regime dims ['batch_size']; use ['family', 'type', 'model_type', 'optimizer', 'lr', 'steps', 'budget', 'delta', 'activation', 'depth', 'width', 'residual', 'n_ln', 'loss', 'data'] or 'note'"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 19,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1102\"], \"text\": \"ONLY V24/L16 alpha1.4,T256/b32,default post-LN GELU TF d128x4/heads4/FF64: Adagrad .0001/wd0 beats RMSprop .003/wd1e-5 on bg_87ba9c/9a3dce (RMS/Ad CE1.03427/1.00514,+.10317/+.01594nats). This does NOT select Adagrad at alpha.8: identical recipes in q_f4462d favor RMSprop (ordinal only). At d64 RMS wins both alpha1.4 tables (.83105/.90757);Adagrad beats SGD .0001/m.9/wd1e-5 in4/4 cells. Lab12cells,n10/fail0;2tables,not12replications. CE near ln24 does not prove uniform logits/overshoot. No causal alpha cutoff or universal conservative-rival rule.\", \"reason\": \"Epoch10 qf4462d shows alpha1.4 fact incorrectly transferred to .8 (KB0,noKB1); preserve measured effect and make nontransfer explicit before any mechanism.\", \"regime\": {\"family\": [\"bigram_lm\"], \"model_type\": [\"transformer_lm\"], \"width\": [64, 128], \"steps\": [256], \"batch_size\": [32], \"loss\": [\"cross_entropy\"], \"note\": \"V24/L16,d4,heads4,FF64,defaultpostLN GELU,800/200rows. Lab alpha1.4 only2tables;historical alpha.8 exact fullrecipes opposite. No causal alpha test.\"}, \"phase\": \"Lab alpha1.4 d128 RMS/Ad1.03427/1.00514;d64 .83105/.90757 on2tables,12cells with10finite seeds each,0failures. Historical qf4462d,alpha.8 same d128x4/4heads/FF64/T256/b32 optimizerrecipes favors RMS,ordinal only,no margin. New boundary investigation J6fe3befeca0f;no independent exact-alpha.8 lab result yet.\", \"mechanism\": \"Unresolved. Endpoint CE and no reported failures do not establish representation disruption,uniform logits,overshoot,underfitting or causal alpha effect. New training record reverses full-recipe ordering at different alpha/table/sequence.\"}"
+      }
+    ],
+    "results": [
+      "rejected: unknown regime dims ['batch_size']; use ['family', 'type', 'model_type', 'optimizer', 'lr', 'steps', 'budget', 'delta', 'activation', 'depth', 'width', 'residual', 'n_ln', 'loss', 'data'] or 'note'"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 20,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1144\"], \"text\": \"8D MSE,T512/b64: these exact recipes REVERSE across targets; do NOT export the zero-LN winner to additive polynomial+sin targets. q_cbd81f/mvar_0e8e34 nested oscillation: A=res d2w96 GELU/0LN,AdamW .0003 beats B=plain d2w96 SiLU/2LN,AdamW .001 and C=plain d4w48 ReLU/3LN,RMSprop .0003; MSE1.42054/1.60630/1.68626 (A11.6%/15.8% lower),n10/fail0. This lab set IS the historical instance,not replication. Identical full recipes on additive+2.5-offset q_6142b7 select B (ordinal only). Betas/decay/LN/skips/activation differ;2target/split outcomes,not a target-only mechanism or general A/B rule.\", \"reason\": \"Epoch10 q614 exact recipe reversal exposes K1144 over-transfer (KB0 versus noKB1). Lead with target dependence; preserve exact lab means and disclose no independent replication.\", \"regime\": {\"family\": [\"multivariate_regression\"], \"steps\": [512], \"budget\": [32768], \"loss\": [\"mse\"], \"data\": [\"8features\", \"256train/256test\", \"nested oscillatory versus additive polynomial+sin\"], \"note\": \"Batch64,default init. Exact A/B/C full recipes of qcbd81f/q6142b7; targets and point split differ; knobs bundled. Lab means only on original nested instance.\"}, \"phase\": \"Nested qcbd81f/mvar0e8e34: A/B/C MSE1.4205434/1.6063018/1.6862627,10seeds each,0failures; one lab set matches same historical instance. Additive q6142b7 target x0^6+x7^3+x0*x2+x2*x4+x3^2+x5^2+cos(2pi*x1)+sin(2pi*x2)+x4+x6+2.5,pointseed1066195796 favors B,ordinal only. Two target/split observations,not independent lab replication or target causal effect.\", \"mechanism\": \"Full-recipe target/split reversal observed. Signal preservation,nonlinear target spectrum,normalization,optimizer progress and baseline scale remain competing,unmeasured causes.\"}"
+      }
+    ],
+    "results": [
+      "merged into K1144 (s=0.00, f=1.00)"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 21,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1102\"], \"text\": \"ONLY V24/L16 alpha1.4,T256/b32,default post-LN GELU TF d128x4/heads4/FF64: Adagrad .0001/wd0 beats RMSprop .003/wd1e-5 on bg_87ba9c/9a3dce (RMS/Ad CE1.03427/1.00514,+.10317/+.01594nats). This does NOT select Adagrad at alpha.8: identical recipes in q_f4462d favor RMSprop (ordinal only). At d64 RMS wins both alpha1.4 tables (.83105/.90757);Adagrad beats SGD .0001/m.9/wd1e-5 in4/4 cells. Lab12cells,n10/fail0;2tables,not12replications. CE near ln24 does not prove uniform logits/overshoot. No causal alpha cutoff or universal conservative-rival rule.\", \"reason\": \"Epoch10 qf4462d shows alpha1.4 fact incorrectly transferred to .8 (KB0,noKB1); preserve measured effect and make nontransfer explicit before any mechanism.\", \"regime\": {\"family\": [\"bigram_lm\"], \"model_type\": [\"transformer_lm\"], \"width\": [64, 128], \"steps\": [256], \"budget\": [8192], \"loss\": [\"cross_entropy\"], \"note\": \"Batch32,V24/L16,d4,heads4,FF64,defaultpostLN GELU,800/200rows. Lab alpha1.4 only2tables;historical alpha.8 exact fullrecipes opposite. No causal alpha test.\"}, \"phase\": \"Lab alpha1.4 d128 RMS/Ad1.03427/1.00514;d64 .83105/.90757 on2tables,12cells with10finite seeds each,0failures. Historical qf4462d,alpha.8 same d128x4/4heads/FF64/T256/b32 optimizerrecipes favors RMS,ordinal only,no margin. New boundary investigation J6fe3befeca0f;no independent exact-alpha.8 lab result yet.\", \"mechanism\": \"Unresolved. Endpoint CE and no reported failures do not establish representation disruption,uniform logits,overshoot,underfitting or causal alpha effect. New training record reverses full-recipe ordering at different alpha/table/sequence.\"}"
+      }
+    ],
+    "results": [
+      "merged into K1102 (s=0.00, f=3.00)"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 22,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"import json\\nc=next(x for x in load_kb() if x['id']=='K1009')\\nprint(json.dumps({f:c.get(f) for f in ['text','mechanism','phase','regime']}))\"}"
+      }
+    ],
+    "results": [
+      "{\"text\": \"Tabular CE,1024rows,shared optimizer/lr/T: low-Delta LN count cannot force a rank; identical SiLU1LN/Leaky2LN recipes reverse across sparse/smooth targets(K1146). At Delta>=.1 shallow and smooth are separate preferences;fewerLN depends on rule/budget. Old shallow21/26,smooth16/16;moreLN wins piecewise9/17(CEratio.987),smooth5/13(1.196),sparse0/10(1.495),mixed architecture/decay,T256,b16/32,not32epochs. Below.1 old moreLN41/45,deeper35/52 are confounded,not universal. Depth schedule:K1033/K1121;activation:K1056/K1122;rate:K1073. Do not discard residual+LN for width/smoothness or sum architecture scores.\", \"mechanism\": \"No universal LN,depth or smoothness precedence. Matched candidate recipes reverse ordinal outcomes across sparse/smooth targets and splits(K1146); target/split causes remain confounded. Prior data-rule/budget observations do not measure learned boundaries or overconfidence.\", \"phase\": \"HighDelta>=.1 moreLN: piecewise9/17,17sets,ratio.986533; smooth5/13,11sets,1.196075; sparse0/10,5sets,1.495315. At lowDelta:38/56,.951267;24/40,.948398;29/45,.956133. All base-only same optimizer type/lr,mixed architectures. Old corpus shallow21/26,smooth16/16.\", \"regime\": {\"family\": [\"synthetic_tabular_classification\"], \"model_type\": [\"mlp\"], \"data\": [\"1024rows\", \"2-16features\", \"smooth_additive\", \"sparse_interaction\", \"piecewise_boundary\"], \"note\": \"Shared optimizer/lr/T. New LN audit:T256,bs16/32,4/8epochs; matched type/lr,other axes confounded. Not32epochs.\"}}\n"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 23,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1009\"], \"text\": \"Tabular CE,1024rows,shared optimizer/lr/T: low-Delta LN count cannot force a rank; identical SiLU1LN/Leaky2LN recipes reverse across sparse/smooth targets(K1151). At Delta>=.1 shallow and smooth are separate preferences;fewerLN depends on rule/budget. Old shallow21/26,smooth16/16;moreLN wins piecewise9/17(CEratio.987),smooth5/13(1.196),sparse0/10(1.495),mixed architecture/decay,T256,b16/32,not32epochs. Below.1 old moreLN41/45,deeper35/52 are confounded,not universal. Depth schedule:K1033/K1121;activation:K1056/K1122;rate:K1073. Do not discard residual+LN for width/smoothness or sum architecture scores.\", \"mechanism\": \"No universal LN,depth or smoothness precedence. Matched candidate recipes reverse ordinal outcomes across sparse/smooth targets and splits(K1151); target/split causes remain confounded. Prior data-rule/budget observations do not measure learned boundaries or overconfidence.\", \"phase\": \"HighDelta>=.1 moreLN: piecewise9/17,17sets,ratio.986533; smooth5/13,11sets,1.196075; sparse0/10,5sets,1.495315. At lowDelta:38/56,.951267;24/40,.948398;29/45,.956133. All base-only same optimizer type/lr,mixed architectures. Old corpus shallow21/26,smooth16/16.\", \"regime\": {\"family\": [\"synthetic_tabular_classification\"], \"model_type\": [\"mlp\"], \"data\": [\"1024rows\", \"2-16features\", \"smooth_additive\", \"sparse_interaction\", \"piecewise_boundary\"], \"note\": \"Shared optimizer/lr/T. New LN audit:T256,bs16/32,4/8epochs; matched type/lr,other axes confounded. Not32epochs.\"}, \"reason\": \"Repair stale evidence link only: the identical residual SiLU1LN/Leaky2LN sparse4/smooth4 architecture reversal is K1151. K1146 now contains a distinct long-budget optimizer recipe comparison. Preserve all prior scope corrections and counts.\"}"
+      }
+    ],
+    "results": [
+      "merged into K1009 (s=14.50, f=8.50)"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 24,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "kb_open",
+        "arguments": "{\"targets\": [\"R0d5af46860\"]}"
+      }
+    ],
+    "results": [
+      "# R0d5af46860: Low-rate univariate optimizer audit (1c8de22329cc7342be2a1ecab59b9effbdb1d2c6)\n# Low-Rate Univariate Optimizer Audit\n\n## Findings\nA recipe-local exception to categorical Adam preference reproduces at **lr=3e-5, T256** on two nearby one-cycle targets: RMSprop wins all ten paired seeds on each. At T512, Adam wins all ten seeds on both targets; at 1e-4, Adam also wins both mean comparisons. RMSprop1e-4 beats3e-5 on the four-cycle analogue at T512, but equal3e-5 RMSprop superiority does not transfer reliably. Neither a universal RMSprop preference nor a universal lower-RMSprop-rate rule follows.\n\n## Sources and Focal Errors\nRead frozen history/KB first:1043 records,73 claims,13156 lab rows; then existing reports, especially R1e820ab3a7/R7dd7d943d3/R79e71854c8. Persisted Adam controls exp:34aa6df219ff/9188999e597c were not retrained.\nq_5604c0,ranking_v2/epoch7:gold E<B<D<A<C versus predicted E<A<B<D<C. All share residual d4w192 GELU,LN[F,T,F,T],default init,T256/b32. A=AdamW3e-5,wd1e-5,betas(.9,.95);B/D=RMSprop3e-5,wd0/1e-4;E=Adam.0003,wd1e-5,betas(.9,.95). Target sin(2*pi*x)-x,point5000111262274.\nq_b97423,dataflip500/epoch7:goldB versus predictedC. All share residual d3w192 SiLU,all3LN,default init,T512/b64. A/B=RMSprop3e-5/1e-4,wd0;C=AdamW3e-5,wd.001,betas(.9,.95). Target -(cos(2*pi*x)+x)*sin(8*pi*x),point1372980798. Gold supplies ordinal outcomes,not focal MSE,seed margins or mechanisms.\n\n## Historical Audit and Checkpoint\nExact executable-model/loss matching reproduces the comment’s RMSprop equal3e-5 wins3/4 questions excluding q560:both T256 questions win;T512 is1/2. Including q560’s two decay variants gives5/6 pairs across5questions,T2564/4 across3questions. Decay/betas vary;shared gold is not independent replication. RMSprop rate>=Adam-family rate gives19/24 across15questions. q_7f8fb0 remains the T512 low-rate counterexample.\nExact RMSprop rate-only history favors higher rates2/2 atT512:q_b97423 and q_9d6733(.001 versus3e-5).\nBase-lab same-set/plainMSE/T256/equal-rate but unmatched-model comparisons reproduce RMS wins15/25 at3e-5,4/7 at1e-4,4/23 at.001,0/14 at.003;zero reported failures. Strict full-model/loss/budget matching yields zero base Adam-family/RMSprop pairs. Older K1057 counts78/88 and equal-rate21/24 therefore remain inherited observations,not newly verified exact controls.\nRefresh pinned Jed4a66d29ba2_research_e0008_v000001_57bf3f95e2ba:1073 history records/91claims,30 newly visible IDs. Matched historical counts were unchanged. K1057/K1063 were already narrowed at checkpoint;this investigation extends that repair.\n\n## Preregistration and Methods\nPublished R0d5af46860 before training;published the nearby-target/decay amendment before its outcomes. Neither focal point seed is allowed,and q_b97423’s exact expression is absent.\nAllowed datasets all use uniform[0,1],train256/test256: sym_bca7ef,sin(2*pi*x)-x,point114197898; sym_b41081,x**2+sin(2*pi*x)-x+.5,point62093124; sym_a052d9,sin(8*pi*x)+4*x,point77197787. Bca/b410 preserve q560 architecture/b32;a052 preserves qb architecture/b64. These are different expressions/splits,not independent same-target replications.\nMain grids cross RMSprop/Adam/AdamW,lr3e-5/1e-4,T256/512,wd0,plainMSE;Adam betas(.9,.95),CPU/default initialization,seeds0–9. Generated code verifies paired initialization/batch streams and replacement sampling. AdamWwd0 duplicates Adam numerically. RMSprop uses constructor defaults;inherited beta metadata is ignored by its executable code.\nPreregistered bca3e-5/T256 RMS preference and a052T512 higher-RMS-rate preference succeed. Preregistered a052T512 equal3e-5 RMS preference **fails by mean**,with uncertainty spanning0. Nearby b410 predictions succeed:RMS at3e-5/T256;Adam at3e-5/T512 and1e-4/both budgets. Decay-restoration predictions succeed;beta effects were exploratory.\n45 fresh configurations/450 seed attempts,zero failure flags/exclusions. Two cache-only joint assemblies add21 reused rows,not training or replication. Seven receipts"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 25,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1057\"], \"text\": \"Univariate MSE,default residual d4w192 GELU/LN0101,b32,wd0,Adam(.9,.95): at SAME lr3e-5 RMSprop wins atT256 but Adam wins atT512 on sym_bca7ef/b41081. RMS/Adam MSE at256=.006324/.009419 and .015658/.026398 (ratios.671/.593);at512 ratios5.656/2.047. Each direction wins10/10 paired seeds/split;0failures. At1e-4 Adam wins both budgets. R0d5af46860,exp1fe8aa290130/641629738d89;2targets/splits,budget continuations,NOT independent reruns or original-q replay. Older Adam78/88/equal-lr21/24 and tiny-lr history RMS5/6 are different samples. No universal RMS/Adam rule or verified startup mechanism;multivariate excluded.\", \"reason\": \"Review deferred Jed4a66d29ba2:000004 against newer condition-first K1057. Incorporate independently reviewable matched control numbers and budget reversal from R0d5af46860 without stale wholesale overwrite, count reset or categorical optimizer law.\", \"regime\": {\"family\": [\"univariate_regression\"], \"model_type\": [\"mlp\"], \"optimizer\": [\"Adam\", \"AdamW\", \"RMSprop\"], \"lr\": [3e-05, 0.0001], \"steps\": [256, 512], \"width\": [192], \"depth\": [4], \"activation\": [\"gelu\"], \"residual\": [true], \"n_ln\": [2], \"loss\": [\"mse\"], \"note\": \"Defaultinit,LN0101,b32,wd0,Adam betas(.9,.95),sym_bca7ef/b41081,2different target/splits,n10 each. AdamWwd0 numerically duplicates Adam. Main rule only exact recipes;old history/lab separately scoped.\"}, \"phase\": \"R0d5af46860 exp1fe8aa290130/641629738d89:at3e-5 T256 RMS/Adam .00632375/.00941933=.671359 and .0156579/.0263981=.593143;RMS20/20pairedseed wins. T512 .00139025/.000245782=5.65643 and .00192477/.000940101=2.04741;Adam20/20wins.1e-4 Adam wins4/4means. Zero failures. T256prefixes exactly match T512 paths,not independent cohorts. Pointwise paired95%CIs exclude0 for four3e-5 contrasts. History equal3e-5 RMS5/6pairs5questions,wd/betas differ;oldlabAdam78/88/equal21/24 underreconstructed separate sample. Current narrowing preserved;new factual control review accepted,stale count reset rejected.\", \"mechanism\": \"Measured early held-out fitting advantage reverses by budget in these exact recipes. Uncorrected RMS accumulator is an implementation fact,not identified mediator;train loss,gradients,parameter/output motion and state forks were unavailable. Late noise,initialization/LN,target envelope and optimizer-state explanations remain competing.\"}"
+      }
+    ],
+    "results": [
+      "rejected: phase is 594 chars > 400; shorten and retry"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 26,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1063\"], \"text\": \"Univariate MSE,RMSprop rate-only controls: lower lr is NOT a universal short-budget default. At3e-5->1e-4,default resd4w192 GELU/LN0101,b32,wd0,sym_bca7ef/T256 MSE .006324->.001690 (ratio.267,9/10seed wins,paired95%diff[-.007162,-.002106]). Resd3w192 SiLU/allLN,b64,sym_a052d9/T512 .452659->.443495 (.980,9/10,CI[-.013998,-.004330]). Nearby b41081/d4/T512 reverses mean .001925->.002806 (6/10 wins,CI crosses0). R0d5af46860,n10/fail0,3datasets/2recipes;NOT5/6independent replications. Legacy higher-lr9/42,T256wide3/24 are separate underreconstructed samples. No overshoot mechanism or multivariate transfer.\", \"reason\": \"Review deferred low-rate RMSprop revision against current guardrails. Add rate-only controlled effect sizes/paired uncertainty; keep inherited broad counts separately scoped and reject universal lower-rate/overshoot explanations.\", \"regime\": {\"family\": [\"univariate_regression\"], \"model_type\": [\"mlp\"], \"optimizer\": [\"RMSprop\"], \"lr\": [3e-05, 0.0001], \"steps\": [256, 512], \"width\": [192], \"depth\": [3, 4], \"residual\": [true], \"activation\": [\"gelu\", \"silu\"], \"loss\": [\"mse\"], \"note\": \"Defaultinit,wd0. bca/b410 d4GELU LN0101,b32;a052 d3SiLU/allLN,b64.3different allowed target/splits,n10seeds0-9,0failed. Rate-only within each recipe,not a pooled population rule.\"}, \"phase\": \"New R0d5af46860 controls higher-rate wins means5/6dependent budget contrasts across3datasets/2recipes,not5/6replications. bcaT256 high/low .267228,diff-.004634,9/10wins,paired95%[-.007162,-.002106];a052T512 .979756,diff-.009164,9/10,[-.013998,-.004330]. b410T512 high/low1.45769 but6/10wins,CI[-.002205,.003967];finite poor seeds7/8 retained,not failures. Oldhigher9/42,T256wide3/24,.0001/3e-5 3/11,T1024narrow4/9 remain separately scoped. Exact historyT512/b64 higher2/2:q_b97423/q_9d6733,ordinal only. Late proposal facts accepted,stale count reset and categorical guidance rejected.\", \"mechanism\": \"RMSprop alpha.99/zero-init square-average can inflate initial updates,but this formula does not demonstrate basin overshoot. Greater late test-curve fluctuations coexist with better high-rate endpoints. Train/test/update diagnostics and paired schedule/state interventions remain unmeasured.\"}"
+      }
+    ],
+    "results": [
+      "rejected: phase is 585 chars > 400; shorten and retry"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 27,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1057\"], \"text\": \"Univariate MSE,default residual d4w192 GELU/LN0101,b32,wd0,Adam(.9,.95): at SAME lr3e-5 RMSprop wins atT256 but Adam wins atT512 on sym_bca7ef/b41081. RMS/Adam MSE at256=.006324/.009419 and .015658/.026398 (ratios.671/.593);at512 ratios5.656/2.047. Each direction wins10/10 paired seeds/split;0failures. At1e-4 Adam wins both budgets. R0d5af46860,exp1fe8aa290130/641629738d89;2targets/splits,budget continuations,NOT independent reruns or original-q replay. Older Adam78/88/equal-lr21/24 and tiny-lr history RMS5/6 are different samples. No universal RMS/Adam rule or verified startup mechanism;multivariate excluded.\", \"reason\": \"Review deferred Jed4a66d29ba2:000004 against newer condition-first K1057. Incorporate matched control numbers from R0d5af46860,not stale wholesale overwrite,count reset or categorical optimizer law.\", \"regime\": {\"family\": [\"univariate_regression\"], \"model_type\": [\"mlp\"], \"optimizer\": [\"Adam\", \"AdamW\", \"RMSprop\"], \"lr\": [3e-05, 0.0001], \"steps\": [256, 512], \"width\": [192], \"depth\": [4], \"activation\": [\"gelu\"], \"residual\": [true], \"n_ln\": [2], \"loss\": [\"mse\"], \"note\": \"Defaultinit,LN0101,b32,wd0,Adam(.9,.95),sym_bca7ef/b41081,2different target/splits,n10 each. AdamWwd0 numerically duplicates Adam. Oldhistory/lab separately scoped.\"}, \"phase\": \"R0d5af46860:lr3e-5 RMS/Adam T256 ratios.671359/.593143,RMS20/20seedwins;T512 5.65643/2.04741,Adam20/20. All4paired95%CIs exclude0;fail0.1e-4 Adam4/4means. Budgets share identical path prefixes,not replication. OldAdam78/88,equal21/24 underreconstructed;historytiny-lrRMS5/6 wd/beta-confounded. New factual revision accepted,stale counts rejected.\", \"mechanism\": \"Measured early held-out fitting advantage reverses by budget in these exact recipes. Uncorrected RMS accumulator is an implementation fact,not identified mediator;train loss,gradients,parameter/output motion and state forks unavailable. Late noise,initialization/LN,target envelope and optimizer-state explanations remain competing.\"}"
+      }
+    ],
+    "results": [
+      "rejected: regime is 427 chars > 400"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 28,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1063\"], \"text\": \"Univariate MSE,RMSprop rate-only controls: lower lr is NOT a universal short-budget default. At3e-5->1e-4,default resd4w192 GELU/LN0101,b32,wd0,sym_bca7ef/T256 MSE .006324->.001690 (ratio.267,9/10seed wins,paired95%diff[-.007162,-.002106]). Resd3w192 SiLU/allLN,b64,sym_a052d9/T512 .452659->.443495 (.980,9/10,CI[-.013998,-.004330]). Nearby b41081/d4/T512 reverses mean .001925->.002806 (6/10 wins,CI crosses0). R0d5af46860,n10/fail0,3datasets/2recipes;NOT5/6independent replications. Legacy higher-lr9/42,T256wide3/24 are separate underreconstructed samples. No overshoot mechanism or multivariate transfer.\", \"reason\": \"Review deferred low-rate RMSprop revision against current guardrails. Add rate-only controlled effect sizes/paired uncertainty;keep inherited broad counts separate and reject universal lower-rate/overshoot explanations.\", \"regime\": {\"family\": [\"univariate_regression\"], \"model_type\": [\"mlp\"], \"optimizer\": [\"RMSprop\"], \"lr\": [3e-05, 0.0001], \"steps\": [256, 512], \"width\": [192], \"depth\": [3, 4], \"residual\": [true], \"activation\": [\"gelu\", \"silu\"], \"loss\": [\"mse\"], \"note\": \"Defaultinit,wd0.bca/b410 d4GELU LN0101,b32;a052 d3SiLU/allLN,b64.3different allowed target/splits,n10seeds0-9,0failed.Rate-only within recipe,not pooled population rule.\"}, \"phase\": \"R0d5af46860:higher-lr5/6means,3datasets/2recipes,dependentbudgets.bcaT256 ratio.2672,a052T512 .9798;each9/10wins,95%diff<0.b410T512 1.4577,6/10wins,CIcrosses0;poor finite seeds retained.Legacyhigher9/42,T256wide3/24,.0001/3e-5 3/11,T1024narrow4/9 separate.HistoryT512/b64 higher2/2ordinal.New facts accepted,stale count reset rejected.\", \"mechanism\": \"RMSprop alpha.99/zero-init square-average can inflate initial updates,but the formula does not demonstrate basin overshoot. Greater late test-curve fluctuations coexist with better high-rate endpoints. Train/test/update diagnostics and paired schedule/state interventions remain unmeasured.\"}"
+      }
+    ],
+    "results": [
+      "rejected: regime is 413 chars > 400"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 29,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1057\"], \"text\": \"Univariate MSE,default residual d4w192 GELU/LN0101,b32,wd0,Adam(.9,.95): at SAME lr3e-5 RMSprop wins atT256 but Adam wins atT512 on sym_bca7ef/b41081. RMS/Adam MSE at256=.006324/.009419 and .015658/.026398 (ratios.671/.593);at512 ratios5.656/2.047. Each direction wins10/10 paired seeds/split;0failures. At1e-4 Adam wins both budgets. R0d5af46860,exp1fe8aa290130/641629738d89;2targets/splits,budget continuations,NOT independent reruns or original-q replay. Older Adam78/88/equal-lr21/24 and tiny-lr history RMS5/6 are different samples. No universal RMS/Adam rule or verified startup mechanism;multivariate excluded.\", \"reason\": \"Review deferred Jed4a66d29ba2:000004 against newer condition-first K1057. Incorporate matched control numbers from R0d5af46860,not stale wholesale overwrite,count reset or categorical optimizer law.\", \"regime\": {\"family\": [\"univariate_regression\"], \"optimizer\": [\"Adam\", \"AdamW\", \"RMSprop\"], \"lr\": [3e-05, 0.0001], \"steps\": [256, 512], \"note\": \"Default residual d4w192GELU,LN0101,b32,wd0,Adam(.9,.95),sym_bca7ef/b41081;2targets/splits,n10.AdamWwd0 duplicates Adam.Oldhistory/lab separate.\"}, \"phase\": \"R0d5af46860:lr3e-5 RMS/Adam T256 ratios.671359/.593143,RMS20/20seedwins;T512 5.65643/2.04741,Adam20/20. All4paired95%CIs exclude0;fail0.1e-4 Adam4/4means. Budgets share identical path prefixes,not replication. OldAdam78/88,equal21/24 underreconstructed;historytiny-lrRMS5/6 wd/beta-confounded. New factual revision accepted,stale counts rejected.\", \"mechanism\": \"Measured early held-out fitting advantage reverses by budget in these exact recipes. Uncorrected RMS accumulator is an implementation fact,not identified mediator;train loss,gradients,parameter/output motion and state forks unavailable. Late noise,initialization/LN,target envelope and optimizer-state explanations remain competing.\"}"
+      }
+    ],
+    "results": [
+      "merged into K1057 (s=3.00, f=3.00)"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 30,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1063\"], \"text\": \"Univariate MSE,RMSprop rate-only controls: lower lr is NOT a universal short-budget default. At3e-5->1e-4,default resd4w192 GELU/LN0101,b32,wd0,sym_bca7ef/T256 MSE .006324->.001690 (ratio.267,9/10seed wins,paired95%diff[-.007162,-.002106]). Resd3w192 SiLU/allLN,b64,sym_a052d9/T512 .452659->.443495 (.980,9/10,CI[-.013998,-.004330]). Nearby b41081/d4/T512 reverses mean .001925->.002806 (6/10 wins,CI crosses0). R0d5af46860,n10/fail0,3datasets/2recipes;NOT5/6independent replications. Legacy higher-lr9/42,T256wide3/24 are separate underreconstructed samples. No overshoot mechanism or multivariate transfer.\", \"reason\": \"Review deferred low-rate RMSprop revision against current guardrails. Add rate-only controlled effect sizes/paired uncertainty;keep inherited broad counts separate and reject universal lower-rate/overshoot explanations.\", \"regime\": {\"family\": [\"univariate_regression\"], \"optimizer\": [\"RMSprop\"], \"lr\": [3e-05, 0.0001], \"steps\": [256, 512], \"note\": \"Defaultinit,wd0.bca/b410 residuald4w192GELU LN0101,b32;a052 residuald3w192SiLU/allLN,b64.3targets/splits,n10/fail0.Rate-only within recipe,not pooled population law.\"}, \"phase\": \"R0d5af46860:higher-lr5/6means,3datasets/2recipes,dependentbudgets.bcaT256 ratio.2672,a052T512 .9798;each9/10wins,95%diff<0.b410T512 1.4577,6/10wins,CIcrosses0;poor finite seeds retained.Legacyhigher9/42,T256wide3/24,.0001/3e-5 3/11,T1024narrow4/9 separate.HistoryT512/b64 higher2/2ordinal.New facts accepted,stale count reset rejected.\", \"mechanism\": \"RMSprop alpha.99/zero-init square-average can inflate initial updates,but the formula does not demonstrate basin overshoot. Greater late test-curve fluctuations coexist with better high-rate endpoints. Train/test/update diagnostics and paired schedule/state interventions remain unmeasured.\"}"
+      }
+    ],
+    "results": [
+      "merged into K1063 (s=0.50, f=1.50)"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 31,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"k=load_kb()\\nfor cid in ['K1039','K1066','K1020']:\\n c=next(x for x in k if x['id']==cid)\\n print(cid,len(c['text']),c['text']);print('regime',c.get('regime'))\"}"
+      }
+    ],
+    "results": [
+      "K1039 690 SGD × activation on MSE regression (uni/multivariate, all choices share one SGD optimizer, plain or m=0.9, 256-2048 steps): smooth activations (SiLU, GELU) are penalised far more than under Adam, so activation outranks a ONE-block LN deficit. ReLU/LeakyReLU vs SiLU/GELU: equal LN corpus 9/10 + controlled 8/8 (MSE ratio 0.04-0.5); rectifier with 1 fewer LN wins 14/17 (controlled 6/6, corpus 5/8, q_47a7c4, q_4a2253 LeakyReLU 3-LN beat SiLU 4-LN residual); with ≥2 fewer LN only 12/25 (corpus 1/6; wins mainly on large-offset targets) — keep LN count first (K1006). Deeper SiLU nets lose more (depth5 12/16, depth4 4/8). Under Adam-family keep K1006 (corpus: SiLU with more LN wins 11/16).\nregime {'family': ['univariate_regression', 'multivariate_regression'], 'type': ['architecture_only'], 'model_type': ['mlp'], 'optimizer': ['SGD'], 'lr': [0.0001, 0.003], 'steps': [256, 2048], 'activation': ['relu', 'leaky_relu', 'silu', 'gelu'], 'loss': ['mse']}\nK1066 618 Spiral CE,SHARED optimizer/lr/T ONLY,deep>=3 residual with MORE LN vs shallow<=2: older deep wins51/55 lab (adaptive Delta>=.05 34/35,ratio.38;<.05 11/14;SGD6/6,.36),corpus8/8(.76). This is a bundled conditional preference,NOT a cross-optimizer trump card. Deep plain:lab30/32 with moreLN but corpus0/7;last-block LN matters(K1061). Deep residual with <=rivalLN:lab33/43,corpus0/2. q_526f1b's Adagrad/AdamW/SGD comparison is outside scope; its matching 1-turn q_9d4013 flips winners,turns/split confounded. q_b3f618 is NOT an analogue: different nets,optimizers,T2048 not256. No universal depth/turn threshold follows.\nregime {'family': ['spiral_classification'], 'model_type': ['mlp'], 'optimizer': ['Adam', 'AdamW', 'RMSprop', 'Adagrad', 'SGD'], 'depth': [1, 5], 'note': 'pairs depth<=2 vs depth>=3 under identical optimizer; turns 1-2.5'}\nK1020 612 Two-spiral MLPs,shared optimizer/lr/T: moreLN is a conditional preference; at equalLN deeper residual is NOT guaranteed(K1097/K1099's1/2-turn reversal). Same residual status:moreLN163/206,CE ratio.79-.92. Plain-moreLN vs residual-fewerLN,Delta.03-.5:depth gap<=1 plain58/66(.85);residual>=2deeper6/8(.71),a small confounded sample,NOT an equal-LN law. Below .03 residual14/24;above .5 residual5/6. ZeroLN residual vs plain>=1LN:below .5 residual8/59,above .5 10/13. High-rate RMSprop/2-3-turn smooth-candidate exception:K1077. Activation,width,data/budget matter;no LN+residual score or complete ranking follows.\nregime {'family': ['spiral_classification'], 'model_type': ['mlp'], 'optimizer': ['Adam', 'AdamW', 'RMSprop', 'Adagrad', 'SGD'], 'delta': [0.001, 3], 'depth': [1, 5], 'note': 'Shared optimizer/lr/T. Unequal-LN depth exception not equal-LN law;check turns,activation,width,budget. High-Delta cells few sets.'}\n"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 32,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1039\"], \"text\": \"MSE regression ONLY,SHARED SGD/lr/momentum/T (NOT XOR or other CE): rectifiers often beat SiLU/GELU at equal LN or one fewer LN; NOT a deep/shallow trump card. Old equal-LN corpus9/10 +controlled8/8 (MSEratio.04-.5);one-fewerLN14/17 (controlled6/6,corpus5/8). At>=2fewerLN only12/25 (corpus1/6;large-offset controls differ),so no forced activation/LN score. T256-2048,SGDm0/.9. Deeper SiLU loses more in pooled depth5 12/16 vsdepth4 4/8;depth/skips/width confound cause. Adam-family SiLU-moreLN wins11/16,not cross-optimizer guidance. q_b204a3 is XOR2 CE and OUTSIDE scope;its proposed interaction score needs separate controls.\", \"reason\": \"Epoch10 qb204a3 explicitly misapplies MSE-only activation evidence to XOR2 CE. Lead with exclusion and conditional empirical rule;also remove deterministic one-LN/normalization score. Preserve numerical thresholds and counts.\", \"mechanism\": \"Activation/preLN Jacobians may alter raw SGD gradients;SiLU'(0)=.5 does not prove geometric halving in normalized/residual stacks or cancellation by Adam. Existing endpoint counts are empirical,not mediator evidence;XOR2 CE needs separate study Je8247e6fbbc4.\", \"phase\": \"SharedSGD MSE rectifier vs smooth:LN gap0 old17/18;gap1 14/17;gap>=2 12/25,corpus1/6. Adam-family smooth-moreLN11/16 separate. No matched deep/shallow blanket precedence or CE transfer. q_b204a3 hypothesis is unvalidated,not support for this regression claim.\"}"
+      }
+    ],
+    "results": [
+      "merged into K1039 (s=13.75, f=5.25)"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 33,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1066\"], \"text\": \"Spiral CE,SHARED optimizer/lr/T,deep>=3 residual with STRICTLY MORE LN vs shallow<=2: favor deep as a bundled tendency. This preference is OFF at equal/fewer LN;NOT a cross-optimizer rule. Old deep wins51/55lab (adaptiveDelta>=.05 34/35,CEratio.38;<.05 11/14;SGD6/6,.36),corpus8/8(.76). Deep plain moreLN:lab30/32,corpus0/7;tail condition K1061 is SGD-strongest. Equal/fewer-LN deep:lab33/43 but corpus0/2,NOT replacement guidance. q_457ab7/q_79695d expose equal-LN overreach;q_526f1b mixed optimizers is outside scope. Width,activation,placement,data and budget differ;no universal depth/turn law.\", \"reason\": \"Epoch10 q457 and q796 cite K1066 to promote equal-LN residual depth. Preserve more-LN effect sizes,move strict inequality and OFF condition into first200chars;no new opposite depth rule.\", \"regime\": {\"family\": [\"spiral_classification\"], \"model_type\": [\"mlp\"], \"optimizer\": [\"Adam\", \"AdamW\", \"RMSprop\", \"Adagrad\", \"SGD\"], \"depth\": [1, 5], \"note\": \"Strong preference only deep>=3 residual with strictly MORE LN than shallow<=2,identical optimizer config/lr/T. Equal/fewerLN mixed and outside this preference;turns1-2.5,width/activation/placement confounded.\"}, \"phase\": \"More-LN deep-residual:oldlab51/55 +corpus8/8;adaptiveDelta>=.05 34/35 ratio.38,below11/14,SGD6/6 ratio.36. Equal/fewerLN lab33/43 versuscorpus0/2 cannot license same rule. Epoch10 q457/q796 ordinal misses from equalLN overreach;Jd9b956477b38 tests boundary.\"}"
+      }
+    ],
+    "results": [
+      "merged into K1066 (s=11.50, f=6.50)"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 34,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "kb_open",
+        "arguments": "{\"targets\": [\"e10_bigram_width_depth_phase_prediction\", \"J3e0943cc6b0d\"]}"
+      }
+    ],
+    "results": [
+      "no matching KB entries or reports"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 35,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "kb_open",
+        "arguments": "{\"targets\": [\"Rc7ff82b4e3\"]}"
+      }
+    ],
+    "results": [
+      "# Rc7ff82b4e3: Exact-recipe SGD versus tiny Adam: six wins, three counterexamples, two unsuccessful blocks (9d7652728c5591a94247ed0d16abced70158a6e0)\n# Exact-Recipe SGD Versus Tiny Adam\n\n## Findings\nPlain SGD wins **6 of 9 completed target/split blocks**; Adam wins three. Every block’s ordering holds across all ten seed pairs. The user’s preregistered **≥7/10** prediction is not established: only nine valid comparisons completed. Missing outcomes prevent a definitive threshold test.\n\nPublished report: `Rc7ff82b4e3@cad7199b61ed23d4336508619a9518862fcfe5aa`. No short claims were created or changed.\n\n## Historical Correction\nExact frozen TRAINING records were read before experiments.\n\n`q_90a22b` contains the stated contrast: gold `E<A<D<B<C`, prediction `E<A<B<D<C`. D is SGD(.001,m0,wd1e-4); B is torch Adam(3e-5,betas .9/.999,wd1e-4). Historical numerical losses are unavailable.\n\nThe shared model is default-init, nonresidual, input8/output1, width192, three GELU hidden blocks with pre-Linear LN `[0,1,0]`, plus input projection and output head: five Linear layers. Plain MSE, T256/b64, 256 training and256 test rows, uniform `[0,1]^8`. Historical target:\n`cos(2*pi*x5)*x7**3+x5**3+x7**3+x1**2+x4**2+abs(sin(2*pi*x6))+sin(2*pi*x6)+tanh(2*x0)+x2+x3-2*x5+.5`; point seed4000702264047.\n\n`q_0e3752` is **not another SGD/Adam miss**. All candidates use SGD(.003,m.9,wd0), T512/b64. The missed comparison concerns residual d5w48 GELU LN `[1,0,1,0,0]` versus residual d1w128 ReLU LN `[1]`, on the 2D target `cos(2*pi*x0)*sin(2*pi*x1)-.25*sin(2*pi*x0)+x1-1`. Its gold is `E<A<B<D<C`, prediction `E<A<D<B<C`. The primary record’s commentary incorrectly described this architecture analogy as an optimizer replay.\n\nK1101 is plain-versus-momentum SGD evidence, not Adam-order evidence. Nominal Delta `.00256` versus `.00768` is an unmeasured heuristic, not actual gradient motion; literal SGD `lr*T` is `.256`.\n\n## Methods\nThe early published report preregistered the user’s ≥7/10 hypothesis before testing. From140 allowed 8D multivariate IDs, the first ten lexicographic IDs were selected without consulting losses. Nine completed. The tenth lacked its materialized `test.pt`; the next lexicographic block was preregistered as its replacement but was runner-excluded.\n\nEvery recipe was overridden to the exact primary model, optimizer assignments, shared decay and T256/b64. Generated model code has an identical hash across all twenty executed recipes. Optimizer factories confirm SGD and Adam, not AdamW. Inherited slope and momentum metadata are inert in the generated GELU/Adam code.\n\nSuccessful cells have seeds0–9, `cached=false`, zero failures, curves of shape10×256 and terminal exposure16,384. Identical initialization/training code and seed IDs support paired comparisons. Minibatches sample with replacement: exposure is64 passes-equivalent over256 rows, not16,384 independent observations.\n\nThe nine completed blocks have distinct expressions and sampling seeds. They test joint target-and-split transfer, not nine resplits of the original target. Generation independence is assumed from distinct seeds; lexicographic selection is not population-random sampling.\n\n## Results\nMargin is SGD-minus-Adam mean test MSE. Negative favors SGD. Paired95% t intervals describe training-seed uncertainty conditional on each dataset, not population or test-row uncertainty; intervals are unadjusted.\n\n| Block (`mvar_`) | SGD MSE | Adam MSE | Margin | Paired 95% Interval | SGD Seed Wins |\n|---|---:|---:|---:|---|---:|\n|02036a|1.277953|0.949012|+0.328941|[+0.281908,+0.375973]|0/10|\n|071e42|0.856515|0.959210|-0.102695|[-0.148593,-0.056797]|10/10|\n|0852dd|0.631083|1.088909|-0.457826|[-0.515998,-0.399653]|10/10|\n|08cae4|1.767289|1.828682|-0.061394|[-0.069365,-0.053423]|10/10|\n|08cb38|0.368964|0.793136|-0.424173|[-0.468379,-0.379967]|10/10|\n|08fa56|1.296532|0.507829|+0.788703|[+0.730482,+0.846923]|0/10|\n|0bcc16|0.480350|1.483669|-1.003319|[-1.063505,-0.943133]|10/10|\n|0ca9ba|1.318687|1.886500|"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 36,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "research",
+        "arguments": "{\"topic\": \"e10_sgd_tiny_adam_target_predictor\", \"focus\": \"adaptive optimizer over-selection bias; K1141/Rc7ff82b4e3 target transfer6/9,not a blanket SGD rule\", \"question\": \"Explain and prospectively predict the exact K1141/Rc7ff82b4e3 contrast: default plain d3w192 GELU,LN010,MSE,input8,[0,1],train/test256,T256/b64,wd1e-4,SGD.001/m0 vs Adam3e-5/(.9,.999). Existing9completed target/split blocks yield SGD6/9,Adam3/9,each direction10/10paired seeds;2failed blocks excluded. Read report and current KB,REUSE9valid sets,not rerun. Solver adaptive_opt multivariate bias+.65,n23;nominal Delta predicts Adam3x but fails. Fit no universal optimizer preference. Derive candidate predictors from VISIBLE target expressions only (e.g. train-only mean if authenticated tensors available; otherwise label moments estimated from known uniform domain with uncertainty and explicitly NOT observed training moments; gradient/spectrum/linear-component diagnostics may be analytic). Use safe structured expression parsing,not uncontrolled string manipulation. Separate target constant from target mean. Preregister one low-complexity conditional classifier/effect prediction trained on inherited9blocks,then test>=4FRESH allowed 8D target/splits exact recipes;preserve model/code/init/batch,failures and paired uncertainty. Avoid known unavailable target-centering/state/instrumentation probes unless interface genuinely changed. If predictor fails or is underidentified,publish that,not overfit a table of IDs. Report initial-vs-trained baselines only if authenticated. Budget/lr bridge only after predictive target test. Persistent report early,source IDs/means/cache provenance;no evaluation answers,mechanism report-only unless intervention supports it.\"}"
+      }
+    ],
+    "results": [
+      "research J5ccae72c76cc launched asynchronously; topic=e10_sgd_tiny_adam_target_predictor; origin=e0010"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 37,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1141\"], \"text\": \"8D MSE,default plain d3w192 GELU/LN010,T256/b64,wd1e-4: do NOT auto-select Adam3e-5/(.9,.999) over plain SGD.001/m0. Exact-recipe transfer favors SGD6/9 allowed target/splits,Adam3/9;each block's direction holds10/10 paired seeds (180successful runs,0failures). Rc7ff82b4e3: mvar_0bcc16 SGD/Adam MSE .48035/1.48367,but08fa56 1.29653/.50783 strongly reverses. Two other attempted blocks are invalid/excluded,NOT optimizer losses. q_90a22b also favors SGD (ordinal only);not an exact original-target replay. Nominal Delta.00256/.00768 is NOT winner evidence. Nine different expressions/splits,not nine resplits or a universal SGD law.\", \"reason\": \"Curate report-only Rc7ff82b4e3 exact-recipe evidence to address systematic adaptive-over-selection. Preserve failed>=7/10forecast,3strongAdamcounterexamples,valid-block denominator and original history;no invented mechanism or independent seed replication.\", \"regime\": {\"family\": [\"multivariate_regression\"], \"optimizer\": [\"SGD\", \"Adam\"], \"steps\": [256], \"budget\": [16384], \"loss\": [\"mse\"], \"note\": \"8Duniform[0,1],256train/256test,default plain d3w192GELU LN010,b64,wd1e-4;SGD.001/m0 vsAdam3e-5/(.9,.999).9target/splits,2invalidblocks excluded;exactrecipe transfer,not original-target replay.\"}, \"phase\": \"Rc7ff82b4e3:9completed target/split blocks,SGD6/9 and60/90pairedseedwins;all9block directions10/10,18configs/180successfulruns,0failures.11attemptedblocks:missingtest.pt and emptycurves/failedreplacement excluded. Forecast>=7/10not established. SGD-Adam MSE:0bcc16 -1.003319;08fa56 +.788703. q90a22b ordinal only.\", \"mechanism\": \"Target offsets,feature-gradient scale,nonlinear spectrum and optimizer-specific dynamics are competing causes. No authenticated target means,gradients,initial outputs or motion;constants are not means. Centering intervention unexecuted. New predictive target investigation J5ccae72c76cc,not a measured causal law.\"}"
+      }
+    ],
+    "results": [
+      "merged into K1141 (s=0.00, f=0.00)"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 38,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"import re\\nk=load_kb();ids={x['id'] for x in k}\\nprint('nclaims',len(k),'newcreatedepoch10',[x['id'] for x in k if x.get('created_epoch')==10])\\nfor c in k:\\n missing=sorted(set(re.findall(r'K\\\\d{4}',c['text']))-ids)\\n if missing:print('stale-short-ref',c['id'],missing)\\nfor cid in ['K1009','K1039','K1057','K1063','K1066','K1102','K1141','K1144']:\\n c=next(x for x in k if x['id']==cid);print(cid,len(c['text']),c['text'][:200])\"}"
+      }
+    ],
+    "results": [
+      "nclaims 97 newcreatedepoch10 ['K1146', 'K1147', 'K1149', 'K1150', 'K1151']\nK1009 609 Tabular CE,1024rows,shared optimizer/lr/T: low-Delta LN count cannot force a rank; identical SiLU1LN/Leaky2LN recipes reverse across sparse/smooth targets(K1146). At Delta>=.1 shallow and smooth are s\nK1039 690 SGD × activation on MSE regression (uni/multivariate, all choices share one SGD optimizer, plain or m=0.9, 256-2048 steps): smooth activations (SiLU, GELU) are penalised far more than under Adam, so a\nK1057 673 Univariate MSE,SAME MLP/data/budget: do NOT categorically prefer Adam/AdamW to RMSprop at tiny rates. Training history equal lr3e-5 favors RMSprop5/6 pairs across5questions (T2564/4 in3,T5121/2 in2;wd\nK1063 628 Univariate MSE,SAME MLP/RMSprop recipe except lr: lower lr is a short-budget wide-net tendency,NOT a universal tiny-rate rule. Old lab higher-lr wins9/42;T256/w>=128 3/24 (median MSE ratio3.6),.0001 v\nK1066 618 Spiral CE,SHARED optimizer/lr/T ONLY,deep>=3 residual with MORE LN vs shallow<=2: older deep wins51/55 lab (adaptive Delta>=.05 34/35,ratio.38;<.05 11/14;SGD6/6,.36),corpus8/8(.76). This is a bundled \nK1102 591 Bigram plain CE, V24/L16/alpha1.4, train800/test200, default post-LN GELU transformer depth4/heads4/FF64, T256/bs32: Adagrad .0001/wd0 (nominal Delta .0032) beats RMSprop .003/wd1e-5 at d128 on bg_87b\nK1141 540 On q_90a22b's 8-input additive/oscillatory MSE split(seed4000702264047),T256/b64: plain SGD lr.001 beats Adam lr3e-5. Both use default plain d3w192 GELU,LN[0,1,0],wd1e-4;Adam betas(.9,.999). One match\nK1144 597 On oscillatory8D mvar_0e8e34(seed1066203715),MSE,T512/b64: residual d2w96 GELU/zeroLN+AdamW .0003 wins over plain d2w96 SiLU/2LN+AdamW .001 and plain d4w48 ReLU/3LN+RMSprop .0003. Mean MSE1.42054 vs1.\n"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 39,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "kb_view",
+        "arguments": "{\"ids\": [\"K1009\", \"K1039\", \"K1057\", \"K1063\", \"K1066\", \"K1102\", \"K1141\", \"K1144\"], \"limit\": 8, \"sort\": \"id\"}"
+      }
+    ],
+    "results": [
+      "[K1009] cred=0.620 s=14.50 f=8.50 ep=0 src=[]\nTabular CE,1024rows,shared optimizer/lr/T: low-Delta LN count cannot force a rank; identical SiLU1LN/Leaky2LN recipes reverse across sparse/smooth targets(K1151). At Delta>=.1 shallow and smooth are separate preferences;fewerLN depends on rule/budget. Old shallow21/26,smooth16/16;moreLN wins piecewise9/17(CEratio.987),smooth5/13(1.196),sparse0/10(1.495),mixed architecture/decay,T256,b16/32,not32epochs. Below.1 old moreLN41/45,deeper35/52 are confounded,not universal. Depth schedule:K1033/K1121;activation:K1056/K1122;rate:K1073. Do not discard residual+LN for width/smoothness or sum architecture scores.\n[K1039] cred=0.702 s=13.75 f=5.25 ep=0 src=[]\nMSE regression ONLY,SHARED SGD/lr/momentum/T (NOT XOR or other CE): rectifiers often beat SiLU/GELU at equal LN or one fewer LN; NOT a deep/shallow trump card. Old equal-LN corpus9/10 +controlled8/8 (MSEratio.04-.5);one-fewerLN14/17 (controlled6/6,corpus5/8). At>=2fewerLN only12/25 (corpus1/6;large-offset controls differ),so no forced activation/LN score. T256-2048,SGDm0/.9. Deeper SiLU loses more in pooled depth5 12/16 vsdepth4 4/8;depth/skips/width confound cause. Adam-family SiLU-moreLN wins11/16,not cross-optimizer guidance. q_b204a3 is XOR2 CE and OUTSIDE scope;its proposed interaction score needs separate controls.\n[K1057] cred=0.500 s=3.00 f=3.00 ep=0 src=[]\nUnivariate MSE,default residual d4w192 GELU/LN0101,b32,wd0,Adam(.9,.95): at SAME lr3e-5 RMSprop wins atT256 but Adam wins atT512 on sym_bca7ef/b41081. RMS/Adam MSE at256=.006324/.009419 and .015658/.026398 (ratios.671/.593);at512 ratios5.656/2.047. Each direction wins10/10 paired seeds/split;0failures. At1e-4 Adam wins both budgets. R0d5af46860,exp1fe8aa290130/641629738d89;2targets/splits,budget continuations,NOT independent reruns or original-q replay. Older Adam78/88/equal-lr21/24 and tiny-lr history RMS5/6 are different samples. No universal RMS/Adam rule or verified startup mechanism;multivariate excluded.\n[K1063] cred=0.375 s=0.50 f=1.50 ep=0 src=[]\nUnivariate MSE,RMSprop rate-only controls: lower lr is NOT a universal short-budget default. At3e-5->1e-4,default resd4w192 GELU/LN0101,b32,wd0,sym_bca7ef/T256 MSE .006324->.001690 (ratio.267,9/10seed wins,paired95%diff[-.007162,-.002106]). Resd3w192 SiLU/allLN,b64,sym_a052d9/T512 .452659->.443495 (.980,9/10,CI[-.013998,-.004330]). Nearby b41081/d4/T512 reverses mean .001925->.002806 (6/10 wins,CI crosses0). R0d5af46860,n10/fail0,3datasets/2recipes;NOT5/6independent replications. Legacy higher-lr9/42,T256wide3/24 are separate underreconstructed samples. No overshoot mechanism or multivariate transfer.\n[K1066] cred=0.625 s=11.50 f=6.50 ep=0 src=[]\nSpiral CE,SHARED optimizer/lr/T,deep>=3 residual with STRICTLY MORE LN vs shallow<=2: favor deep as a bundled tendency. This preference is OFF at equal/fewer LN;NOT a cross-optimizer rule. Old deep wins51/55lab (adaptiveDelta>=.05 34/35,CEratio.38;<.05 11/14;SGD6/6,.36),corpus8/8(.76). Deep plain moreLN:lab30/32,corpus0/7;tail condition K1061 is SGD-strongest. Equal/fewer-LN deep:lab33/43 but corpus0/2,NOT replacement guidance. q_457ab7/q_79695d expose equal-LN overreach;q_526f1b mixed optimizers is outside scope. Width,activation,placement,data and budget differ;no universal depth/turn law.\n[K1102] cred=0.200 s=0.00 f=3.00 ep=4 src=['q_ef498d']\nONLY V24/L16 alpha1.4,T256/b32,default post-LN GELU TF d128x4/heads4/FF64: Adagrad .0001/wd0 beats RMSprop .003/wd1e-5 on bg_87ba9c/9a3dce (RMS/Ad CE1.03427/1.00514,+.10317/+.01594nats). This does NOT select Adagrad at alpha.8: identical recipes in q_f4462d favor RMSprop (ordinal only). At d64 RMS wins both alpha1.4 tables (.83105/.90757);Adagrad beats SGD .0001/m.9/wd1e-5 in4/4 cells. Lab12cells,n10/fail0;2tables,not12replications. CE near ln24 does not prove uniform logits/overshoot. No causal alpha cutoff or universal conservative-rival rule.\n[K1141] cred=0.500 s=0.00 f=0.00 ep=9 src=['q_90a22b']\n8D MSE,default plain d3w192 GELU/LN010,T256/b"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 40,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"k=load_kb()\\ngroups={\\n'progress_and_optimizer':['K1001','K1002','K1003','K1004','K1012','K1019','K1038','K1057','K1063','K1070','K1071','K1072','K1073','K1079','K1094','K1095','K1101','K1103','K1104','K1110','K1111','K1114','K1115','K1116','K1117','K1118','K1119','K1129','K1133','K1134','K1138','K1139','K1141','K1142','K1145','K1146','K1147','K1149','K1150'],\\n'normalization_interactions':['K1006','K1009','K1022','K1059','K1061','K1076','K1107','K1108','K1122','K1125','K1131','K1132','K1140','K1144','K1151'],\\n'depth_and_residual':['K1015','K1020','K1033','K1065','K1066','K1074','K1080','K1097','K1099','K1112','K1113','K1121'],\\n'bigram_shape_and_initialization':['K1016','K1017','K1068','K1069','K1075','K1124','K1135','K1136','K1137','K1102'],\\n'activation_target_optimizer':['K1008','K1018','K1039','K1056','K1077','K1078','K1120','K1123','K1143'],\\n'decay_and_fullrecipe_fittingstage':['K1005','K1040','K1086','K1096','K1098','K1100','K1105','K1106','K1127','K1128','K1130']}\\nseen={i for v in groups.values() for i in v}\\nprint('factor clusters', {g:len(v) for g,v in groups.items()});print('unassigned',[(c['id'],c['text'][:100]) for c in k if c['id'] not in seen]); print('duplicates',len([i for v in groups.values() for i in v])-len(seen))\\nprint('NOTE load_kb is frozen baseline; mutation verification must use live kb_view.')\"}"
+      }
+    ],
+    "results": [
+      "factor clusters {'progress_and_optimizer': 39, 'normalization_interactions': 15, 'depth_and_residual': 12, 'bigram_shape_and_initialization': 10, 'activation_target_optimizer': 9, 'decay_and_fullrecipe_fittingstage': 11}\nunassigned [('K1109', \"On q_9fdb97's eight-input +6-offset symbolic MSE target,seed203109,T512 bs16,shared plain SGD(.003,m\")]\nduplicates 0\nNOTE load_kb is frozen baseline; mutation verification must use live kb_view.\n"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 41,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1102\"], \"text\": \"ONLY V24/L16 alpha1.4,T256/b32,default post-LN GELU TF d128x4/heads4/FF64: Adagrad .0001/wd0 beats RMSprop .003/wd1e-5 on bg_87ba9c/9a3dce (RMS/Ad CE ratios1.03427/1.00514,+.10317/+.01594nats). This does NOT select Adagrad at alpha.8: identical recipes in q_f4462d favor RMSprop (ordinal only). At d64 RMS wins both alpha1.4 tables (.83105/.90757);Adagrad beats SGD .0001/m.9/wd1e-5 in4/4 cells. Lab12cells,n10/fail0;2tables,not12replications. CE near ln24 does not prove uniform logits/overshoot. No causal alpha cutoff or universal conservative-rival rule.\", \"reason\": \"Numerical-label verification:1.03427/1.00514 are RMSprop-to-Adagrad CE ratios across two tables,not absolute CE values. Preserve all just-checkpointed scope repairs and science fields.\"}"
+      }
+    ],
+    "results": [
+      "merged into K1102 (s=0.00, f=3.00)"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 42,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "kb_view",
+        "arguments": "{\"ids\": [\"K1102\", \"K1141\", \"K1144\", \"K1057\", \"K1063\", \"K1039\", \"K1066\", \"K1009\"], \"sort\": \"id\", \"limit\": 8}"
+      }
+    ],
+    "results": [
+      "[K1009] cred=0.620 s=14.50 f=8.50 ep=0 src=[]\nTabular CE,1024rows,shared optimizer/lr/T: low-Delta LN count cannot force a rank; identical SiLU1LN/Leaky2LN recipes reverse across sparse/smooth targets(K1151). At Delta>=.1 shallow and smooth are separate preferences;fewerLN depends on rule/budget. Old shallow21/26,smooth16/16;moreLN wins piecewise9/17(CEratio.987),smooth5/13(1.196),sparse0/10(1.495),mixed architecture/decay,T256,b16/32,not32epochs. Below.1 old moreLN41/45,deeper35/52 are confounded,not universal. Depth schedule:K1033/K1121;activation:K1056/K1122;rate:K1073. Do not discard residual+LN for width/smoothness or sum architecture scores.\n[K1039] cred=0.702 s=13.75 f=5.25 ep=0 src=[]\nMSE regression ONLY,SHARED SGD/lr/momentum/T (NOT XOR or other CE): rectifiers often beat SiLU/GELU at equal LN or one fewer LN; NOT a deep/shallow trump card. Old equal-LN corpus9/10 +controlled8/8 (MSEratio.04-.5);one-fewerLN14/17 (controlled6/6,corpus5/8). At>=2fewerLN only12/25 (corpus1/6;large-offset controls differ),so no forced activation/LN score. T256-2048,SGDm0/.9. Deeper SiLU loses more in pooled depth5 12/16 vsdepth4 4/8;depth/skips/width confound cause. Adam-family SiLU-moreLN wins11/16,not cross-optimizer guidance. q_b204a3 is XOR2 CE and OUTSIDE scope;its proposed interaction score needs separate controls.\n[K1057] cred=0.500 s=3.00 f=3.00 ep=0 src=[]\nUnivariate MSE,default residual d4w192 GELU/LN0101,b32,wd0,Adam(.9,.95): at SAME lr3e-5 RMSprop wins atT256 but Adam wins atT512 on sym_bca7ef/b41081. RMS/Adam MSE at256=.006324/.009419 and .015658/.026398 (ratios.671/.593);at512 ratios5.656/2.047. Each direction wins10/10 paired seeds/split;0failures. At1e-4 Adam wins both budgets. R0d5af46860,exp1fe8aa290130/641629738d89;2targets/splits,budget continuations,NOT independent reruns or original-q replay. Older Adam78/88/equal-lr21/24 and tiny-lr history RMS5/6 are different samples. No universal RMS/Adam rule or verified startup mechanism;multivariate excluded.\n[K1063] cred=0.375 s=0.50 f=1.50 ep=0 src=[]\nUnivariate MSE,RMSprop rate-only controls: lower lr is NOT a universal short-budget default. At3e-5->1e-4,default resd4w192 GELU/LN0101,b32,wd0,sym_bca7ef/T256 MSE .006324->.001690 (ratio.267,9/10seed wins,paired95%diff[-.007162,-.002106]). Resd3w192 SiLU/allLN,b64,sym_a052d9/T512 .452659->.443495 (.980,9/10,CI[-.013998,-.004330]). Nearby b41081/d4/T512 reverses mean .001925->.002806 (6/10 wins,CI crosses0). R0d5af46860,n10/fail0,3datasets/2recipes;NOT5/6independent replications. Legacy higher-lr9/42,T256wide3/24 are separate underreconstructed samples. No overshoot mechanism or multivariate transfer.\n[K1066] cred=0.625 s=11.50 f=6.50 ep=0 src=[]\nSpiral CE,SHARED optimizer/lr/T,deep>=3 residual with STRICTLY MORE LN vs shallow<=2: favor deep as a bundled tendency. This preference is OFF at equal/fewer LN;NOT a cross-optimizer rule. Old deep wins51/55lab (adaptiveDelta>=.05 34/35,CEratio.38;<.05 11/14;SGD6/6,.36),corpus8/8(.76). Deep plain moreLN:lab30/32,corpus0/7;tail condition K1061 is SGD-strongest. Equal/fewer-LN deep:lab33/43 but corpus0/2,NOT replacement guidance. q_457ab7/q_79695d expose equal-LN overreach;q_526f1b mixed optimizers is outside scope. Width,activation,placement,data and budget differ;no universal depth/turn law.\n[K1102] cred=0.200 s=0.00 f=3.00 ep=4 src=['q_ef498d']\nONLY V24/L16 alpha1.4,T256/b32,default post-LN GELU TF d128x4/heads4/FF64: Adagrad .0001/wd0 beats RMSprop .003/wd1e-5 on bg_87ba9c/9a3dce (RMS/Ad CE ratios1.03427/1.00514,+.10317/+.01594nats). This does NOT select Adagrad at alpha.8: identical recipes in q_f4462d favor RMSprop (ordinal only). At d64 RMS wins both alpha1.4 tables (.83105/.90757);Adagrad beats SGD .0001/m.9/wd1e-5 in4/4 cells. Lab12cells,n10/fail0;2tables,not12replications. CE near ln24 does not prove uniform logits/overshoot. No causal alpha cutoff or universal conservative-rival rule.\n[K1141] cred=0.500 s=0.00 f=0.00 ep=9 src=['q_90a22b']\n8D MSE,default plain d3w192 GELU/LN010"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 43,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "finish",
+        "arguments": "{\"science\": \"Epoch10 consolidation: reviewed all97 claims in six primary-factor clusters: optimizer/progress39; normalization15; depth/residual12; capacity/LM shape/init10; activation×target×optimizer10; decay/fitting stage11. Compared scoped phase tables side by side. No cluster yet supplies a measured mechanism plus phase law that faithfully reproduces its numeric facts, so no unsupported pooled law or destructive merge was made.\\n\\nEight existing claims were revised in place; no new claims or feedback-count resets this turn. Earlier epoch10 additions were preserved. K1102 now explicitly excludes transferring its alpha1.4,d128x4/heads4/FF64,T256/b32 conservative-Adagrad result to alpha.8 q_f4462d. Retained two-table RMS/Ad CE ratios1.03427/1.00514,+.10317/+.01594nats,n10/fail0; historical .8 reversal is ordinal only,not causal alpha evidence. K1144 now leads with the exact-recipe nested/additive target reversal: original nested MSE1.42054/1.60630/1.68626,n10/fail0; the lab IS q_cbd81f's instance,not replication; additive q_6142b7 favors B with no numeric margin. K1039 explicitly excludes XOR/other CE; q_b204a3's proposed interaction score remains unvalidated. K1066's deep-residual preference explicitly requires STRICTLY MORE LN and is off at equal/fewer LN. K1009's stale K1146 evidence reference was corrected to K1151.\\n\\nReviewed late R0d5af46860 controls and incorporated factual evidence into K1057/K1063 without stale wholesale overwrites: fixed default residual d4w192 GELU/LN0101,b32,wd0,Adam(.9,.95),lr3e-5 on two allowed target/splits favors RMSprop atT256 (RMS/Adam ratios.671/.593),Adam atT512 (5.656/2.047);each direction20/20 paired seed wins,0failures. Budgets are continuations,not independent cohorts. Higher RMS rate3e-5->1e-4 wins bcaT256(.267ratio) and a052T512(.980),9/10 seeds each,while b410T512 reverses mean with CI crossing0. These are empirical phases,not accumulator/overshoot proof. K1141 now curates Rc7ff82b4e3: exact 8D plain d3w192 GELU/LN010,T256/b64,wd1e-4 SGD.001/m0 versus Adam3e-5 favors SGD6/9 valid target/splits,Adam3/9;each block10/10 seed directions,180successful runs,0failures;two invalid attempted blocks excluded. SGD>=7/10 forecast not established;no blanket adaptive or SGD rule.\\n\\nNegative utility was treated as usage/scope evidence,not truth probability. Prior condition-first repairs to K1006/K1018/K1038/K1040 were preserved; newer target/optimizer/equal-LN over-transfers prompted the specific text changes above. Late J15dc9d06803c/J6dccd2a43525 K1075 proposals and J50bc0cf08c29 K1040 proposal are superseded or substantially represented by newer scoped claims/reports;no stale count/text restoration. J290340c95a93 architecture repairs are already incorporated;no repeat. Jed4a66d29ba2's matched factual revisions were accepted selectively into current K1057/K1063;the uncertain four-cycle equal-family comparison remains report evidence,not a new universal claim.\\n\\nNine persistent investigations launched,all training-evidence-only and requiring fresh prospective predictions/cache-aware sample sizes: J5b324e3673c9 MSE target/rate phase;J6fe3befeca0f wide-bigram RMS/Adagrad boundary;J596ff967ab24 tabular LN×activation with rule/dimension separation;Je8247e6fbbc4 XOR2 plain-SGD interaction falsification;Jd9b956477b38 equal-LN spiral residual/depth boundary;J3e0943cc6b0d low-rate RMSprop transient phase;Jd9512fd4ed54 matched bigram width/depth predictive phase;J00862cd94f1b coupled-decay absolute-loss condition gate;J5ccae72c76cc target-property prediction for exact SGD/tiny-Adam contrast. Mechanisms,unsupported interventions and failed extrapolations stay in reports. No new training results from these jobs are claimed yet. All eight live short-text revisions were verified with kb_view;load_kb Python is a frozen baseline and was not mistaken for live mutation state.\"}"
+      }
+    ],
+    "results": [
+      "ok"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 44,
+    "content": "Curated 97 claims into six factor clusters and revised eight existing claims. Preserved measured effects while tightening target, optimizer, and normalization conditions; incorporated matched RMSprop reversals and scoped SGD evidence.\n\nLaunched nine persistent investigations. No mechanism-backed consolidation law was justified yet. All changes checkpointed; curation finished.",
+    "reasoning": null,
+    "tool_calls": [],
+    "usage": {
+      "input_tokens": 7861118,
+      "cached_input_tokens": 7619456,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 23045,
+      "reasoning_output_tokens": 7931
+    }
+  }
+]

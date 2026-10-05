@@ -1,0 +1,705 @@
+[
+  {
+    "turn": 0,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "kb_view",
+        "arguments": "{\"ids\": [\"K1001\", \"K1006\", \"K1009\", \"K1018\", \"K1038\", \"K1040\", \"K1057\", \"K1065\", \"K1069\", \"K1075\", \"K1076\", \"K1114\", \"K1117\", \"K1120\", \"K1121\", \"K1122\"]}"
+      }
+    ],
+    "results": [
+      "[K1069] cred=0.809 s=12.75 f=2.25 ep=0 src=[]\nBIGRAM LM post-LN TRANSFORMER head count (same d_model/layers/optimizer/T): fewer heads (2 vs 4) wins 12/15 lab pairs. At Δ<0.5 it is only a tie-break (CE ratio ≈1.00); at Δ≥0.5 it matters (lab 4/4, ratio 1.01-1.07; controlled q_d6dddb d128 AdamW 3e-3×256: 2 heads −0.18 nats vs 4 heads, d_ff 128→256 only +0.07) and head count outranks a 2× d_ff difference (fewer heads + larger d_ff beat more heads + smaller d_ff 4/4). q_d6dddb gold: 2-head d_ff256 beat 4-head d_ff128. Order: d_model/layers (K1017) first, then heads, then d_ff.\n[K1001] cred=0.642 s=56.75 f=31.25 ep=0 src=[]\nOptimizer comparison,SAME model/data/budget: use Delta as a progress proxy ONLY below task/model saturation. T256 can be32epochs; neither step count nor nominal parity proves adaptive or max-Delta wins. Adam/AdamW/RMSprop:lr*T;Adagrad:2*lr*sqrt(T);SGD:lr*T*|g|/(1-m),g~.01 (bigram.003,momentumMSE.03,K1019). Check K1004/K1071-K1073 and target/batch first;close mixed-recipe estimates:K1012. Old largerDelta~85% backtests were ceiling-filtered,not a law. Byte-identical q_561d81/q_21a335 recipes reverse winners on different targets/splits. Long XOR optimizer reversal K1119 is NOT a low-rate rule;no universal ceiling.\n[K1006] cred=0.593 s=34.00 f=23.00 ep=0 src=[]\nMLPs,shared optimizer/lr/T,lowDelta: LN count is task-specific evidence,NOT LN+residual scoring or a deterministic rank. Older moreLN corpus:multivariate61/72,univariate57/69,tabular41/45;not factor-isolated. Multivariate plain+1LN vsres(K1076):mixed lab23/31,median MSE ratio.906;matched type/lr4/6,no full-config pairs;plain+1depth4/9(ratio1.166) opposes it. Equal-LN regression rectifier evidence(K1008) is not a forced tie-break across residual/tail differences. Regression depth:K1074;multivariate limit:K1080;SGD:K1039;spiral:K1020/K1066;plain tails:K1061(SGD strongest);XOR:K1018/K1065;tabular:K1009/K1033. No universal scoring formula.\n[K1057] cred=0.583 s=2.50 f=1.50 ep=0 src=[]\nUNIVARIATE regression, same MLP, Adam/AdamW vs RMSprop: Adam-family wins at almost any lr pairing - lab 78/88 same-arch within-set pairs (median MSE ratio ~0.06): equal lr 21/24; Adam at 3-33x LOWER lr 21/23; Adam at 3-10x+ higher lr 36/41. Adam lr<=RMSprop lr subset: non-oscillatory targets 15/15 (ratio0.02), sin/cos(2*pi*x) targets 27/32 (0.18). Corpus4/5 (only loss: Adam3e-5 vs RMSprop3e-3,100x gap). Do not credit RMSprop's early-step amplification (q_7f8fb0:AdamW3e-5 beat RMSprop3e-5 and1e-4). Wide-net lr*T>=1 overshoot risk(K1072) is comparative,not automatic. NOT multivariate(lab10/18,ratio.97;corpus5/9).\n[K1009] cred=0.567 s=7.50 f=5.50 ep=0 src=[]\nTabular CE,1024 rows,shared optimizer/lr/T,Delta>=.1: shallow and smooth are separate preferences; fewer-LN depends on data rule/budget. Old corpus: shallow21/26,smooth16/16; width not isolated. Base-lab moreLN wins: piecewise9/17 (17sets,CE ratio.987),smooth_additive5/13 (11sets,1.196),sparse_interaction0/10 (5sets,1.495). Same optimizer type/lr, but mixed architecture/decay; T256,4096/8192samples,NOT32epochs. Below .1 old moreLN41/45,deeper35/52; 32-epoch depth reversal can start near .03(K1033). Optimizer optima:K1073; activation:K1056. Do not discard residual+LN solely for smoothness or width(q_11a5f0); no universal additive score.\n[K1018] cred=0.567 s=7.50 f=5.50 ep=0 src=[]\nXOR CE,1024 rows,>=8 features,shared Adam/AdamW/RMSprop lr/T,Delta>=.05: smooth is favored (older lab15/16, CE ratio.78; corpus6/6), but fewer LN is NOT validated. Fixed width24 depth2 plain GELU AdamW,T256,bs16: 2LN beat1LN at Delta .0256/.0512/.0768 (CE .67619 vs .68153 at .0768). Base-lab same optimizer type/lr, mixed architectures: moreLN36/51 high (37sets,ratio.891),14/32 low (26sets,1.001); older opposite LN counts use an unidentified filter. Audit includes SGD/Adagrad; no optimizer-specific LN law follows. Depth:K1065; <8features deeper7/7. No sharp .05 switch; do not extrapolate smooth preference to SGD/Adagrad.\n[K1038] cred=0.550 s=1.75 f=1.25 ep=0 "
+    ],
+    "usage": null
+  },
+  {
+    "turn": 1,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "kb_open",
+        "arguments": "{\"targets\": [\"R58730d84ac\", \"R1e820ab3a7\", \"Reb8454abdf\", \"R760974e919\"]}"
+      }
+    ],
+    "results": [
+      "# R1e820ab3a7: Function-space predictors of SAME-model MSE rate reversals (a730950db2e25ddf03c25dd8794a211747fa0b37)\n# Function-space predictors of SAME-model MSE rate reversals\n\n## Conclusion\n**Not yet established.** The allowed interface cannot measure function-space updates or late optimization noise, so their predictive advantage over nominal Delta cannot be evaluated. This investigation adds 27 previously unmeasured endpoint cells, not a mechanism law. It retains conditional progress below saturation, local reversal thresholds and counterexamples.\n\n## Sources and target-dependence audit\nRead R7dd7d943d3, Rc5401dd3c0, R63d34ce484, Rb40ff6b901 and current KB before training. Frozen load_history/load_kb/load_lab: 983 training records,73 claims,11579 lab rows. Only allowed lab datasets and visible training answers were used; no evaluation-answer files were accessed. Sources and full resolved recipes are archived.\n\nq_561d81 and q_21a335 have byte-identical choice sections and opposite training winners, A versus B. Both use default-init width192/depth2 plain LeakyReLU(.01),LN[F,T],T256/batch32. A=AdamW(.0001,wd0,betas .9/.95), B=AdamW(.001,wd1e-5,.9/.999), C=SGD(.0003,wd.001,momentum0). Their targets and point seeds differ (568659339/568667258); q_21a335 also has explicit +2. Neither exact expression exists in the frozen allowed lab. This demonstrates target-and-split dependence of the full recipes, not a rate-only effect, offset cause or original-split replication.\n\nq_d16bdb has same-model but mixed-optimizer choices: training order D<B<E<C<A puts AdamW .001 before Adam .003. q_4c7053 is not same-model: winning B is plain SiLU SGD, while A is residual LeakyReLU Adam and C has another LN pattern. Neither ordinal result supplies numerical rate-only effects.\n\n## Methods and controls\nEarly publication R1e820ab3a7 recorded predictions before outcomes. Exact model/loss/init convention/optimizer-except-rate/batch matching against the frozen lab excluded existing cells. No prior controlled training was repeated. Three initial calls were rejected because a name key was unsupported; they executed no training. Corrected calls used documented dotted-key prefixes.\n\nRecipes: U=sym_0c2620,one input,w128/d2 plain LeakyReLU(.01),zeroLN,Adam(.9,.95),wd1e-5; O=mvar_000e80,three inputs,w32/d5 residual SiLU,LN[0,0,1,0,1],Adam(.9,.999),wd1e-4; P=mvar_5a829e,two inputs,w256/d3 plain LeakyReLU(.01),LN[1,0,1],AdamW(.9,.999),wd1e-5. Plain MSE,default initialization,batch16,256 train/256 test uniform [0,1] points are fixed within each dataset.\n\nU target is cos(2*pi*cos(2*pi*x))-1; O is cos(2*pi*x2)*x1+abs(sin(2*pi*cos(2*pi*x0)))+cos(2*pi*sin(2*pi*x1)**2)+cos(2*pi*x2)-1; P is x0**3+x0*x1+x1-2. Point seeds are 99197854,75197781,100081165975.\n\nTarget offset/scale and split are held fixed within each grid, not normalized or experimentally crossed across targets. Actual initial weights and paired minibatch streams are unverified. Decay coefficients are fixed; rate changes can still change regularization dynamics. T256/1024/2048 imply4096/16384/32768 sampled rows; updates and exposure co-vary.\n\n## Phase Table\nMean held-out MSE. * marks an inherited cell: table rows mixing source sets are descriptive, not admissible full-grid joint rankings. Exact SDs,source sets,candidate IDs and missing fields are in phase.csv.\n\n| Recipe | T | lr .0001 | .0003 | .001 | .003 |\n|---|---:|---:|---:|---:|---:|\n|U|256|.542450|.532442|.484245|.342476|\n|U|1024|.497004|.308053|.273331|.236383|\n|U|2048|.353138*|.276771*|.232143|.0157824*|\n|O|256|1.411910|.778927*|.648097|.697329*|\n|O|1024|.625196|.643440|.668458|.693163|\n|O|2048|.640079|.651525*|.659086|.704818*|\n|P|256|.00136551|.000789132|.000914426*|.00103262|\n|P|1024|.000516314|.00166214|.00222668|.00203691|\n|P|2048|.000621956|.000798964|.00143579*|.00187212|\n\nNew sets: U exp:9188999e597c (9 cells),O exp:b1ebf9ecda47 (8),P exp:72201b637132 (10). Inherited sources: U exp:34aa6df219ff,O exp:46dafe43cf05,P exp:630c92c3db03.\n\n## Pred"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 2,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"h=load_history(); lab=load_lab(); kb=load_kb()\\nprint('history',len(h),'lab',len(lab),'kb',len(kb))\\nprint('history_example',h[-1])\\nprint('lab_example',lab[0])\"}"
+      }
+    ],
+    "results": [
+      "t__()\\n        self.net = nn.Sequential(\\n            nn.Linear(2, 192),\\n            nn.ReLU(),\\n            MLPBlock(width=192, use_layer_norm=True),\\n            MLPBlock(width=192, use_layer_norm=False),\\n            nn.Linear(192, 2),\\n        )\\n\\n    def forward(self, x: torch.Tensor) -> torch.Tensor:\\n        return self.net(x)\\n```\\n\\n**Optimizer**\\n- Optimizer: RMSprop\\n- Learning rate: 0.001\\n- Weight decay: 1e-05\\n\\n```python\\ndef build_optimizer(model: nn.Module) -> torch.optim.Optimizer:\\n    params = model.parameters()\\n    return torch.optim.RMSprop(params, lr=0.001, weight_decay=1e-05)\\n```\\n\\n**Loss**\\n- Loss: cross-entropy on minibatch target labels\\n\\n```python\\ndef loss_fn(model: nn.Module, pred: torch.Tensor, target: torch.Tensor) -> torch.Tensor:\\n    if pred.ndim == 3:\\n        vocab = pred.shape[-1]\\n        return torch.nn.functional.cross_entropy(pred.reshape(-1, vocab), target.reshape(-1))\\n    return torch.nn.functional.cross_entropy(pred, target.reshape(-1))\\n```\\n\\n### Choice C\\n\\n**Training schedule**\\n- training_steps: 512\\n- batch_size: 32\\n- total_samples_seen: 16384 (= training_steps × batch_size)\\n\\n**Model (natural language)**\\n- Type: MLP\\n- Input dimension: 2\\n- Output logits: 2\\n- Depth: 5 hidden Linear layers of width 96, between the input projection and the output head (7 nn.Linear layers in total)\\n- Width: 96 (all hidden layers)\\n- Residual connections: False\\n- Layer norm per layer: [True, True, True, True, False]\\n- Activation: gelu (one activation, shared by every layer)\\n- Initialization: PyTorch Linear defaults\\n\\n**Model code**\\n```python\\nclass MLPBlock(nn.Module):\\n    \"\"\"One hidden layer: gelu(Linear(norm(x))).\"\"\"\\n\\n    def __init__(self, width: int, use_layer_norm: bool) -> None:\\n        super().__init__()\\n        self.norm = nn.LayerNorm(width) if use_layer_norm else nn.Identity()\\n        self.linear = nn.Linear(width, width)\\n        self.act = nn.GELU()\\n\\n    def forward(self, x: torch.Tensor) -> torch.Tensor:\\n        h = self.linear(self.norm(x))\\n        return self.act(h)\\n\\n\\nclass Model(nn.Module):\\n    def __init__(self) -> None:\\n        super().__init__()\\n        self.net = nn.Sequential(\\n            nn.Linear(2, 96),\\n            nn.GELU(),\\n            MLPBlock(width=96, use_layer_norm=True),\\n            MLPBlock(width=96, use_layer_norm=True),\\n            MLPBlock(width=96, use_layer_norm=True),\\n            MLPBlock(width=96, use_layer_norm=True),\\n            MLPBlock(width=96, use_layer_norm=False),\\n            nn.Linear(96, 2),\\n        )\\n\\n    def forward(self, x: torch.Tensor) -> torch.Tensor:\\n        return self.net(x)\\n```\\n\\n**Optimizer**\\n- Optimizer: SGD\\n- Learning rate: 3e-05\\n- Weight decay: 0\\n- Momentum: 0\\n\\n```python\\ndef build_optimizer(model: nn.Module) -> torch.optim.Optimizer:\\n    params = model.parameters()\\n    return torch.optim.SGD(params, lr=3e-05, momentum=0, weight_decay=0)\\n```\\n\\n**Loss**\\n- Loss: cross-entropy on minibatch target labels\\n\\n```python\\ndef loss_fn(model: nn.Module, pred: torch.Tensor, target: torch.Tensor) -> torch.Tensor:\\n    if pred.ndim == 3:\\n        vocab = pred.shape[-1]\\n        return torch.nn.functional.cross_entropy(pred.reshape(-1, vocab), target.reshape(-1))\\n    return torch.nn.functional.cross_entropy(pred, target.reshape(-1))\\n```\\n\\n## Your answer\\nChoose exactly one of A, B, C. End your reply with exactly two tagged fields, in this order and with nothing after them:\\n\\n<explanation>The mechanism that decides the winner, and why each other choice loses.</explanation>\\n<answer>the letter of your chosen option</answer>\\n\\nRules: `<answer>` must contain exactly one letter from {A, B, C}. The grader reads only the **final** `<answer>` tag in your reply.', 'answer': 'A', 'prediction': 'A', 'score': 1.0, 'inversions': None, 'cited': ['K1003', 'K1012', 'K1020', 'K1066'], 'explanation': 'A has sufficient AdamW progress and normalization in every hidden block, including the last, making its "
+    ],
+    "usage": null
+  },
+  {
+    "turn": 3,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"import re,json\\nh=load_history(); k=load_kb(); l=load_lab()\\nprint('sizes',len(h),len(k),len(l)); print('epoch6_created',[(x['id'],x['text'][:90]) for x in k if x.get('created_epoch')==6])\\nids={'q_c692d1','q_1f04dc','q_1e1b7e','q_c514ef','q_90b402','q_3a67db','q_e285d5','q_526f1b','q_b3f618','q_9d4013','q_099d20','q_0eb782','q_9c3db1','q_1e3d07','q_9bff6e'}\\nfor x in h:\\n if x['question_id'] not in ids: continue\\n q=x['question']; first=re.split(r'### Choice [A-E]',q)[0]\\n print('\\\\nQ',x['question_id'],'epoch',x['epoch'],'gold',x['answer'],'score',x['score'])\\n print(re.sub(r'```[\\\\s\\\\S]*?```','',first)[-2200:])\\n for label,s in re.findall(r'### Choice ([A-E])([\\\\s\\\\S]*?)(?=### Choice [A-E]|## Your answer|$)',q):\\n  t=re.sub(r'```[\\\\s\\\\S]*?```','',s)\\n  print(label,t[:1900])\"}"
+      }
+    ],
+    "results": [
+      "ual connections: False\n- Layer norm per layer: [False, True, True, False]\n- Activation: gelu (one activation, shared by every layer)\n- Initialization: PyTorch Linear defaults\n\n**Model code**\n\n\n**Optimizer**\n- Optimizer: AdamW\n- Learning rate: 0.0003\n- Weight decay: 1e-05\n- Betas: [0.9, 0.999]\n\n\n\n**Loss**\n- Loss: cross-entropy on minibatch target labels\n\n\n\n\nA \n\n**Model (natural language)**\n- Type: MLP\n- Input dimension: 16\n- Output logits: 2\n- Depth: 5 hidden Linear layers of width 64, between the input projection and the output head (7 nn.Linear layers in total)\n- Width: 64 (all hidden layers)\n- Residual connections: False\n- Layer norm per layer: [False, False, False, False, True]\n- Activation: gelu (one activation, shared by every layer)\n- Initialization: PyTorch Linear defaults\n\n**Model code**\n\n\n**Optimizer**\n- Optimizer: AdamW\n- Learning rate: 0.0003\n- Weight decay: 1e-05\n- Betas: [0.9, 0.999]\n\n\n\n**Loss**\n- Loss: cross-entropy on minibatch target labels\n\n\n\n\nC \n\n**Model (natural language)**\n- Type: MLP\n- Input dimension: 16\n- Output logits: 2\n- Depth: 2 hidden Linear layers of width 128, between the input projection and the output head (4 nn.Linear layers in total)\n- Width: 128 (all hidden layers)\n- Residual connections: True\n- Layer norm per layer: [True, False]\n- Activation: leaky_relu (one activation, shared by every layer)\n- LeakyReLU negative slope: 0.01\n- Initialization: PyTorch Linear defaults\n\n**Model code**\n\n\n**Optimizer**\n- Optimizer: AdamW\n- Learning rate: 0.0003\n- Weight decay: 1e-05\n- Betas: [0.9, 0.999]\n\n\n\n**Loss**\n- Loss: cross-entropy on minibatch target labels\n\n\n\n\n\nQ q_526f1b epoch 6 gold C score 0.0\nses are exactly balanced and there is no threshold to calibrate. The decision boundary spirals outward, so its complexity grows with the number of turns — stated in the dataset card below. Every candidate trains on the same materialized train/test splits.\n\n### Data-generating and classification rule\n- Rule family: `spiral`; active coordinates: `x_0`, `x_1` (input is 2-dimensional).\n- Point distribution: classic interleaved two-spirals. Each point is drawn along one of two Archimedean arms: with `t` uniform on `[0.5, 0.5 + 6π]` (3 full turns), radius `r = t`, coordinates `(r·cos(t + phase), r·sin(t + phase))` with `phase ∈ {0, π}`.\n- Label rule: `y = 0` for points drawn from the `phase = 0` arm and `y = 1` for points from the `phase = π` arm; both arms are equally likely, so classes are balanced.\n- Nominal soft score (intuition only): `s(x) = sin(atan2(x_1, x_0) − ‖x‖₂)`; its zero level sets trace the two arms, but labels come from the generative arm, not from thresholding `s(x)`.\n- Bayes decision boundary: assign each point to the nearer of the two arms (up to label-flip symmetry); with 3 full turns the arms interleave, so the boundary is highly non-linear.\n- Reproducibility: point seed `443217747`, spiral turns `3`.\n\n### Data splits and training protocol\n- Task: binary classification on one fixed synthetic tabular train/test split.\n- Input shape: float32 `[N, 2]`; labels: int64 `[N]` in `{0, 1}`.\n- Train rows: 1024; held-out test rows: 2048.\n- Every choice receives the same materialized split; minibatches sample train indices uniformly with replacement.\n- Evaluation: **test cross-entropy** is primary; test accuracy is auxiliary only.\n- Reference device: cpu\n\n## Sample budget (same for all choices)\n- total_samples_seen: 16384\n\nEach choice specifies its own `training_steps` and `batch_size` below; they must satisfy `training_steps × batch_size = total_samples_seen`.\n\n## Evaluation metric\n- Ground-truth ranking uses **test_ce** on the held-out test split.\n- Each choice is trained independently for **10** seeds (`0`..`9`), one `torch.manual_seed(seed)` per run.\n- Execution device: cpu.\n- The correct choice has the lowest **mean** test_ce across seeds.\n\n## Choices\n\n\nA \n\n**Training schedule**\n- training_steps: 256\n- batch_size: 64\n- total_samples_seen: 16384 (= training_steps × batch_size)\n\n**Model (natural language)"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 4,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"import re,json\\nh=load_history();k=load_kb();l=load_lab()\\nprint('sizes',len(h),len(k),len(l),'new_ep6',[(x['id'],x['text'][:50]) for x in k if x.get('created_epoch')==6])\\nids=['q_c692d1','q_1f04dc','q_1e1b7e','q_c514ef','q_90b402','q_3a67db','q_e285d5','q_526f1b','q_b3f618','q_9d4013','q_099d20','q_0eb782','q_9c3db1','q_1e3d07','q_9bff6e']\\nfor qid in ids:\\n x=next((x for x in h if x['question_id']==qid),None)\\n if not x: print('missing',qid);continue\\n q=x['question']; first=re.split(r'### Choice [A-E]',q)[0]\\n fields=[s.strip() for s in first.splitlines() if re.search(r'training_steps:|batch_size:|total_samples_seen:|Point seed|point seed|dimension:|features|Rule family|Target|target function|alpha|vocab_size|context_length',s)]\\n print('\\\\n',qid,'ep',x['epoch'],'gold',x['answer'],fields)\\n for label,s in re.findall(r'### Choice ([A-E])([\\\\s\\\\S]*?)(?=### Choice [A-E]|## Your answer|$)',q):\\n  t=re.sub(r'```[\\\\s\\\\S]*?```','',s)\\n  fs=[z.strip('- ') for z in t.splitlines() if re.search(r'^- (training_steps|batch_size|Depth|Width|Residual|Layer norm|Activation|Input dimension|Optimizer|Learning rate|Weight decay|Betas|Momentum|Type|d_model|Number of|Feed|Head|Hidden size)',z)]\\n  print(label,'; '.join(fs))\"}"
+      }
+    ],
+    "results": [
+      "size)']\nA Type: MLP; Depth: 5 hidden Linear layers of width 192, between the input projection and the output head (7 nn.Linear layers in total); Width: 192 (all hidden layers); Residual connections: False; Layer norm per layer: [True, False, True, False, True]; Activation: gelu (one activation, shared by every layer); Optimizer: AdamW; Learning rate: 3e-05; Weight decay: 0.001; Betas: [0.9, 0.999]\nD Type: MLP; Depth: 3 hidden Linear layers of width 256, between the input projection and the output head (5 nn.Linear layers in total); Width: 256 (all hidden layers); Residual connections: False; Layer norm per layer: [False, True, False]; Activation: leaky_relu (one activation, shared by every layer); Optimizer: AdamW; Learning rate: 3e-05; Weight decay: 0.001; Betas: [0.9, 0.999]\nC Type: MLP; Depth: 4 hidden Linear layers of width 256, between the input projection and the output head (6 nn.Linear layers in total); Width: 256 (all hidden layers); Residual connections: False; Layer norm per layer: [True, True, True, True]; Activation: gelu (one activation, shared by every layer); Optimizer: AdamW; Learning rate: 3e-05; Weight decay: 0.001; Betas: [0.9, 0.999]\nB Type: MLP; Depth: 5 hidden Linear layers of width 192, between the input projection and the output head (7 nn.Linear layers in total); Width: 192 (all hidden layers); Residual connections: False; Layer norm per layer: [True, True, True, False, False]; Activation: relu (one activation, shared by every layer); Optimizer: AdamW; Learning rate: 3e-05; Weight decay: 0.001; Betas: [0.9, 0.999]\nE Type: MLP; Depth: 5 hidden Linear layers of width 256, between the input projection and the output head (7 nn.Linear layers in total); Width: 256 (all hidden layers); Residual connections: False; Layer norm per layer: [False, False, False, False, False]; Activation: silu (one activation, shared by every layer); Optimizer: AdamW; Learning rate: 3e-05; Weight decay: 0.001; Betas: [0.9, 0.999]\n\n q_1e3d07 ep 6 gold D<C<A<E<B ['Synthetic tabular binary classification. Features are drawn i.i.d. from a standard normal; a latent score `s(x)` over a few active coordinates is thresholded at a fixed cut-off chosen near the median of `s(x)`, so the two classes are close to balanced. The score is non-linear in the features, so no linear function of the inputs reproduces the boundary. The dataset card below states the exact rule family, active coordinates, weights, threshold, and the class balance it produces. Every candidate trains on the same materialized train/test splits.', '- Rule family: `piecewise_boundary`; active coordinates: `x_10`, `x_14`', '- Reproducibility: point seed `885864657`, calibration seed `885865657`.', '- training_steps: 1024', '- batch_size: 32', '- total_samples_seen: 32768 (= training_steps × batch_size)']\nE Type: MLP; Input dimension: 16; Depth: 1 hidden Linear layer of width 256, between the input projection and the output head (3 nn.Linear layers in total); Width: 256 (all hidden layers); Residual connections: False; Layer norm per layer: [True]; Activation: leaky_relu (one activation, shared by every layer); Optimizer: AdamW; Learning rate: 3e-05; Weight decay: 0.0001; Betas: [0.9, 0.999]\nC Type: MLP; Input dimension: 16; Depth: 2 hidden Linear layers of width 256, between the input projection and the output head (4 nn.Linear layers in total); Width: 256 (all hidden layers); Residual connections: True; Layer norm per layer: [True, False]; Activation: silu (one activation, shared by every layer); Optimizer: AdamW; Learning rate: 3e-05; Weight decay: 0.0001; Betas: [0.9, 0.999]\nB Type: MLP; Input dimension: 16; Depth: 2 hidden Linear layers of width 192, between the input projection and the output head (4 nn.Linear layers in total); Width: 192 (all hidden layers); Residual connections: True; Layer norm per layer: [True, False]; Activation: leaky_relu (one activation, shared by every layer); Optimizer: AdamW; Learning rate: 3e-05; Weight decay: 0.0001; Betas: [0.9, 0.999]\nD T"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 5,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"import re,json\\nh=load_history();k=load_kb();l=load_lab()\\nprint('sizes',len(h),len(k),len(l),'new_ep6',[x['id'] for x in k if x.get('created_epoch')==6])\\nfor qid in ['q_c692d1','q_1f04dc','q_1e1b7e','q_c514ef','q_90b402','q_3a67db','q_e285d5']:\\n x=next((x for x in h if x['question_id']==qid),None)\\n if not x: print('missing',qid);continue\\n q=x['question'];first=re.sub(r'```[\\\\s\\\\S]*?```','',re.split(r'### Choice [A-E]',q)[0]);print(qid,'gold',x['answer'],'common',re.findall(r'^- (?:training_steps|batch_size|total_samples_seen): (.*)',first,re.M))\\n print('data',first[-3000:-1800] if x['family']=='multivariate_regression' else first[:1200])\\n for label,s in re.findall(r'### Choice ([A-E])([\\\\s\\\\S]*?)(?=### Choice [A-E]|## Your answer|$)',q):\\n  t=re.sub(r'```[\\\\s\\\\S]*?```','',s)\\n  keys=['training_steps','batch_size','Depth','Width','Residual connections','Layer norm per layer','Activation','Optimizer','Learning rate','Weight decay','Betas','Momentum','Type','d_model','Layers','Heads','d_ff']\\n  out={key:re.search(r'^- '+re.escape(key)+r'(?: \\\\([^\\\\n:]+\\\\))?: ([^\\\\n]+)',t,re.M).group(1).split(' (')[0].split(' hidden')[0] for key in keys if re.search(r'^- '+re.escape(key)+r'(?: \\\\([^\\\\n:]+\\\\))?: ([^\\\\n]+)',t,re.M)}\\n  print(label,out)\"}"
+      }
+    ],
+    "results": [
+      "', 'Optimizer': 'AdamW', 'Learning rate': '3e-05', 'Weight decay': '1e-05', 'Betas': '[0.9, 0.95]', 'Type': 'MLP'}\nC {'Depth': '3', 'Width': '192', 'Residual connections': 'False', 'Layer norm per layer': '[False, True, True]', 'Activation': 'relu', 'Optimizer': 'AdamW', 'Learning rate': '3e-05', 'Weight decay': '1e-05', 'Betas': '[0.9, 0.95]', 'Type': 'MLP'}\nq_c514ef gold C common ['256', '16', '4096 (= training_steps × batch_size)']\ndata You are taking the ArchitectureIQ benchmark.\n\nEach question describes one **dataset instance** and several **choices** (each choice is one **candidate**: model, optimizer, loss, an\nA {'Depth': '4', 'Width': '192', 'Residual connections': 'False', 'Layer norm per layer': '[False, False, True, False]', 'Activation': 'silu', 'Optimizer': 'AdamW', 'Learning rate': '3e-05', 'Weight decay': '1e-05', 'Betas': '[0.9, 0.95]', 'Type': 'MLP'}\nB {'Depth': '4', 'Width': '192', 'Residual connections': 'True', 'Layer norm per layer': '[False, True, False, False]', 'Activation': 'gelu', 'Optimizer': 'AdamW', 'Learning rate': '3e-05', 'Weight decay': '1e-05', 'Betas': '[0.9, 0.95]', 'Type': 'MLP'}\nC {'Depth': '3', 'Width': '192', 'Residual connections': 'False', 'Layer norm per layer': '[False, True, True]', 'Activation': 'relu', 'Optimizer': 'AdamW', 'Learning rate': '3e-05', 'Weight decay': '1e-05', 'Betas': '[0.9, 0.95]', 'Type': 'MLP'}\nq_90b402 gold B common ['1024', '16', '16384 (= training_steps × batch_size)']\ndata You are taking the ArchitectureIQ benchmark.\n\nEach question describes one **dataset instance** and several **choices** (each choice is one **candidate**: model, optimizer, loss, and training budget). All choices train on the same dataset instance. Each choice's training budget (`total_samples_seen`) is stated in the prompt — either shared across all choices or specified per choice in the Sample budget section. Your task is to identify which choice will achieve the **best test metric** on the held-out test set after its stated training budget — using architecture and learning-mechanics reasoning only (no training results are provided).\n\nAnswer format is specified in the final section (\"Your answer\"): end your reply with a short `<explanation></explanation>` paragraph followed by a single letter in `<answer></answer>` tags.\n\n## Dataset\nBigram language modeling: each example is a length-`L` window of token IDs. Labels are the next token at each position, sampled from a **single fixed** bigram law `P(y|x)` shared by train and test. Only the random windows differ between splits.\n\n### Synthesis (PyTorch)\n\n\n### Data splits and training protocol\n- Vocab size: 48\n- Context length: 24\n- Layo\nA {'Optimizer': 'SGD', 'Learning rate': '3e-05', 'Weight decay': '1e-05', 'Momentum': '0', 'Type': 'causal unidirectional GRU LM', 'd_model': '64'}\nB {'Optimizer': 'SGD', 'Learning rate': '0.001', 'Weight decay': '0', 'Momentum': '0.9', 'Type': 'causal unidirectional GRU LM', 'd_model': '64'}\nC {'Optimizer': 'AdamW', 'Learning rate': '0.003', 'Weight decay': '0', 'Betas': '[0.9, 0.95]', 'Type': 'causal unidirectional GRU LM', 'd_model': '64'}\nq_3a67db gold C common ['1024', '16', '16384 (= training_steps × batch_size)']\ndata You are taking the ArchitectureIQ benchmark.\n\nEach question describes one **dataset instance** and several **choices** (each choice is one **candidate**: model, optimizer, loss, and training budget). All choices train on the same dataset instance. Each choice's training budget (`total_samples_seen`) is stated in the prompt — either shared across all choices or specified per choice in the Sample budget section. Your task is to identify which choice will achieve the **best test metric** on the held-out test set after its stated training budget — using architecture and learning-mechanics reasoning only (no training results are provided).\n\nAnswer format is specified in the final section (\"Your answer\"): end your reply with a short `<explanation></explanation>` paragraph followed by a single lette"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 6,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "research",
+        "arguments": "{\"topic\": \"e6_bigram_momentum_vs_aggressive_adamw\", \"question\": \"In visible training q_90b402 and q_3a67db, byte-identical GRU64 optimizer recipes at T1024/b16 reverse B (SGD lr.001,m.9,wd0) versus C (AdamW lr.003,betas.9/.95,wd0); A is plain SGD3e-5. Is there a supported dataset/shape/budget-conditional empirical comparison that corrects systematic adaptive/max-Delta over-selection without imposing an SGD preference?\", \"focus\": \"Read current K1001/K1019/K1071 and ongoing R58730d84ac before experiments; do not repeat its GRU/TF controls. Verify q dataset alpha, table/sequence and layer counts, loss and default init. Use only allowed training/lab data, compare lab only within set_id. Register a falsifiable extrapolation, then test full recipes on >=2 allowed V48/L24 tables at T256/1024 (prioritize1024), GRU layer counts matched to focal. Report mean CE differences/ratios, seed counts/failures, retained counterexamples, budget/width/alpha confounding. No evaluation answers and no unmeasured noise-fitting mechanism. Max 3 new-claim slots remain this curation; prefer report and scoped proposal, not blanket parent rewrite.\"}"
+      }
+    ],
+    "results": [
+      "research Jb132c3ee1518 launched asynchronously; topic=e6_bigram_momentum_vs_aggressive_adamw; origin=e0006"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 7,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "research",
+        "arguments": "{\"topic\": \"e6_multivariate_long_budget_recipe_audit\", \"question\": \"Does the full-recipe reversal in q_e285d5 justify any scoped preference for conservative normalized momentum-SGD over high-rate deep residual AdamW on long-budget multivariate MSE, or is it target/split/architecture dependent?\", \"focus\": \"Read current K1080/K1114/K1117 and R1e820ab3a7 (existing endpoint grids must not be repeated). Verify actual q recipes: B plain d4w128 GELU LN[T,T,F,T],SGD.0003 m.9 wd0; C residual d5w96 GELU LN[F,T,T,T,T],AdamW.001 wd.0001 betas.9/.95; T1024/b32,32768samples,default init. Comment incorrectly calls B shallower generic; compare complete recipes. Backtest B-v-C matching necessary scopes, then preregister new paired full-recipe controls on >=2 allowed comparable symbolic targets and T256/1024 if feasible, keeping comparisons within set_id. Include target type/offset/variance, counts, loss effects, failures, and counterexamples; rate-only broad comparison SGD1/11 already rejects optimizer law. Do not assert precision, oscillatory fitting, or overshoot mechanism from endpoints. Proposal should not restore universal multivariate maximum/conservative Delta rule.\"}"
+      }
+    ],
+    "results": [
+      "research Ja412e95637cf launched asynchronously; topic=e6_multivariate_long_budget_recipe_audit; origin=e0006"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 8,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "research",
+        "arguments": "{\"topic\": \"e6_multivariate_target_dependent_ln_residual\", \"question\": \"Can target-dependent low-progress multivariate MSE reversals be predicted under identical full recipes, rather than choosing by LN count? q_c692d1 vs q_1f04dc reverse A/B; q_1e1b7e vs q_c514ef reverse B/C.\", \"focus\": \"Read current K1006/K1008/K1076 and R04f88f629b first. Verify byte-identical choice/budget/loss/initialization sections and record target/split differences. Existing comment residual-over-extra-LN backtests are mixed: do not propose universal residual override. Use allowed lab/corpus only, isolate target centering/scaling if documented overrides support it; otherwise explicitly report inability and compare full recipes on >=2 allowed target types at focal budgets and optimizer. Retain LN/residual/activation/width/depth/batch confounds. Register new-setting prediction before measurement, report numerical mean-loss differences/ratios, seed dispersion/counts/failures/provenance. Do not repeat existing controls or use evaluation answers. Focus an independently reviewable unfinished report, not a pooled scoring law.\"}"
+      }
+    ],
+    "results": [
+      "research Jc60aaee7d435 launched asynchronously; topic=e6_multivariate_target_dependent_ln_residual; origin=e0006"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 9,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "kb_view",
+        "arguments": "{\"ids\": [\"K1059\", \"K1020\", \"K1033\", \"K1056\", \"K1016\", \"K1066\", \"K1068\", \"K1070\", \"K1019\"]}"
+      }
+    ],
+    "results": [
+      "[K1070] cred=0.706 s=11.00 f=4.00 ep=0 src=[]\nClassification MLPs,SAME net/lr,T<=1024: RMSprop is an underfitting-regime preference,NOT a guaranteed winner on easy high-rate spirals(K1086). Older matched17/20,median Adam/RMS CE1.12;controlled7/8. Do not use a universal1.5x lr conversion. Edge shrank with T;T2048 Adam1/1. Exact d4w24 residual LeakyReLU recipes atlr.003,T256 favor Adam on1turn(q_7e1811),RMSprop on2turns(q_95fe03);wd/betas and dataset confound cause. Atlr<=3e-4 older RMS wins multivariate4/4,bigram4/4;atlr>=.001 Adam wins multivariate6/6,bigram transformer5/5. Univariate:K1057. Close cross-optimizer Delta is not a total order;later fit/recipe/data matter.\n[K1059] cred=0.650 s=2.25 f=0.75 ep=0 src=[]\nClassification plain(nonresidual) MLP,d>=2,SHARED SGD/lr/T: terminal-block pre-LN is a preference,not a guaranteed winner. Legacy31/31 labpairs(14sets,CEratio.69),including fewer-totalLN11/11(.76),used an underidentified filter. Reb8454abdf explicit plainCE base audit:equal type/lr SGD5/5,Adam6/12;zero full-config SGD pairs. Older Adam70/102(.92),Adagrad21/35(~.99) are separate filters. TerminalLN precedes the last hidden Linear/activation,NOT direct normalization of head input. Scope excludes residual rivals and unvalidated MSE transfer;no loss ratio measures gradient attenuation or frozen motion.\n[K1068] cred=0.650 s=8.75 f=4.25 ep=0 src=[]\nBigram post-LN TF,shared optimizer/lr/T: old width bands favor wider atDelta.02-.1(lab21/23),smaller at.1-.5(26/27). Do NOT use them to sort unequal-depth/FF/head bundles. Low-band corpus13/13,CEratio~.98;high-band corpus7/11,d64vs128 lab20/21. Delta>=.5 smaller10/12lab,5/6corpus. Below.02 adaptive9/16 mixed;SGDwider6/6 is limited,not shape-independent. q_ae70f8 atDelta.3072:d32x4 lost to d64x1;NOT a shallow-first law. Compare shape,data,init,budget(K1017);no isolated universal flip at.1.\n[K1019] cred=0.603 s=19.50 f=12.50 ep=0 src=[]\nSGD vs ADAPTIVE optimizers: family-calibrated Delta is a proxy,NOT a plain-vs-momentum SGD rule. Fit368pairs. MSE momentum.9 raw|g|~.03: Adam-equivalent lr/3,largerDelta correct59/71 vs54/71 at .01; wins11/19 when adaptiveDelta<=4x its .01-estimate. Classification131/146 and plainSGD MSE keep .01;do NOT infer a momentum bonus at equal lr/(1-m). Bigram |g|~.003:m.9 ~Adam lr/30,plain~lr/300;correct68/70 vs63/70 at .01. Momentum LM beats adaptive1/18,nominal parity1/4. PlainSGD wins3/141 when adaptiveDelta>15x larger. MLP calibration assumes>=1LN;zeroLN:K1038. Parity needs direct matched evidence(R838be7703a),NOT this multiplier.\n[K1066] cred=0.571 s=7.00 f=5.00 ep=0 src=[]\nTWO-SPIRAL classification, DEEP vs SHALLOW (same optimizer): a deeper (≥3 block) RESIDUAL MLP with MORE LayerNorms than a shallow (≤2 block) net wins almost always — lab 51/55 (adaptive Δ≥0.05 34/35, CE ratio 0.38; adaptive Δ<0.05 11/14; SGD 6/6, ratio 0.36), corpus 8/8 (ratio 0.76) — even if the shallow net is much wider. Deeper NON-residual nets are unreliable: lab 30/32 with more LN but corpus 0/7 (q_5fe255, q_774f6c had unnormalized last blocks) — credit them only if their last block is LN'd (K1061). Deeper residual with ≤ the shallow net's LN: lab 33/43, corpus 0/2 — tendency only. q_d7ea11: 3-LN residual deep net beat the shallow wide pick.\n[K1056] cred=0.569 s=9.25 f=6.75 ep=0 src=[]\nTABULAR classification (synthetic, 1024 rows), once trained (shared core-rule Δ≥0.1, same optimizer/lr/T): prefer GELU/SiLU over ReLU/LeakyReLU. Smooth wins 23/25 lab within-set pairs (~11 sets, median test-CE ratio ~0.80; smooth_additive 14/14, sparse_interaction 5/6, piecewise 4/5); corpus 16/16 (K1009). At Δ 0.01-0.1 only a tendency (44/74, ratio 0.87); at Δ<0.01 no effect (8/19, ratio 1.00) - decide by LN/depth instead. Activation-only matched pairs 19/28. q_b68ab2: plain SiLU RMSprop 1e-4×2048 (Δ0.2) beat residual LeakyReLU nets at larger Δ.\n[K1016] cred=0.565 s=16.50 f=12.50 ep=0 src=[]\nCapacity is not the bottleneck: at these budgets parameter count and width barely predict the winner — do"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 10,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"import re\\nh=load_history()\\nfor qid in ['q_c692d1','q_1f04dc','q_1e1b7e','q_c514ef','q_b3f618','q_9d4013']:\\n x=next((z for z in h if z['question_id']==qid),None)\\n if not x:print('missing',qid);continue\\n q=x['question']; pre=re.split(r'### Choice [A-E]',q)[0]\\n clean=re.sub(r'```[\\\\s\\\\S]*?```','',pre)\\n print(qid,'gold',x['answer'])\\n print('\\\\n'.join(s for s in clean.splitlines() if re.search(r'^- (?:Expression|Target|Input|Reproducibility|Rule family|training_steps|batch_size|total_samples_seen)|^y\\\\b|symbolic|Target function',s)))\\n print('expr',re.findall(r'(?:y|target)\\\\s*=\\\\s*([^\\\\n]+)',pre)[:4])\\n for label,s in re.findall(r'### Choice ([A-E])([\\\\s\\\\S]*?)(?=### Choice [A-E]|## Your answer|$)',q):\\n  t=re.sub(r'```[\\\\s\\\\S]*?```','',s)\\n  vals=[]\\n  for key in ['training_steps','batch_size','Depth','Width','Residual connections','Layer norm per layer','Activation','Optimizer','Learning rate','Weight decay','Betas','Momentum']:\\n   m=re.search(r'^- '+re.escape(key)+r': ([^\\\\n]+)',t,re.M)\\n   if m:vals.append(m.group(1).split(' (')[0].split(' hidden')[0])\\n  print(label,' | '.join(vals))\"}"
+      }
+    ],
+    "results": [
+      "q_c692d1 gold B\nMultivariate regression on `[0, 1]^n`: input is a vector `x ∈ R^n`, target is a scalar `y ∈ R` from a fixed symbolic expression. Train and test splits are fixed before any candidate training.\n- Target expression (canonical): `tanh(2*x6)**3 + cos(2*pi*sin(2*pi*x1))**2 + cos(2*pi*x7)*sin(2*pi*x6) + sin(2*pi*x4)**2 + sin(2*pi*tanh(2*x2)) + tanh(2*x7**2) + tanh(2*x3**3) + 2*x0 - 3*x5`\n- Input dimension: 8\n- Input domain: [0.0, 1.0] per coordinate, uniform sampling\n- training_steps: 256\n- batch_size: 64\n- total_samples_seen: 16384 (= training_steps × batch_size)\nexpr ['target(train_x)', 'target(test_x)']\nA 2 | 192 | False | [True, True] | silu | Adagrad | 0.001 | 0.001\nB 1 | 192 | True | [True] | leaky_relu | Adagrad | 0.001 | 0.001\nC 1 | 256 | True | [False] | leaky_relu | Adagrad | 0.001 | 0.001\nq_1f04dc gold A\nMultivariate regression on `[0, 1]^n`: input is a vector `x ∈ R^n`, target is a scalar `y ∈ R` from a fixed symbolic expression. Train and test splits are fixed before any candidate training.\n- Target expression (canonical): `x0*x7 + x5**2 + 2*x7**2 + tanh(2*abs(cos(2*pi*x3))) + x0 + x1 + x2 + x3 + x4 - 2*x6`\n- Input dimension: 8\n- Input domain: [0.0, 1.0] per coordinate, uniform sampling\n- training_steps: 256\n- batch_size: 64\n- total_samples_seen: 16384 (= training_steps × batch_size)\nexpr ['target(train_x)', 'target(test_x)']\nA 2 | 192 | False | [True, True] | silu | Adagrad | 0.001 | 0.001\nB 1 | 192 | True | [True] | leaky_relu | Adagrad | 0.001 | 0.001\nC 1 | 256 | True | [False] | leaky_relu | Adagrad | 0.001 | 0.001\nq_1e1b7e gold B\nMultivariate regression on `[0, 1]^n`: input is a vector `x ∈ R^n`, target is a scalar `y ∈ R` from a fixed symbolic expression. Train and test splits are fixed before any candidate training.\n- Target expression (canonical): `tanh(2*x2)**3 + cos(2*pi*x2)*sin(2*pi*x1) + 0.5*cos(2*pi*x3) + tanh(2*x0) + 3*x1 + x2 + 2*x3 + 2`\n- Input dimension: 4\n- Input domain: [0.0, 1.0] per coordinate, uniform sampling\n- training_steps: 256\n- batch_size: 16\n- total_samples_seen: 4096 (= training_steps × batch_size)\nexpr ['target(train_x)', 'target(test_x)']\nA 4 | 192 | False | [False, False, True, False] | silu | AdamW | 3e-05 | 1e-05 | [0.9, 0.95]\nB 4 | 192 | True | [False, True, False, False] | gelu | AdamW | 3e-05 | 1e-05 | [0.9, 0.95]\nC 3 | 192 | False | [False, True, True] | relu | AdamW | 3e-05 | 1e-05 | [0.9, 0.95]\nq_c514ef gold C\nMultivariate regression on `[0, 1]^n`: input is a vector `x ∈ R^n`, target is a scalar `y ∈ R` from a fixed symbolic expression. Train and test splits are fixed before any candidate training.\n- Target expression (canonical): `cos(2*pi*tanh(2*x1))**2 + sin(2*pi*cos(2*pi*x0))**2 + sin(2*pi*x1)*x3 + cos(2*pi*tanh(2*x2)) + sin(2*pi*x3**6)`\n- Input dimension: 4\n- Input domain: [0.0, 1.0] per coordinate, uniform sampling\n- training_steps: 256\n- batch_size: 16\n- total_samples_seen: 4096 (= training_steps × batch_size)\nexpr ['target(train_x)', 'target(test_x)']\nA 4 | 192 | False | [False, False, True, False] | silu | AdamW | 3e-05 | 1e-05 | [0.9, 0.95]\nB 4 | 192 | True | [False, True, False, False] | gelu | AdamW | 3e-05 | 1e-05 | [0.9, 0.95]\nC 3 | 192 | False | [False, True, True] | relu | AdamW | 3e-05 | 1e-05 | [0.9, 0.95]\nq_b3f618 gold C\n- Rule family: `spiral`; active coordinates: `x_0`, `x_1` (input is 2-dimensional).\n- Reproducibility: point seed `1236356316`, spiral turns `3`.\n- Input shape: float32 `[N, 2]`; labels: int64 `[N]` in `{0, 1}`.\n- total_samples_seen: 32768\nexpr ['0` for points drawn from the `phase = 0` arm and `y = 1` for points from the `phase = π` arm; both arms are equally likely, so classes are balanced.']\nA 2048 | 16 | 3 | 256 | False | [True, True, True] | silu | AdamW | 0.0003 | 0 | [0.9, 0.95]\nB 2048 | 16 | 4 | 192 | False | [False, False, False, True] | gelu | Adagrad | 0.0001 | 0\nC 2048 | 16 | 3 | 256 | True | [True, True, True] | relu | Adam | 0.001 | 0.001 | [0.9, 0.95]\nq_9d4013 gold B\n- Rule family: `spiral`; active coordinates: `x_"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 11,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"from collections import Counter\\nl=load_lab();h=load_history()\\nprint('MLP',next(x for x in l if x['model_type']=='mlp'))\\nprint('historykeys',list(h[-1]))\\nxs=[x for x in l if x['family']=='bigram_lm' and x['dataset'].get('vocab_size')==24 and x['dataset'].get('context_length')==24 and ((x['model_type']=='gru_lm' and x.get('d_model')==64 and x.get('num_layers')==1) or(x['model_type']=='transformer_lm' and x.get('d_model')==32 and x.get('num_layers')==4))]\\nprint('target rows',len(xs),'datasets',Counter(x['dataset_id'] for x in xs));print('experiment sets',Counter(x['set_id'] for x in xs if x['set_id'].startswith('exp:')))\\nprint('first exp',next((x for x in xs if x['set_id'].startswith('exp:')),None))\"}"
+      }
+    ],
+    "results": [
+      "MLP {'family': 'multivariate_regression', 'dataset_id': 'mvar_000e80', 'set_id': 'mvar_000e80/set_4096_var_var_fix_c6e42d', 'candidate_id': 'c_028f30', 'dataset': {'instance_seed': 75196781, 'input_dim': 3, 'sampler': {'id': 'symbolic_expr_mv', 'seed': 75196781, 'max_depth': 3, 'retry': 1}, 'expression': 'cos(2*pi*x2)*x1 + abs(sin(2*pi*cos(2*pi*x0))) + cos(2*pi*sin(2*pi*x1)**2) + cos(2*pi*x2) - 1', 'domain': [0.0, 1.0], 'train_size': 256, 'test_size': 256, 'point_sampling': {'distribution': 'uniform', 'seed': 75197781}}, 'budget': {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096}, 'params': 5041, 'model_type': 'mlp', 'depth': 2, 'width': 48, 'residual': False, 'activation': 'relu', 'layer_norm': [False, True], 'n_ln': 1, 'leaky_slope': None, 'init': 'default', 'model': {'type': 'mlp', 'depth': 2, 'width': 48, 'residual': False, 'activation': 'relu', 'layer_norm': [False, True], 'input_dim': 3, 'output_dim': 1}, 'optimizer': {'type': 'Adagrad', 'lr': 0.0003, 'weight_decay': 0}, 'loss': {'loss_id': 'mse'}, 'metric': 'test_mse', 'mean': 1.5290504455566407, 'std': 0.04051938935014594, 'failed_seeds': 0, 'excluded': False}\nhistorykeys ['question_id', 'epoch', 'source', 'task', 'type', 'family', 'question', 'answer', 'prediction', 'score', 'inversions', 'cited', 'explanation', 'comment', 'hypothesis', 'imported_from', 'question_provenance']\ntarget rows 277 datasets Counter({'bg_1d9caf': 47, 'bg_209ff2': 42, 'bg_0f0001': 42, 'bg_30d1db': 42, 'bg_0bf6d7': 36, 'bg_388f11': 36, 'bg_3b2611': 5, 'bg_831c76': 5, 'bg_8cd388': 5, 'bg_c62345': 5, 'bg_7c006d': 4, 'bg_848473': 3, 'bg_efeab1': 3, 'bg_36d417': 2})\nexperiment sets Counter({'exp:0505b680216f': 12, 'exp:66b9ba4c665a': 12, 'exp:4aad37a71833': 12, 'exp:f886c2c9c7ee': 12, 'exp:7d34fe7ad02c': 12, 'exp:84315fe55abe': 12, 'exp:d9456e5fe2f8': 12, 'exp:c505dc7c3320': 12, 'exp:dc789760e8c4': 12, 'exp:03d45be47f94': 12, 'exp:0919e61ce250': 12, 'exp:1a5ab5fdf0e9': 12, 'exp:1cc99f310263': 12, 'exp:12b180500b53': 12, 'exp:d09a3cdb80a1': 12, 'exp:a321b72acee8': 12, 'exp:4eee3c977fcd': 12, 'exp:21650aa6cb9d': 10, 'exp:338789c604fb': 3, 'exp:c4c1b57d20d8': 2, 'exp:b38185d969c5': 2, 'exp:4891a66761fa': 2, 'exp:11bc11d937c5': 2, 'exp:53fdcb50ccd3': 2, 'exp:35b7f15c305a': 2, 'exp:393f0d25aea2': 2, 'exp:a5d2ebad5c4f': 2, 'exp:896259a89132': 2, 'exp:f2b4f621ec0c': 2, 'exp:33eec8ec87fe': 2, 'exp:ce68e742094e': 2, 'exp:c38393ed309c': 2, 'exp:56d36cf12890': 2})\nfirst exp {'family': 'bigram_lm', 'dataset_id': 'bg_1d9caf', 'set_id': 'exp:338789c604fb', 'candidate_id': 'b5474ed7', 'dataset': {'instance_seed': 100064931980, 'vocab_size': 24, 'context_length': 24, 'train_size': 800, 'test_size': 200, 'alpha': 0.8, 'layout': 'lm', 'sequence_seed': 100064931980, 'table_seed': 100064941980}, 'budget': {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096}, 'params': None, 'model_type': 'gru_lm', 'd_model': 64, 'num_layers': 1, 'model': {'type': 'gru_lm', 'vocab_size': 24, 'context_length': 24, 'd_model': 64, 'num_layers': 1, 'layer_residual': False}, 'optimizer': {'type': 'SGD', 'lr': 0.001, 'weight_decay': 0, 'momentum': 0}, 'loss': {'loss_id': 'cross_entropy', 'lambda': 1.0}, 'metric': 'test_ce', 'mean': 3.189250135421753, 'std': 0.005892385910455994, 'source': 'experiment', 'epoch': 5, 'origin_epoch': 5, 'why': 'Capability probe: default-init baseline, independent head-scale and position/step0 requests. Do not assume unsupported fields implement interventions. Preregistered calibration test.'}\n"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 12,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"import json,itertools,numpy as np\\nfrom collections import defaultdict,Counter\\nl=load_lab();sets=defaultdict(list)\\nallowed={'bg_1d9caf','bg_209ff2','bg_0f0001','bg_30d1db','bg_0bf6d7','bg_388f11'}\\nfor x in l:\\n if x['dataset_id'] in allowed and x['set_id'].startswith('exp:') and x.get('source')=='experiment' and x.get('origin_epoch')==5 and not x.get('excluded',False):sets[x['set_id']].append(x)\\npairs={}\\nfor sid,rows in sets.items():\\n gs=[x for x in rows if x['model_type']=='gru_lm' and x.get('d_model')==64 and x.get('num_layers')==1]\\n ts=[x for x in rows if x['model_type']=='transformer_lm' and x.get('d_model')==32 and x.get('num_layers')==4 and x.get('num_heads')==4 and x.get('d_ff')==128]\\n for g,t in itertools.product(gs,ts):\\n  if g['optimizer']!=t['optimizer'] or g['budget']!=t['budget'] or g['loss']!=t['loss']:continue\\n  opt=g['optimizer']; T=g['budget']['training_steps'];lr=opt['lr']\\n  if opt['type']=='SGD': gate=lr in [0,.0001,.001,.003]\\n  elif opt['type']=='Adam':gate=any(abs(lr*T-d)<1e-8 for d in [.01,.0256,.064])\\n  else:gate=False\\n  if not gate or T not in [256,512]:continue\\n  key=(g['dataset_id'],json.dumps(opt,sort_keys=True),json.dumps(g['budget'],sort_keys=True))\\n  pairs.setdefault(key,{'sid':sid,'g':g,'t':t,'ratio':g['mean']/t['mean'],'diff':g['mean']-t['mean']})\\nfor opt in ['SGD','Adam']:\\n ps=[p for p in pairs.values() if p['g']['optimizer']['type']==opt and p['g']['optimizer']['lr']!=0]\\n print(opt,'n',len(ps),'wins',sum(p['diff']<0 for p in ps),'datasets',len(set(p['g']['dataset_id'] for p in ps)))\\n print('ratio med/range',np.median([p['ratio'] for p in ps]),min(p['ratio'] for p in ps),max(p['ratio'] for p in ps),'CE diff med/range',np.median([p['diff'] for p in ps]),min(p['diff'] for p in ps),max(p['diff'] for p in ps))\\n print('failfields',Counter(('failed_seeds' in p['g'],'failed_seeds' in p['t']) for p in ps))\\n print('datasets',(sorted((p['g']['dataset_id'],p['g']['dataset']['alpha']) for p in ps))[::6])\\n print('sources',sorted(set(p['sid'] for p in ps)))\\nz=[p for p in pairs.values() if p['g']['optimizer']['lr']==0];print('zero',len(z),[(p['g']['dataset_id'],p['g']['mean'],p['t']['mean']) for p in z])\"}"
+      }
+    ],
+    "results": [
+      "SGD n 0 wins 0 datasets 0\n/workspace/miniconda3/lib/python3.10/site-packages/numpy/_core/fromnumeric.py:3860: RuntimeWarning: Mean of empty slice.\n  return _methods._mean(a, axis=axis, dtype=dtype,\n/workspace/miniconda3/lib/python3.10/site-packages/numpy/_core/_methods.py:145: RuntimeWarning: invalid value encountered in scalar divide\n  ret = ret.dtype.type(ret / rcount)\nTraceback (most recent call last):\n  File \"aiq_rl/data/kb_scratch/kb_science_loop/soa_async_v1/sandbox/e0006/_summarizer/_analysis.py\", line 80, in <module>\n    print('ratio med/range',np.median([p['ratio'] for p in ps]),min(p['ratio'] for p in ps),max(p['ratio'] for p in ps),'CE diff med/range',np.median([p['diff'] for p in ps]),min(p['diff'] for p in ps),max(p['diff'] for p in ps))\nValueError: min() arg is an empty sequence\n"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 13,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"l=load_lab();xs=[x for x in l if x['dataset_id']=='bg_1d9caf' and x['set_id']=='exp:0505b680216f'];print(xs[:2]);print('TF',next(x for x in l if x['dataset_id']=='bg_1d9caf' and x['model_type']=='transformer_lm' and x['set_id'].startswith('exp:')))\\nprint('setsd',[(x['set_id'],x['model_type'],x.get('num_heads'),x.get('d_ff'),x['optimizer'],x['budget']) for x in l if x['set_id']=='exp:0505b680216f'][:6])\"}"
+      }
+    ],
+    "results": [
+      "[{'family': 'bigram_lm', 'dataset_id': 'bg_1d9caf', 'set_id': 'exp:0505b680216f', 'candidate_id': '5851be74', 'dataset': {'instance_seed': 100064931980, 'vocab_size': 24, 'context_length': 24, 'train_size': 800, 'test_size': 200, 'alpha': 0.8, 'layout': 'lm', 'sequence_seed': 100064931980, 'table_seed': 100064941980}, 'budget': {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096}, 'params': None, 'model_type': 'gru_lm', 'd_model': 64, 'num_layers': 1, 'model': {'type': 'gru_lm', 'vocab_size': 24, 'context_length': 24, 'd_model': 64, 'num_layers': 1, 'layer_residual': False}, 'optimizer': {'type': 'SGD', 'lr': 0.0001, 'weight_decay': 0, 'momentum': 0}, 'loss': {'loss_id': 'cross_entropy', 'lambda': 1.0}, 'metric': 'test_ce', 'mean': 3.1929807901382445, 'std': 0.006085762543264328, 'source': 'experiment', 'epoch': 5, 'origin_epoch': 5, 'why': 'Corrected family-specific keys after schema validation failure; unchanged preregistered shared-SGD exact pair grid, dataset 1/6.'}, {'family': 'bigram_lm', 'dataset_id': 'bg_1d9caf', 'set_id': 'exp:0505b680216f', 'candidate_id': '3900f502', 'dataset': {'instance_seed': 100064931980, 'vocab_size': 24, 'context_length': 24, 'train_size': 800, 'test_size': 200, 'alpha': 0.8, 'layout': 'lm', 'sequence_seed': 100064931980, 'table_seed': 100064941980}, 'budget': {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096}, 'params': None, 'model_type': 'transformer_lm', 'd_model': 32, 'num_layers': 4, 'num_heads': 2, 'd_ff': 128, 'model': {'type': 'transformer_lm', 'vocab_size': 24, 'context_length': 24, 'd_model': 32, 'num_layers': 4, 'layer_residual': False, 'num_heads': 2, 'd_ff': 128}, 'optimizer': {'type': 'SGD', 'lr': 0.0001, 'weight_decay': 0, 'momentum': 0}, 'loss': {'loss_id': 'cross_entropy', 'lambda': 1.0}, 'metric': 'test_ce', 'mean': 3.3349975824356077, 'std': 0.030981696564046833, 'source': 'experiment', 'epoch': 5, 'origin_epoch': 5, 'why': 'Corrected family-specific keys after schema validation failure; unchanged preregistered shared-SGD exact pair grid, dataset 1/6.'}]\nTF {'family': 'bigram_lm', 'dataset_id': 'bg_1d9caf', 'set_id': 'exp:338789c604fb', 'candidate_id': 'cf89ccea', 'dataset': {'instance_seed': 100064931980, 'vocab_size': 24, 'context_length': 24, 'train_size': 800, 'test_size': 200, 'alpha': 0.8, 'layout': 'lm', 'sequence_seed': 100064931980, 'table_seed': 100064941980}, 'budget': {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096}, 'params': None, 'model_type': 'transformer_lm', 'd_model': 32, 'num_layers': 4, 'num_heads': 2, 'd_ff': 128, 'model': {'type': 'transformer_lm', 'vocab_size': 24, 'context_length': 24, 'd_model': 32, 'num_layers': 4, 'layer_residual': False, 'num_heads': 2, 'd_ff': 128, 'head_scale': 0.1}, 'optimizer': {'type': 'SGD', 'lr': 0.001, 'weight_decay': 0, 'momentum': 0}, 'loss': {'loss_id': 'cross_entropy', 'lambda': 1.0}, 'metric': 'test_ce', 'mean': 3.305922102928162, 'std': 0.026441549492941033, 'source': 'experiment', 'epoch': 5, 'origin_epoch': 5, 'why': 'Capability probe: default-init baseline, independent head-scale and position/step0 requests. Do not assume unsupported fields implement interventions. Preregistered calibration test.'}\nsetsd [('exp:0505b680216f', 'gru_lm', None, None, {'type': 'SGD', 'lr': 0.0001, 'weight_decay': 0, 'momentum': 0}, {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096}), ('exp:0505b680216f', 'transformer_lm', 2, 128, {'type': 'SGD', 'lr': 0.0001, 'weight_decay': 0, 'momentum': 0}, {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096}), ('exp:0505b680216f', 'gru_lm', None, None, {'type': 'SGD', 'lr': 0.001, 'weight_decay': 0, 'momentum': 0}, {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096}), ('exp:0505b680216f', 'transformer_lm', 2, 128, {'type': 'SGD', 'lr': 0.001, 'weight_decay': 0, 'momentum': 0}, {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096}), ('exp:0505b680216f', 'gru_lm', None, No"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 14,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"import json,itertools,numpy as np\\nfrom collections import defaultdict,Counter\\nl=load_lab();sets=defaultdict(list)\\nallowed={'bg_1d9caf','bg_209ff2','bg_0f0001','bg_30d1db','bg_0bf6d7','bg_388f11'}\\nfor x in l:\\n if x['dataset_id'] in allowed and x['set_id'].startswith('exp:') and x.get('origin_epoch')==5 and not x.get('excluded',False):sets[x['set_id']].append(x)\\npairs={}\\nfor sid,rows in sets.items():\\n gs=[x for x in rows if x['model_type']=='gru_lm' and x.get('d_model')==64 and x.get('num_layers')==1 and set(x['model'])<=set(['type','vocab_size','context_length','d_model','num_layers','layer_residual'])]\\n ts=[x for x in rows if x['model_type']=='transformer_lm' and x.get('d_model')==32 and x.get('num_layers')==4 and x.get('num_heads')==2 and x.get('d_ff')==128 and set(x['model'])<=set(['type','vocab_size','context_length','d_model','num_layers','layer_residual','num_heads','d_ff'])]\\n for g,t in itertools.product(gs,ts):\\n  if g['optimizer']!=t['optimizer'] or g['budget']!=t['budget'] or g['loss']!=t['loss']:continue\\n  opt=g['optimizer'];T=g['budget']['training_steps'];lr=opt['lr']\\n  gate=(opt['type']=='SGD' and lr in [0,.0001,.001,.003]) or(opt['type']=='Adam' and any(abs(lr*T-d)<1e-8 for d in [.01,.0256,.064]))\\n  if not gate or T not in [256,512]:continue\\n  key=(g['dataset_id'],json.dumps(opt,sort_keys=True),json.dumps(g['budget'],sort_keys=True))\\n  pairs.setdefault(key,{'sid':sid,'g':g,'t':t,'ratio':g['mean']/t['mean'],'diff':g['mean']-t['mean']})\\nfor opt in ['SGD','Adam']:\\n ps=[p for p in pairs.values() if p['g']['optimizer']['type']==opt and p['g']['optimizer']['lr']!=0]\\n print(opt,'n',len(ps),'wins',sum(p['diff']<0 for p in ps),'datasets',len(set(p['g']['dataset_id'] for p in ps)))\\n if not ps:continue\\n print('ratio med/range',np.median([p['ratio'] for p in ps]),min(p['ratio'] for p in ps),max(p['ratio'] for p in ps),'CE diff med/range',np.median([p['diff'] for p in ps]),min(p['diff'] for p in ps),max(p['diff'] for p in ps))\\n print('failfields',Counter(('failed_seeds' in p['g'],'failed_seeds' in p['t']) for p in ps))\\n print('datasets',sorted(set((p['g']['dataset_id'],p['g']['dataset']['alpha']) for p in ps)))\\n print('sources',sorted(set(p['sid'] for p in ps)))\\nz=[p for p in pairs.values() if p['g']['optimizer']['lr']==0];print('zero',len(z),[(p['g']['dataset_id'],p['g']['mean'],p['t']['mean']) for p in z])\"}"
+      }
+    ],
+    "results": [
+      "SGD n 36 wins 36 datasets 6\nratio med/range 0.9699963318182175 0.955808425847516 0.997136085832515 CE diff med/range -0.09843727350234976 -0.14735503196716326 -0.008953499794006614\nfailfields Counter({(False, False): 36})\ndatasets [('bg_0bf6d7', 1.0), ('bg_0f0001', 1.4), ('bg_1d9caf', 0.8), ('bg_209ff2', 0.8), ('bg_30d1db', 1.4), ('bg_388f11', 1.0)]\nsources ['exp:0505b680216f', 'exp:0919e61ce250', 'exp:4aad37a71833', 'exp:7d34fe7ad02c', 'exp:d9456e5fe2f8', 'exp:dc789760e8c4']\nAdam n 38 wins 38 datasets 6\nratio med/range 0.987495644409131 0.9781838222403475 0.9962986768886121 CE diff med/range -0.03866319656372075 -0.06526029109954834 -0.010886096954345614\nfailfields Counter({(False, False): 38})\ndatasets [('bg_0bf6d7', 1.0), ('bg_0f0001', 1.4), ('bg_1d9caf', 0.8), ('bg_209ff2', 0.8), ('bg_30d1db', 1.4), ('bg_388f11', 1.0)]\nsources ['exp:03d45be47f94', 'exp:1a5ab5fdf0e9', 'exp:393f0d25aea2', 'exp:66b9ba4c665a', 'exp:84315fe55abe', 'exp:c38393ed309c', 'exp:c505dc7c3320', 'exp:f886c2c9c7ee']\nzero 6 [('bg_1d9caf', 3.193401741981506, 3.338789629936218), ('bg_209ff2', 3.194426918029785, 3.338655924797058), ('bg_0bf6d7', 3.1893096208572387, 3.339309334754944), ('bg_388f11', 3.1983014822006224, 3.3383111238479612), ('bg_0f0001', 3.1921048879623415, 3.3426944971084596), ('bg_30d1db', 3.1883025646209715, 3.341432881355286)]\n"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 15,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"import json\\nfrom collections import Counter\\nl=load_lab();print(Counter(json.dumps(x['optimizer'],sort_keys=True) for x in l if x['set_id'] in ['exp:66b9ba4c665a','exp:393f0d25aea2','exp:c38393ed309c']))\\nprint('shapeaudit',[(x['dataset_id'],x['set_id'],x['d_model'],x['num_layers'],x.get('num_heads'),x.get('d_ff'),round(x['mean'],6)) for x in l if x['dataset_id'] in ['bg_1d9caf','bg_209ff2','bg_0f0001','bg_30d1db'] and x['set_id'].startswith('exp:') and x['budget']['training_steps']==256 and x['optimizer'].get('type')=='Adam' and x['optimizer'].get('lr')==.0001 and ((x['model_type']=='transformer_lm' and x['d_model']==64 and x['num_layers']==4) or (x['model_type']=='gru_lm' and x['d_model']==64 and x['num_layers']==1))])\"}"
+      }
+    ],
+    "results": [
+      "Counter({'{\"betas\": [0.9, 0.999], \"lr\": 0.0001, \"momentum\": 0.9, \"type\": \"Adam\", \"weight_decay\": 0}': 18, '{\"betas\": [0.9, 0.999], \"lr\": 3.90625e-05, \"momentum\": 0.9, \"type\": \"Adam\", \"weight_decay\": 0}': 2, '{\"betas\": [0.9, 0.999], \"lr\": 0.00025, \"momentum\": 0.9, \"type\": \"Adam\", \"weight_decay\": 0}': 2, '{\"betas\": [0.9, 0.999], \"lr\": 1.953125e-05, \"momentum\": 0.9, \"type\": \"Adam\", \"weight_decay\": 0}': 2, '{\"betas\": [0.9, 0.999], \"lr\": 5e-05, \"momentum\": 0.9, \"type\": \"Adam\", \"weight_decay\": 0}': 2, '{\"betas\": [0.9, 0.999], \"lr\": 0.000125, \"momentum\": 0.9, \"type\": \"Adam\", \"weight_decay\": 0}': 2})\nshapeaudit [('bg_1d9caf', 'exp:66b9ba4c665a', 64, 1, None, None, 3.094359), ('bg_209ff2', 'exp:f886c2c9c7ee', 64, 1, None, None, 3.096967), ('bg_0f0001', 'exp:c505dc7c3320', 64, 1, None, None, 2.93181), ('bg_30d1db', 'exp:03d45be47f94', 64, 1, None, None, 2.962071), ('bg_1d9caf', 'exp:11bc11d937c5', 64, 1, None, None, 3.094359), ('bg_1d9caf', 'exp:11bc11d937c5', 64, 4, 2, 128, 3.078272), ('bg_209ff2', 'exp:393f0d25aea2', 64, 1, None, None, 3.096967), ('bg_209ff2', 'exp:393f0d25aea2', 64, 4, 2, 128, 3.082861), ('bg_0f0001', 'exp:f2b4f621ec0c', 64, 1, None, None, 2.93181), ('bg_0f0001', 'exp:f2b4f621ec0c', 64, 4, 2, 128, 2.731169), ('bg_30d1db', 'exp:c38393ed309c', 64, 1, None, None, 2.962071), ('bg_30d1db', 'exp:c38393ed309c', 64, 4, 2, 128, 2.809651)]\n"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 16,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"import numpy as np,itertools,json\\nfrom collections import defaultdict\\nl=load_lab();gridSGD={'exp:0505b680216f','exp:0919e61ce250','exp:4aad37a71833','exp:7d34fe7ad02c','exp:d9456e5fe2f8','exp:dc789760e8c4'};gridAdam={'exp:66b9ba4c665a','exp:f886c2c9c7ee','exp:c505dc7c3320','exp:03d45be47f94','exp:84315fe55abe','exp:1a5ab5fdf0e9'}\\nfor name,grid in [('SGD',gridSGD),('Adam',gridAdam)]:\\n out=[]\\n for sid in grid:\\n  rows=[x for x in l if x['set_id']==sid]\\n  gs=[x for x in rows if x['model_type']=='gru_lm' and x['d_model']==64 and x['num_layers']==1]\\n  ts=[x for x in rows if x['model_type']=='transformer_lm' and x['d_model']==32 and x['num_layers']==4 and x.get('d_ff')==128 and x.get('num_heads')==2]\\n  for g,t in itertools.product(gs,ts):\\n   if g['budget']==t['budget'] and g['optimizer']==t['optimizer'] and g['loss']==t['loss']:out.append((g['mean']/t['mean'],g['mean']-t['mean'],g['dataset_id']))\\n print(name,len(out),'wins',sum(x[1]<0 for x in out),'median',np.median([x[0] for x in out]),np.median([x[1] for x in out]),'range',min(x[1] for x in out),max(x[1] for x in out))\\n print('sample',[(x['budget'],x['optimizer']) for x in rows[:2]])\\nprint('claim science')\\nfor k in load_kb():\\n if k['id'] in ['K1006','K1018','K1009','K1038','K1040','K1065','K1075','K1114','K1059']:print(k['id'],{p:k.get(p) for p in ['mechanism','regime','phase','report_ids','last_evaluated_epoch']})\"}"
+      }
+    ],
+    "results": [
+      "ection depends on selection.', 'regime': {'family': ['xor_classification'], 'model_type': ['mlp'], 'data': ['1024rows', '8-16features'], 'optimizer': ['Adam', 'AdamW', 'RMSprop'], 'note': 'Smooth:shared lr/T,Delta>=.05. LN audit includes SGD/Adagrad. Controlled w24,d2,GELU,AdamW,T256,bs16,one dataset,10 model seeds.'}, 'phase': 'Base-only moreLN: Delta<.05 14/32,26sets,ratio1.001324; >=.05 36/51,37sets,.891043. Mixed architecture at4096/8192 samples. Controlled Delta.0256 oneLN.692235/twoLN.692118; .0512 .687533/.684777; .0768 .681533/.676190. Older LN8/32 and33/41 filters underidentified.', 'report_ids': ['R04f88f629b'], 'last_evaluated_epoch': 6}\nK1038 {'mechanism': 'Held-out loss and win rates do not measure parameter displacement or freezing. Gradient attenuation remains a hypothesis; residual/task-specific ranking differences are empirical.', 'regime': {'family': ['univariate_regression', 'multivariate_regression', 'spiral_classification', 'xor_classification'], 'model_type': ['mlp'], 'optimizer': ['SGD'], 'depth': [3, 5], 'n_ln': [0, 0], 'activation': ['silu', 'gelu'], 'budget': [4096, 8192], 'note': 'SGD Delta>=3x adaptive,rival<.1; mostly m.9,mixed architectures.'}, 'phase': 'Explicit base plain-loss audit: deep smooth zeroLN SGD11/30,11sets,ratio1.056; plain3/15,1.897;residual8/15,.991;regression5/21;spiral4/5;XOR2/4. Normalized413/471,.578. Older21/60,18sets and493/563 use different filters. No deep rectifier cases or16k/32k budgets.', 'report_ids': ['R04f88f629b', 'R838be7703a', 'Reb8454abdf'], 'last_evaluated_epoch': 5}\nK1040 {'mechanism': 'Coupled L2 decay may limit fitted logit margins, but endpoint CE alone does not measure gradient dominance or prove that mechanism. Fixed-decay controls measure recipe-local loss increases,not a universal decay threshold.', 'regime': {'family': ['spiral_classification'], 'model_type': ['mlp'], 'optimizer': ['Adam', 'AdamW'], 'data': ['1-1.5turns'], 'steps': [1024, 2048], 'note': 'Matched net/lr/budget twins only. Old d2w48plainReLU;new d2w256resSiLU2LN,bs16,Adam betas.9/.95. New wd1e-5vs1e-4 one allowed dataset,10seed means.'}, 'phase': 'Old AdamW vsAdam wd>=1e-3:12/12,ratio.002-.03. New exp:3dbc82fbb876,T2048,Adamwd1e-4/wd1e-5 ratios8.209 atlr.0001 and7.192 atlr.001;CE differences.000107736/.000107818. Near-zero endpoint ratios,not calibrated seed-level confidence or universal safe threshold.', 'report_ids': ['R2ffac818b0'], 'last_evaluated_epoch': 6}\nK1059 {'mechanism': 'Block=act(Linear(LN(x))); terminal LN normalizes the input to the final hidden block,not head input. Feature/gradient attenuation versus normalization geometry is unresolved. Endpoint CE cannot establish head-scale restoration,barely moving parameters or cancellation by adaptive optimizers. Scalar-tail rescaling without LN remains an unexecuted discriminator;instrumentation unavailable.', 'regime': {'family': ['synthetic_tabular_classification', 'xor_classification', 'spiral_classification'], 'model_type': ['mlp'], 'optimizer': ['SGD'], 'residual': [False], 'depth': [2, 5], 'steps': [256, 2048], 'note': 'Terminal preLN at input to final hidden block;shared optimizer/lr/T;legacy filter underidentified;controlled scale/geometry theory untested.'}, 'phase': 'Legacy terminalLN SGD31/31(.69),Adam70/102(.92),Adagrad21/35(.99). Explicit Reb8454abdf base plainCE audit:same-type SGD36/52,Adam27/70;equaltype/lr SGD5/5,Adam6/12;full optimizer equality SGD0pairs,Adam2/3. Different filters are not pooled or a direct refutation;new matched controls ongoing.', 'report_ids': ['Reb8454abdf'], 'last_evaluated_epoch': 5}\nK1065 {'mechanism': None, 'regime': {'family': ['xor_classification'], 'model_type': ['mlp'], 'data': ['input_dim>=8'], 'delta': [0.05, 1], 'optimizer': ['Adam', 'AdamW', 'RMSprop', 'Adagrad', 'SGD'], 'depth': [1, 5], 'note': 'gap>=3 residual evidence is 1 lab set + 3 corpus pairs'}, 'phase': 'Δ≥0.05: deeper plain 1/31; deeper residual gap1-2 8/13, gap≥3 0/4 (+corpus shallow 2/3). Δ<0.05: deeper plain 10/25, dee"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 17,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"import numpy as np,itertools\\nl=load_lab();k=load_kb(); print('nclaims',len(k),'ep6_new',[x['id'] for x in k if x.get('created_epoch')==6])\\nfor name,grid in [('SGD',['exp:0505b680216f','exp:0919e61ce250','exp:4aad37a71833','exp:7d34fe7ad02c','exp:d9456e5fe2f8','exp:dc789760e8c4']),('Adam',['exp:66b9ba4c665a','exp:f886c2c9c7ee','exp:c505dc7c3320','exp:03d45be47f94','exp:84315fe55abe','exp:1a5ab5fdf0e9'])]:\\n ps=[]\\n for sid in grid:\\n  xs=[x for x in l if x['set_id']==sid]\\n  for g,t in itertools.product([x for x in xs if x['model_type']=='gru_lm'],[x for x in xs if x['model_type']=='transformer_lm']):\\n   if g['budget']==t['budget'] and g['optimizer']==t['optimizer'] and g['loss']==t['loss']:ps.append((g['mean']/t['mean'],g['mean']-t['mean']))\\n print(name,len(ps),'wins',sum(p[1]<0 for p in ps),'medratio',np.median([p[0] for p in ps]),'mednats',np.median([p[1] for p in ps]),'range',[min(p[1] for p in ps),max(p[1] for p in ps)])\"}"
+      }
+    ],
+    "results": [
+      "nclaims 70 ep6_new ['K1114', 'K1115', 'K1116', 'K1117', 'K1118', 'K1119', 'K1120', 'K1121', 'K1122']\nSGD 36 wins 36 medratio 0.9699963318182175 mednats -0.09843727350234976 range [-0.14735503196716326, -0.008953499794006614]\nAdam 36 wins 36 medratio 0.9873249558740502 mednats -0.03918180465698229 range [-0.06526029109954834, -0.010886096954345614]\n"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 18,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"import re,json,itertools,numpy as np\\nfrom collections import defaultdict,Counter\\nl=load_lab(); h=load_history()\\nfor qid in ['q_099d20','q_0eb782']:\\n r=next(x for x in h if x['question_id']==qid);q=r['question'];pre=q.split('## Choices')[0];print(qid,r['answer'],re.findall(r'- training_steps: (\\\\d+)|- batch_size: (\\\\d+)|- (?:Number of features|Input dimension): (\\\\d+)',pre))\\n for label,s in re.findall(r'### Choice ([A-E])([\\\\s\\\\S]*?)(?=### Choice [A-E]|## Your answer|$)',q):\\n  t=re.sub(r'```[\\\\s\\\\S]*?```','',s);keys=['Depth','Width','Residual connections','Layer norm per layer','Activation','Learning rate']\\n  print(label,[m.group(1).split(' hidden')[0].split(' (')[0] if (m:=re.search(r'^- '+key+r': ([^\\\\n]+)',t,re.M)) else None for key in keys])\\nsets=defaultdict(list)\\nfor x in l:\\n if x['family']=='xor_classification' and not x.get('excluded',False) and x.get('loss',{}).get('loss_id')=='cross_entropy':sets[x['set_id']].append(x)\\nps=[]\\nfor sid,rows in sets.items():\\n for a,b in itertools.combinations(rows,2):\\n  if a.get('residual') is not True or b.get('residual') is not True:continue\\n  s,d=sorted([a,b],key=lambda x:x['depth'])\\n  if not(s['depth']<=2 and d['depth']>=4):continue\\n  if s['optimizer'].get('type') not in ['Adam','AdamW','RMSprop'] or s['optimizer']['type']!=d['optimizer']['type'] or s['optimizer']['lr']!=d['optimizer']['lr'] or s['budget']!=d['budget']:continue\\n  if s['budget']['training_steps']*s['optimizer']['lr']<.05:continue\\n  ps.append((sid,s,d))\\nprint('broad lab shallowres<=2 vs deepres>=4',len(ps),'wins',sum(s['mean']<d['mean'] for _,s,d in ps),'datasets',len(set(s['dataset_id'] for _,s,d in ps)))\\nprint('base',[(sid,s['dataset']['input_dim'],s['depth'],d['depth'],s['mean']/d['mean'],s['budget'],s['optimizer'],d['optimizer']) for sid,s,d in ps if not sid.startswith('exp:')][:15])\\nprint('full',sum(s['optimizer']==d['optimizer'] for _,s,d in ps),'fullwins',sum(s['mean']<d['mean'] and s['optimizer']==d['optimizer'] for _,s,d in ps))\"}"
+      }
+    ],
+    "results": [
+      "q_099d20 C<E<A<D<B [('2048', '', ''), ('', '16', '')]\nD ['4', '96', 'True', '[True, True, True, True]', 'gelu', '0.0003']\nB ['5', '64', 'True', '[False, True, False, False, True]', 'leaky_relu', '0.0003']\nE ['4', '96', 'False', '[False, True, True, False]', 'gelu', '0.0003']\nA ['5', '64', 'False', '[False, False, False, False, True]', 'gelu', '0.0003']\nC ['2', '128', 'True', '[True, False]', 'leaky_relu', '0.0003']\nq_0eb782 A<E<B<C<D [('1024', '', ''), ('', '16', '')]\nC ['1', '192', 'True', '[False]', 'relu', '3e-05']\nD ['1', '192', 'False', '[False]', 'gelu', '3e-05']\nE ['2', '128', 'True', '[True, False]', 'gelu', '3e-05']\nA ['4', '96', 'False', '[False, False, False, True]', 'leaky_relu', '3e-05']\nB ['2', '128', 'True', '[True, False]', 'relu', '3e-05']\nbroad lab shallowres<=2 vs deepres>=4 3 wins 3 datasets 3\nbase [('xorcls_1ff141/set_4096_var_var_fix_41172a', 16, 2, 5, 0.6972457256765004, {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096}, {'type': 'RMSprop', 'lr': 0.001, 'weight_decay': 0.001}, {'type': 'RMSprop', 'lr': 0.001, 'weight_decay': 1e-05}), ('xorcls_5889bf/set_4096_var_var_fix_f97bed', 16, 2, 5, 0.7163967032041716, {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096}, {'type': 'RMSprop', 'lr': 0.001, 'weight_decay': 0.001}, {'type': 'RMSprop', 'lr': 0.001, 'weight_decay': 1e-05}), ('xorcls_976837/set_8192_var_var_var_ce56e8', 2, 1, 5, 0.8825381764778315, {'training_steps': 256, 'batch_size': 32, 'total_samples_seen': 8192}, {'type': 'RMSprop', 'lr': 0.003, 'weight_decay': 0.0001}, {'type': 'RMSprop', 'lr': 0.003, 'weight_decay': 1e-05})]\nfull 0 fullwins 0\n"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 19,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"from collections import defaultdict,Counter\\nimport itertools,numpy as np\\nl=load_lab();ss=defaultdict(list)\\nfor x in l:\\n if x['family']=='bigram_lm' and x['model_type']=='transformer_lm' and not x.get('excluded',False):ss[x['set_id']].append(x)\\nps=[]\\nfor sid,rows in ss.items():\\n for a,b in itertools.combinations(rows,2):\\n  a,b=sorted([a,b],key=lambda x:x.get('num_heads',0))\\n  if a.get('num_heads')!=2 or b.get('num_heads')!=4:continue\\n  if a['budget']!=b['budget'] or a['optimizer']!=b['optimizer'] or a['loss']!=b['loss']:continue\\n  am=dict(a['model']);bm=dict(b['model']);am.pop('num_heads',None);bm.pop('num_heads',None)\\n  if am!=bm:continue\\n  ps.append((sid,a,b))\\nbase=[p for p in ps if not p[0].startswith('exp:')]\\nprint('base matched',len(base),'wins',sum(a['mean']<b['mean'] for _,a,b in base),'datasets',len(set(a['dataset_id'] for _,a,b in base)),'optim',Counter(a['optimizer']['type'] for _,a,b in base))\\nprint('all matched',len(ps),'wins',sum(a['mean']<b['mean'] for _,a,b in ps),'optim',Counter(a['optimizer']['type'] for _,a,b in ps))\\nprint([(sid,a['optimizer']['type'],a['optimizer']['lr'],a['budget']['training_steps'],a['mean']/b['mean'],a['loss']['loss_id']) for sid,a,b in base])\"}"
+      }
+    ],
+    "results": [
+      "base matched 0 wins 0 datasets 0 optim Counter()\nall matched 12 wins 9 optim Counter({'Adam': 12})\n[]\n"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 20,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"from collections import defaultdict\\nimport itertools,numpy as np\\nss=defaultdict(list)\\nfor x in load_lab():\\n if x['family']=='bigram_lm' and x['model_type']=='transformer_lm' and not x.get('excluded',False):ss[x['set_id']].append(x)\\nfor sid,rows in ss.items():\\n for a,b in itertools.combinations(rows,2):\\n  a,b=sorted([a,b],key=lambda x:x.get('num_heads',0))\\n  if a.get('num_heads')!=2 or b.get('num_heads')!=4 or a['budget']!=b['budget'] or a['optimizer']!=b['optimizer'] or a['loss']!=b['loss']:continue\\n  am=dict(a['model']);bm=dict(b['model']);am.pop('num_heads',None);bm.pop('num_heads',None)\\n  if am!=bm:continue\\n  print(sid,a['dataset_id'],'shape',a['d_model'],a['num_layers'],a['d_ff'],'opt',a['optimizer'],'budget',a['budget'],'loss',a['loss'],'ratio',round(a['mean']/b['mean'],6),'nats',round(a['mean']-b['mean'],6),'why',a.get('why','')[:60])\"}"
+      }
+    ],
+    "results": [
+      "exp:9746997b7a96 bg_206d10 shape 64 2 256 opt {'type': 'Adam', 'lr': 3e-05, 'weight_decay': 0.0001, 'betas': [0.9, 0.999]} budget {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096} loss {'loss_id': 'cross_entropy'} ratio 0.999915 nats -0.000302 why R02d63c19c2 preregistered amended12-cell C/E design; exact V\nexp:9746997b7a96 bg_206d10 shape 64 2 256 opt {'type': 'Adam', 'lr': 3e-05, 'weight_decay': 0.0001, 'betas': [0.9, 0.95]} budget {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096} loss {'loss_id': 'cross_entropy'} ratio 0.999915 nats -0.000301 why R02d63c19c2 preregistered amended12-cell C/E design; exact V\nexp:9746997b7a96 bg_206d10 shape 64 2 256 opt {'type': 'Adam', 'lr': 3e-05, 'weight_decay': 0, 'betas': [0.9, 0.95]} budget {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096} loss {'loss_id': 'cross_entropy'} ratio 0.999915 nats -0.000302 why R02d63c19c2 preregistered amended12-cell C/E design; exact V\nexp:9746997b7a96 bg_206d10 shape 64 2 256 opt {'type': 'Adam', 'lr': 0.003, 'weight_decay': 0.0001, 'betas': [0.9, 0.999]} budget {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096} loss {'loss_id': 'cross_entropy'} ratio 0.982616 nats -0.062019 why R02d63c19c2 preregistered amended12-cell C/E design; exact V\nexp:9746997b7a96 bg_206d10 shape 64 2 256 opt {'type': 'Adam', 'lr': 0.003, 'weight_decay': 0.0001, 'betas': [0.9, 0.95]} budget {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096} loss {'loss_id': 'cross_entropy'} ratio 0.982922 nats -0.060803 why R02d63c19c2 preregistered amended12-cell C/E design; exact V\nexp:9746997b7a96 bg_206d10 shape 64 2 256 opt {'type': 'Adam', 'lr': 0.003, 'weight_decay': 0, 'betas': [0.9, 0.95]} budget {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096} loss {'loss_id': 'cross_entropy'} ratio 0.981207 nats -0.067385 why R02d63c19c2 preregistered amended12-cell C/E design; exact V\nexp:f04ae632cf6f bg_2e7010 shape 64 2 256 opt {'type': 'Adam', 'lr': 3e-05, 'weight_decay': 0.0001, 'betas': [0.9, 0.999]} budget {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096} loss {'loss_id': 'cross_entropy'} ratio 1.000014 nats 4.9e-05 why R02d63c19c2 second dataset selected before either outcome; s\nexp:f04ae632cf6f bg_2e7010 shape 64 2 256 opt {'type': 'Adam', 'lr': 3e-05, 'weight_decay': 0.0001, 'betas': [0.9, 0.95]} budget {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096} loss {'loss_id': 'cross_entropy'} ratio 1.000013 nats 4.5e-05 why R02d63c19c2 second dataset selected before either outcome; s\nexp:f04ae632cf6f bg_2e7010 shape 64 2 256 opt {'type': 'Adam', 'lr': 3e-05, 'weight_decay': 0, 'betas': [0.9, 0.95]} budget {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096} loss {'loss_id': 'cross_entropy'} ratio 1.000013 nats 4.5e-05 why R02d63c19c2 second dataset selected before either outcome; s\nexp:f04ae632cf6f bg_2e7010 shape 64 2 256 opt {'type': 'Adam', 'lr': 0.003, 'weight_decay': 0.0001, 'betas': [0.9, 0.999]} budget {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096} loss {'loss_id': 'cross_entropy'} ratio 0.984237 nats -0.055963 why R02d63c19c2 second dataset selected before either outcome; s\nexp:f04ae632cf6f bg_2e7010 shape 64 2 256 opt {'type': 'Adam', 'lr': 0.003, 'weight_decay': 0.0001, 'betas': [0.9, 0.95]} budget {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096} loss {'loss_id': 'cross_entropy'} ratio 0.986314 nats -0.048436 why R02d63c19c2 second dataset selected before either outcome; s\nexp:f04ae632cf6f bg_2e7010 shape 64 2 256 opt {'type': 'Adam', 'lr': 0.003, 'weight_decay': 0, 'betas': [0.9, 0.95]} budget {'training_steps': 256, 'batch_size': 16, 'total_samples_seen': 4096} loss {'loss_id': 'cross_entropy'} ratio 0.983804 nats -0.057745 why R02d63c19c2 second dataset selected before either outcome; s\n"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 21,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1065\"], \"text\": \"XOR >=8 features,shared optimizer/lr/T,Delta>=.05: depth/residual evidence is conditional,NOT 'depth helps only with residuals.' Older deeper-plain wins1/31 in13sets (CE x1.23); deeper-residual gap1-2 wins8/13 in7sets (ratio.82),not a default over shallow rivals; gap>=3 deeper0/4,corpus shallow2/3. Below .05 these penalties are OFF: deeper plain10/25,residual14/19. q_0eb782 at .03072 cannot be ranked by this claim. q_099d20's shallow residual beats deeper residuals but does not establish a full plain/residual ordering. Width,activation,LN and recipe confounds remain; do not transfer Adam-family observations to Adagrad/SGD without matched evidence.\", \"reason\": \"Epoch6 low-credibility review: leading residual-first wording overrules weak 8/13 tendency and is applied outside Delta scope in q_0eb782. Preserve legacy counts; q_099d20 supports reconsidering shallow residual, not full rankings or causal depth effects.\"}"
+      }
+    ],
+    "results": [
+      "merged into K1065 (s=2.00, f=3.00)"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 22,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1066\"], \"text\": \"Spiral CE,SHARED optimizer/lr/T ONLY,deep>=3 residual with MORE LN vs shallow<=2: older deep wins51/55 lab (adaptive Delta>=.05 34/35,ratio.38;<.05 11/14;SGD6/6,.36),corpus8/8(.76). This is a bundled conditional preference,NOT a cross-optimizer trump card. Deep plain:lab30/32 with moreLN but corpus0/7;last-block LN matters(K1061). Deep residual with <=rivalLN:lab33/43,corpus0/2. q_526f1b's Adagrad/AdamW/SGD comparison is outside scope; its matching 1-turn q_9d4013 flips winners,turns/split confounded. q_b3f618 is NOT an analogue: different nets,optimizers,T2048 not256. No universal depth/turn threshold follows.\", \"reason\": \"Audit q_526f1b hypothesis against raw training recipes: q_b3f618 is not directly analogous and its gold cannot validate short-budget smooth-Adagrad interaction. Make optimizer gate explicit before deep residual preference; retain original counts.\"}"
+      }
+    ],
+    "results": [
+      "merged into K1066 (s=7.00, f=5.00)"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 23,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1069\"], \"text\": \"Bigram post-LN TF,head-only twins (same width/layers/FF,optimizer/lr/T): evidence does NOT support an Adagrad head rule. Matched d64x2/FF256,Adam,T256/b16 on bg_206d10/2e7010:2heads beats4 in9/12 mean pairs;atlr.003 6/6,CE -0.04844 to -0.06739 nats;at3e-5 3/6,margins <=.000302. Three beta/decay recipes share each dataset,not12 independent tests(R02d63c19c2). Legacy12/15 and highDelta4/4 mix filters;old d128 AdamW.003 head contrast -0.18nats is separate. No matched Adagrad pairs in current lab; q_9bff6e at long-budget Adagrad reverses the 2-head prediction. Head count is not a tie-break across unequal FF/depth/width bundles.\", \"reason\": \"Epoch6 q_9bff6e exposed unsupported Adagrad transfer. Recomputed full-model-except-head/full-optimizer/budget/loss within-set pairs:12,all Adam,two datasets;9wins including6/6 lr.003 and3/6 lr3e-5. Use effect sizes and provenance rather than legacy pooled head ordering.\"}"
+      }
+    ],
+    "results": [
+      "merged into K1069 (s=12.75, f=2.25)"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 24,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1076\"], \"text\": \"Multivariate MSE,shared Adagrad.001/wd.001,T256/b64,default init: plain d2w192 SiLU/2LN vs residual d1w192 Leaky(.01)/1LN reverses by target/split: q_1f04dc gold plain,q_c692d1 residual. Both8inputs/16384samples;2 ordinal winners,no numerical MSE margin. Thus extraLN or residual is NOT decisive across activation/depth bundles. Older lowDelta mixed lab plain+1LN wins23/31 in25sets,ratio.906;matched type/lr4/6,no full-config pairs;plain+1depth4/9(1.166). History41/53 in32questions,Adagrad13/18 is confounded,not an architecture law. Lab4096/8192 budgets differ. Equal-depth controlled GELU supports one recipe only.\", \"reason\": \"New byte-identical Adagrad choice/budget comparison q_c692d1 versus q_1f04dc directly corrects normalization-count over-application; target expressions and point seeds differ. No inferred target-linear-component mechanism or universal residual override.\"}"
+      }
+    ],
+    "results": [
+      "merged into K1076 (s=2.00, f=2.00)"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 25,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "merge_claims",
+        "arguments": "{\"claim_ids\": [\"K1114\"], \"text\": \"Two-input polynomial MSE,default plain d3w256 Leaky(.01),LN101,AdamW(.9,.999),wd1e-5,b16: more rate/Delta can lose. On mvar_5a829e,T1024,lr.001 vs .0001 MSE .00222668/.000516314 (4.31265x,+.00171037);T2048 .003/.0001=3.01005x. Ten-seed means,one reused dataset,new exp:72201b637132/R1e820ab3a7;paired outcomes unavailable. .003 BEATS .001 atT1024,so harm is not monotonic. Older .001/3e-5 reverses ratio.1754(T256) to2.359(T2048);other polynomial93e6af long ratio125.68 has highSD. Same controls reused across reports,not replication. Nested-oscillatory transfer favors high(K1111);no universal multivariate ceiling or measured jitter mechanism.\", \"reason\": \"Existing K1114 phase already contains new R1e820ab3a7 measurements, but solver-readable text omits them. Lead with controlled matched-rate long-budget evidence to address systematic multivariate max-Delta bias; preserve nonmonotonic and target-transfer counterexamples.\"}"
+      }
+    ],
+    "results": [
+      "merged into K1114 (s=0.00, f=0.00)"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 26,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "add_claim",
+        "arguments": "{\"text\": \"Bigram CE,V24/L24,800train/200test,default init,b16,T256/512: GRU64x1 beats post-LN TF32x4,2heads/FF128 at shared wd0 SGD(m0) lr.0001/.001/.003:36/36 matched means,6 tables(alpha.8/1/1.4,2 each),median CE -0.09844 nats,ratio.9700. Shared Adam(.9,.999),Delta.01/.0256/.064:36/36,median -0.03918,ratio.9873. Ten seeds/cell; rates/budgets reuse tables,not72 independent samples. Shape audit at Adam Delta.0256,T256: TF64x4 beats GRU64x1 on4/4 tables. Do not transfer to equal widths,GRU2-layer,V48/L12 or arbitrary optimizers; causal init mechanism unresolved(R58730d84ac).\", \"reason\": \"New scoped empirical stamp from existing persistent R58730d84ac controls; recomputed within-set exact optimizer/budget/loss target pairs. No repeated training. Six table/sequence instances with two per alpha,ten seeds/cell. Width/depth/architecture are intentionally bundled; equal-width TF64 contrast demonstrates boundary.\", \"source_question_ids\": [\"q_e8a05a\", \"q_a3b0c0\"], \"refines\": \"K1075\", \"regime\": {\"family\": [\"bigram_lm\"], \"model_type\": [\"gru_lm\", \"transformer_lm\"], \"optimizer\": [\"SGD\", \"Adam\"], \"steps\": [256, 512], \"batch_size\": 16, \"vocab_size\": 24, \"context_length\": 24, \"n_train\": 800, \"n_test\": 200, \"initialization\": \"default\", \"note\": \"GRU64x1 vs post-LN TF32x4,heads2,FF128,wd0. SGD m0 rates .0001/.001/.003;Adam betas.9/.999 Delta .01/.0256/.064. Six fixed table/sequence instances,alpha .8/1/1.4 two each;10-seed means,unpaired intervals only.\"}, \"phase\": \"R58730d84ac shared-SGD grid sources exp:0505b680216f/4aad37a71833/7d34fe7ad02c/d9456e5fe2f8/dc789760e8c4/0919e61ce250:36/36 GRU mean wins,median GRU/TF.969996,diff-.0984373 nats,range[-.147355,-.0089535]. Adam grids exp:66b9ba4c665a/f886c2c9c7ee/c505dc7c3320/03d45be47f94/84315fe55abe/1a5ab5fdf0e9:36/36,median ratio.987325,diff-.0391818,range[-.0652603,-.0108861]. Six datasets bg_1d9caf/209ff2/0bf6d7/388f11/0f0001/30d1db. Failure counts absent from lab aggregate fields;finite means are not proof of zero seed failure. Default SGD-lr0 gives initial CE gap on all6 tables,not a head-scale causal intervention.\", \"mechanism\": \"The GRU/transformer final loss direction and zero-rate initial CE gap are measured. They do not isolate initial-logit mediation from width,depth,head count,positional structure or architecture; calibration interventions remain unexecuted. No causal alpha or universal Delta cutoff.\"}"
+      }
+    ],
+    "results": [
+      "rejected: phase is 611 chars > 400; shorten and retry"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 27,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "add_claim",
+        "arguments": "{\"text\": \"Bigram CE,V24/L24,800train/200test,default init,b16,T256/512: GRU64x1 beats post-LN TF32x4,2heads/FF128 at shared wd0 SGD(m0) lr.0001/.001/.003:36/36 matched means,6 tables(alpha.8/1/1.4,2 each),median CE -0.09844 nats,ratio.9700. Shared Adam(.9,.999),Delta.01/.0256/.064:36/36,median -0.03918,ratio.9873. Ten seeds/cell; rates/budgets reuse tables,not72 independent samples. Shape audit at Adam Delta.0256,T256: TF64x4 beats GRU64x1 on4/4 tables. Do not transfer to equal widths,GRU2-layer,V48/L12 or arbitrary optimizers; causal init mechanism unresolved(R58730d84ac).\", \"reason\": \"New scoped empirical stamp from existing persistent R58730d84ac controls; recomputed within-set exact optimizer/budget/loss target pairs. No repeated training. Six table/sequence instances with two per alpha,ten seeds/cell. Width/depth/architecture are intentionally bundled; equal-width TF64 contrast demonstrates boundary.\", \"source_question_ids\": [\"q_e8a05a\", \"q_a3b0c0\"], \"refines\": \"K1075\", \"regime\": {\"family\": [\"bigram_lm\"], \"model_type\": [\"gru_lm\", \"transformer_lm\"], \"optimizer\": [\"SGD\", \"Adam\"], \"steps\": [256, 512], \"batch_size\": 16, \"vocab_size\": 24, \"context_length\": 24, \"n_train\": 800, \"n_test\": 200, \"initialization\": \"default\", \"note\": \"GRU64x1 vs post-LN TF32x4,heads2,FF128,wd0. SGD m0 rates .0001/.001/.003;Adam betas.9/.999 Delta .01/.0256/.064. Six fixed table/sequence instances,alpha .8/1/1.4 two each;10-seed means,unpaired intervals only.\", \"datasets\": [\"bg_1d9caf\", \"bg_209ff2\", \"bg_0bf6d7\", \"bg_388f11\", \"bg_0f0001\", \"bg_30d1db\"], \"provenance\": [\"R58730d84ac\", \"exp:0505b680216f\", \"exp:4aad37a71833\", \"exp:7d34fe7ad02c\", \"exp:d9456e5fe2f8\", \"exp:dc789760e8c4\", \"exp:0919e61ce250\", \"exp:66b9ba4c665a\", \"exp:f886c2c9c7ee\", \"exp:c505dc7c3320\", \"exp:03d45be47f94\", \"exp:84315fe55abe\", \"exp:1a5ab5fdf0e9\"]}, \"phase\": \"R58730d84ac:36 SGD contrasts across6 tables/6sets,median GRU/TF.969996,diff-.0984373 nats,range[-.147355,-.0089535];36 Adam contrasts/6sets,ratio.987325,diff-.0391818,range[-.0652603,-.0108861]. Ten-seed means; failure counts absent from aggregate fields. Zero-lr SGD shows initial CE gap on6 tables,not causal head-scale intervention.\", \"mechanism\": \"The GRU/transformer final loss direction and zero-rate initial CE gap are measured. They do not isolate initial-logit mediation from width,depth,head count,positional structure or architecture; calibration interventions remain unexecuted. No causal alpha or universal Delta cutoff.\"}"
+      }
+    ],
+    "results": [
+      "rejected: unknown regime dims ['batch_size', 'vocab_size', 'context_length', 'n_train', 'n_test', 'initialization', 'datasets', 'provenance']; use ['family', 'type', 'model_type', 'optimizer', 'lr', 'steps', 'budget', 'delta', 'activation', 'depth', 'width', 'residual', 'n_ln', 'loss', 'data'] or 'note'"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 28,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "annotate_claim",
+        "arguments": "{\"claim_id\": \"K1069\", \"regime\": {\"family\": [\"bigram_lm\"], \"model_type\": [\"transformer_lm\"], \"optimizer\": [\"Adam\"], \"steps\": [256], \"batch_size\": 16, \"n_train\": 800, \"n_test\": 200, \"n_seeds\": 10, \"n_datasets\": 2, \"n_pairs\": 12, \"d_model\": 64, \"num_layers\": 2, \"d_ff\": 256, \"heads\": [2, 4], \"note\": \"Head-only full-model-except-head/full-optimizer/budget/loss within-set pairs. Other optimizers are legacy heterogeneous evidence,not validated head-only transfer. Provenance R02d63c19c2,exp:9746997b7a96/f04ae632cf6f,datasets bg_206d10/2e7010.\"}, \"phase\": \"Matched Adam2-vs4heads:9/12 mean wins on2datasets,3beta/decay recipes each. lr.003:6/6,CE diff[-.067385,-.048436];lr3e-5:3/6,diff[-.000302,+.000049]. Not12 independent datasets. Base lab full-config pairs0;matched Adagrad0. Separate legacy d128 AdamW head contrast -0.18nats not pooled.\", \"mechanism\": \"Head-partitioning effects are not causally identified across widths,optimizers or training regimes. Exact head-only controls measure endpoint differences; they do not justify a universal fewer-head or FF precedence law.\", \"reason\": \"Scope science fields to independently recomputed head-only controls; preserve legacy evidence separately. Long-budget Adagrad transfer caused q_9bff6e error.\"}"
+      }
+    ],
+    "results": [
+      "rejected: unknown regime dims ['batch_size', 'n_train', 'n_test', 'n_seeds', 'n_datasets', 'n_pairs', 'd_model', 'num_layers', 'd_ff', 'heads']; use ['family', 'type', 'model_type', 'optimizer', 'lr', 'steps', 'budget', 'delta', 'activation', 'depth', 'width', 'residual', 'n_ln', 'loss', 'data'] or 'note'"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 29,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "annotate_claim",
+        "arguments": "{\"claim_id\": \"K1076\", \"phase\": \"New exact-choice/budget pair:8inputs,Adagrad.001/wd.001,T256/b64;plain d2w192SiLU2LN winsq_1f04dc,residual d1w192Leaky1LN winsq_c692d1. Two target/split ordinal winners;no MSE effect size. Older lab23/31,25sets,.906;type/lr4/6,no full-config pairs;plain+1depth4/9,1.166. History41/53,32questions is confounded.\", \"regime\": {\"family\": [\"multivariate_regression\"], \"model_type\": [\"mlp\"], \"optimizer\": [\"Adagrad\"], \"steps\": [256], \"batch_size\": 64, \"n_train\": 256, \"n_inputs\": 8, \"initialization\": \"default\", \"note\": \"New exact full-recipe comparison plain d2w192 SiLU LN11 versus residual d1w192 Leaky(.01)LN1;wd.001. q_1f04dc/q_c692d1 differ target AND split. Older mixed-optimizer evidence retained separately in text and R04f88f629b;no universal residual/LN conversion.\"}, \"mechanism\": \"Target-and-split dependence of the full recipes is observed. Linear-component preservation,activation conditioning,normalization and residual mechanisms are unmeasured and not isolated by ordinal winners.\", \"reason\": \"Condition/science alignment after the new target-dependent Adagrad recipe stamp; no pooling or automatic residual reversal.\"}"
+      }
+    ],
+    "results": [
+      "rejected: unknown regime dims ['batch_size', 'n_train', 'n_inputs', 'initialization']; use ['family', 'type', 'model_type', 'optimizer', 'lr', 'steps', 'budget', 'delta', 'activation', 'depth', 'width', 'residual', 'n_ln', 'loss', 'data'] or 'note'"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 30,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "add_claim",
+        "arguments": "{\"text\": \"Bigram CE,V24/L24,800train/200test,default init,b16,T256/512: GRU64x1 beats post-LN TF32x4,2heads/FF128 at shared wd0 SGD(m0) lr.0001/.001/.003:36/36 matched means,6 tables(alpha.8/1/1.4,2 each),median CE -0.09844 nats,ratio.9700. Shared Adam(.9,.999),Delta.01/.0256/.064:36/36,median -0.03918,ratio.9873. Ten seeds/cell; rates/budgets reuse tables,not72 independent samples. Shape audit at Adam Delta.0256,T256: TF64x4 beats GRU64x1 on4/4 tables. Do not transfer to equal widths,GRU2-layer,V48/L12 or arbitrary optimizers; causal init mechanism unresolved(R58730d84ac).\", \"reason\": \"New scoped empirical stamp from existing persistent R58730d84ac controls; recomputed within-set exact optimizer/budget/loss target pairs. No repeated training. Six table/sequence instances with two per alpha,ten seeds/cell. Width/depth/architecture are intentionally bundled; equal-width TF64 contrast demonstrates boundary.\", \"source_question_ids\": [\"q_e8a05a\", \"q_a3b0c0\"], \"refines\": \"K1075\", \"regime\": {\"family\": [\"bigram_lm\"], \"model_type\": [\"gru_lm\", \"transformer_lm\"], \"optimizer\": [\"SGD\", \"Adam\"], \"steps\": [256, 512], \"width\": [32, 64], \"depth\": [1, 4], \"loss\": [\"cross_entropy\"], \"data\": [\"V24\", \"L24\", \"alpha.8/1/1.4\", \"bg_1d9caf\", \"bg_209ff2\", \"bg_0bf6d7\", \"bg_388f11\", \"bg_0f0001\", \"bg_30d1db\"], \"note\": \"Default init,b16,800train/200test. GRU64x1 vs post-LN TF32x4,heads2,FF128,wd0. SGD m0 rates.0001/.001/.003;Adam(.9,.999)Delta.01/.0256/.064. Six fixed table/sequence instances,two per alpha;10-seed means,unpaired intervals only. Provenance R58730d84ac,SGD6sets0505b680216f/4aad37a71833/7d34fe7ad02c/d9456e5fe2f8/dc789760e8c4/0919e61ce250;Adam6sets66b9ba4c665a/f886c2c9c7ee/c505dc7c3320/03d45be47f94/84315fe55abe/1a5ab5fdf0e9.\"}, \"phase\": \"R58730d84ac:36 SGD contrasts/6tables/6sets,median GRU/TF.969996,diff-.0984373 nats,range[-.147355,-.0089535];36 Adam contrasts/6sets,ratio.987325,diff-.0391818,range[-.0652603,-.0108861]. Ten-seed means; failure counts absent from aggregate fields. Zero-lr SGD shows initial CE gap on6 tables,not causal head-scale intervention.\", \"mechanism\": \"The GRU/transformer final loss direction and zero-rate initial CE gap are measured. They do not isolate initial-logit mediation from width,depth,head count,positional structure or architecture; calibration interventions remain unexecuted. No causal alpha or universal Delta cutoff.\"}"
+      }
+    ],
+    "results": [
+      "rejected: regime is 739 chars > 400"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 31,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "annotate_claim",
+        "arguments": "{\"claim_id\": \"K1069\", \"regime\": {\"family\": [\"bigram_lm\"], \"model_type\": [\"transformer_lm\"], \"optimizer\": [\"Adam\"], \"steps\": [256], \"width\": [64], \"depth\": [2], \"loss\": [\"cross_entropy\"], \"data\": [\"bg_206d10\", \"bg_2e7010\"], \"note\": \"Head-only full-model-except-head/full-optimizer/budget/loss within-set pairs:d64x2/FF256,heads2/4,b16,10seeds/cell,12pairs on2datasets. Other optimizers are legacy heterogeneous evidence,not validated head-only transfer. Provenance R02d63c19c2,exp:9746997b7a96/f04ae632cf6f.\"}, \"phase\": \"Matched Adam2-vs4heads:9/12 mean wins on2datasets,3beta/decay recipes each. lr.003:6/6,CE diff[-.067385,-.048436];lr3e-5:3/6,diff[-.000302,+.000049]. Not12 independent datasets. Base lab full-config pairs0;matched Adagrad0. Separate legacy d128 AdamW head contrast -0.18nats not pooled.\", \"mechanism\": \"Head-partitioning effects are not causally identified across widths,optimizers or training regimes. Exact head-only controls measure endpoint differences; they do not justify a universal fewer-head or FF precedence law.\", \"reason\": \"Scope science fields to independently recomputed head-only controls; preserve legacy evidence separately. Long-budget Adagrad transfer caused q_9bff6e error.\"}"
+      }
+    ],
+    "results": [
+      "rejected: regime is 476 chars > 400"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 32,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "annotate_claim",
+        "arguments": "{\"claim_id\": \"K1076\", \"phase\": \"New exact-choice/budget pair:8inputs,Adagrad.001/wd.001,T256/b64;plain d2w192SiLU2LN winsq_1f04dc,residual d1w192Leaky1LN winsq_c692d1. Two target/split ordinal winners;no MSE effect size. Older lab23/31,25sets,.906;type/lr4/6,no full-config pairs;plain+1depth4/9,1.166. History41/53,32questions is confounded.\", \"regime\": {\"family\": [\"multivariate_regression\"], \"model_type\": [\"mlp\"], \"optimizer\": [\"Adagrad\"], \"steps\": [256], \"width\": [192], \"depth\": [1, 2], \"loss\": [\"mse\"], \"data\": [\"8inputs\"], \"note\": \"Default init,T256/b64,256training points. New exact full-recipe comparison plain d2w192 SiLU LN11 versus residual d1w192 Leaky(.01)LN1;wd.001. q_1f04dc/q_c692d1 differ target AND split. Older mixed-optimizer evidence retained separately in text and R04f88f629b;no universal residual/LN conversion.\"}, \"mechanism\": \"Target-and-split dependence of the full recipes is observed. Linear-component preservation,activation conditioning,normalization and residual mechanisms are unmeasured and not isolated by ordinal winners.\", \"reason\": \"Condition/science alignment after the new target-dependent Adagrad recipe stamp; no pooling or automatic residual reversal.\"}"
+      }
+    ],
+    "results": [
+      "rejected: regime is 484 chars > 400"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 33,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "add_claim",
+        "arguments": "{\"text\": \"Bigram CE,V24/L24,800train/200test,default init,b16,T256/512: GRU64x1 beats post-LN TF32x4,2heads/FF128 at shared wd0 SGD(m0) lr.0001/.001/.003:36/36 matched means,6 tables(alpha.8/1/1.4,2 each),median CE -0.09844 nats,ratio.9700. Shared Adam(.9,.999),Delta.01/.0256/.064:36/36,median -0.03918,ratio.9873. Ten seeds/cell; rates/budgets reuse tables,not72 independent samples. Shape audit at Adam Delta.0256,T256: TF64x4 beats GRU64x1 on4/4 tables. Do not transfer to equal widths,GRU2-layer,V48/L12 or arbitrary optimizers; causal init mechanism unresolved(R58730d84ac).\", \"reason\": \"New scoped empirical stamp from existing persistent R58730d84ac controls; recomputed within-set exact optimizer/budget/loss target pairs. No repeated training. Six table/sequence instances with two per alpha,ten seeds/cell. Width/depth/architecture are intentionally bundled; equal-width TF64 contrast demonstrates boundary.\", \"source_question_ids\": [\"q_e8a05a\", \"q_a3b0c0\"], \"refines\": \"K1075\", \"regime\": {\"family\": [\"bigram_lm\"], \"model_type\": [\"gru_lm\", \"transformer_lm\"], \"optimizer\": [\"SGD\", \"Adam\"], \"steps\": [256, 512], \"data\": [\"V24/L24\", \"alpha.8/1/1.4\"], \"note\": \"Default init,b16,800train/200test,wd0;GRU64x1 vs TF32x4 heads2/FF128. Six tables,two/alpha,10seeds/cell. R58730d84ac.\"}, \"phase\": \"R58730d84ac:36 SGD contrasts/6tables/6sets,median GRU/TF.969996,diff-.0984373 nats,range[-.147355,-.0089535];36 Adam contrasts/6sets,ratio.987325,diff-.0391818,range[-.0652603,-.0108861]. Ten-seed means; failure counts absent from aggregate fields. Zero-lr SGD shows initial CE gap on6 tables,not causal head-scale intervention.\", \"mechanism\": \"The GRU/transformer final loss direction and zero-rate initial CE gap are measured. They do not isolate initial-logit mediation from width,depth,head count,positional structure or architecture; calibration interventions remain unexecuted. No causal alpha or universal Delta cutoff.\"}"
+      }
+    ],
+    "results": [
+      "added K1123"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 34,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "annotate_claim",
+        "arguments": "{\"claim_id\": \"K1069\", \"regime\": {\"family\": [\"bigram_lm\"], \"model_type\": [\"transformer_lm\"], \"optimizer\": [\"Adam\"], \"steps\": [256], \"data\": [\"bg_206d10\", \"bg_2e7010\"], \"note\": \"Head-only d64x2/FF256,heads2/4,b16,10seeds/cell;12pairs/2datasets,3beta/decay recipes. R02d63c19c2,exp:9746997b7a96/f04ae632cf6f;Adagrad untested.\"}, \"phase\": \"Matched Adam2-vs4heads:9/12 mean wins on2datasets,3beta/decay recipes each. lr.003:6/6,CE diff[-.067385,-.048436];lr3e-5:3/6,diff[-.000302,+.000049]. Not12 independent datasets. Base lab full-config pairs0;matched Adagrad0. Separate legacy d128 AdamW head contrast -0.18nats not pooled.\", \"mechanism\": \"Head-partitioning effects are not causally identified across widths,optimizers or training regimes. Exact head-only controls measure endpoint differences; they do not justify a universal fewer-head or FF precedence law.\", \"reason\": \"Scope science fields to independently recomputed head-only controls; preserve legacy evidence separately. Long-budget Adagrad transfer caused q_9bff6e error.\"}"
+      }
+    ],
+    "results": [
+      "annotated K1069 (mechanism, phase, regime)"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 35,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "annotate_claim",
+        "arguments": "{\"claim_id\": \"K1076\", \"phase\": \"New exact-choice/budget pair:8inputs,Adagrad.001/wd.001,T256/b64;plain d2w192SiLU2LN winsq_1f04dc,residual d1w192Leaky1LN winsq_c692d1. Two target/split ordinal winners;no MSE effect size. Older lab23/31,25sets,.906;type/lr4/6,no full-config pairs;plain+1depth4/9,1.166. History41/53,32questions is confounded.\", \"regime\": {\"family\": [\"multivariate_regression\"], \"model_type\": [\"mlp\"], \"optimizer\": [\"Adagrad\"], \"steps\": [256], \"data\": [\"8inputs\"], \"note\": \"Default init,b64,wd.001,lr.001:plain d2w192SiLU2LN vsresidual d1w192Leaky(.01)1LN. q_1f04dc/q_c692d1 differ target/split. Older mixed evidence separately scoped.\"}, \"mechanism\": \"Target-and-split dependence of the full recipes is observed. Linear-component preservation,activation conditioning,normalization and residual mechanisms are unmeasured and not isolated by ordinal winners.\", \"reason\": \"Condition/science alignment after the new target-dependent Adagrad recipe stamp; no pooling or automatic residual reversal.\"}"
+      }
+    ],
+    "results": [
+      "annotated K1076 (mechanism, phase, regime)"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 36,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "annotate_claim",
+        "arguments": "{\"claim_id\": \"K1075\", \"mechanism\": \"Original V48/L12 tiny-lr TF probes failed10/10: no valid initial comparison there. New V24/L24 SGD-lr0 controls in R58730d84ac show a GRU64x1/TF32x4 initial CE gap on6 tables(K1123),but head-scale mediation remains untested. Alpha/table/sequence and width/depth interact; no causal alpha effect,sharp Delta switch or cross-shape calibration law.\", \"reason\": \"Review old deferred J15dc9d06803c:000002 against newer R634304faf1/R58730d84ac and K1123. Retain current solver text and V48 scope,not obsolete rewrite; distinguish newly measured V24 initial CE gap from still-unverified causal initialization mediation.\"}"
+      }
+    ],
+    "results": [
+      "annotated K1075 (mechanism)"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 37,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"from collections import defaultdict\\nimport itertools,numpy as np\\nl=load_lab();ss=defaultdict(list)\\nfor x in l:\\n if x.get('source')=='experiment' and x.get('origin_epoch')==5 and x.get('model_type')=='mlp' and x.get('depth')==4 and x.get('width')==24 and x.get('activation')=='silu' and x.get('budget',{}).get('training_steps')==256 and x.get('budget',{}).get('batch_size')==16 and x.get('optimizer',{}).get('weight_decay')==0:ss[x['set_id']].append(x)\\nps=[]\\nfor sid,rows in ss.items():\\n for a,b in itertools.combinations(rows,2):\\n  if a.get('residual')!=b.get('residual') or a['optimizer']!=b['optimizer'] or a['loss']!=b['loss']:continue\\n  if a.get('layer_norm')==[False,False,False,True] and b.get('layer_norm')==[True]*4:t,z=a,b\\n  elif b.get('layer_norm')==[False,False,False,True] and a.get('layer_norm')==[True]*4:t,z=b,a\\n  else:continue\\n  if set(t['model'])!=set(z['model']):continue\\n  tm=dict(t['model']);zm=dict(z['model']);tm.pop('layer_norm',None);zm.pop('layer_norm',None)\\n  if tm!=zm:continue\\n  ps.append((sid,t,z))\\nprint('all vs terminal',len(ps))\\nfor residual in [False,True]:\\n for family in ['xor_classification','synthetic_tabular_classification','spiral_classification','multivariate_regression']:\\n  p=[(sid,t,z) for sid,t,z in ps if t['residual']==residual and t['family']==family]\\n  if not p:continue\\n  print(residual,family,'n',len(p),'wins',sum(z['mean']<t['mean'] for _,t,z in p),'median ratio',np.median([z['mean']/t['mean'] for _,t,z in p]),'mean diff',np.mean([z['mean']-t['mean'] for _,t,z in p]))\\nprint('residual spiral',[(sid,t['dataset_id'],t['optimizer'],t['mean'],z['mean'],z['mean']/t['mean']) for sid,t,z in ps if t['residual'] and t['family']=='spiral_classification'])\"}"
+      }
+    ],
+    "results": [
+      "all vs terminal 48\nFalse xor_classification n 6 wins 6 median ratio 0.9188849174473461 mean diff -0.047747974594434105\nFalse synthetic_tabular_classification n 6 wins 6 median ratio 0.7614689485203183 mean diff -0.1378202830751737\nFalse spiral_classification n 6 wins 6 median ratio 0.9539404424966138 mean diff -0.028982623418172242\nFalse multivariate_regression n 6 wins 6 median ratio 0.3434403241436761 mean diff -0.27680054244895774\nTrue xor_classification n 6 wins 6 median ratio 0.9042264979141086 mean diff -0.050820417205492664\nTrue synthetic_tabular_classification n 6 wins 6 median ratio 0.7083446213595633 mean diff -0.14368056058883666\nTrue spiral_classification n 6 wins 4 median ratio 0.9590645228690404 mean diff -0.0095988521973292\nTrue multivariate_regression n 6 wins 6 median ratio 0.6027218239595521 mean diff -0.12079463377594946\nresidual spiral [('exp:3dbbfee7dac2', 'spiralcls_00f3c5', {'type': 'SGD', 'lr': 0.003, 'weight_decay': 0, 'betas': [0.9, 0.95], 'momentum': 0}, 0.6247336089611053, 0.5980842709541321, 0.9573428776286113), ('exp:3dbbfee7dac2', 'spiralcls_00f3c5', {'type': 'SGD', 'lr': 0.0003, 'weight_decay': 0, 'betas': [0.9, 0.95], 'momentum': 0.9}, 0.6255824148654938, 0.6010509312152863, 0.9607861681094696), ('exp:3dbbfee7dac2', 'spiralcls_00f3c5', {'type': 'Adam', 'lr': 3e-05, 'weight_decay': 0, 'betas': [0.9, 0.999]}, 0.7344545125961304, 0.7639378070831299, 1.0401431184387209), ('exp:ce429ef4d3d7', 'spiralcls_01a657', {'type': 'SGD', 'lr': 0.003, 'weight_decay': 0, 'momentum': 0}, 0.6243062376976013, 0.5951998174190521, 0.9533779761901922), ('exp:ce429ef4d3d7', 'spiralcls_01a657', {'type': 'SGD', 'lr': 0.0003, 'weight_decay': 0, 'momentum': 0.9}, 0.6266063749790192, 0.5984204411506653, 0.9550181183054551), ('exp:ce429ef4d3d7', 'spiralcls_01a657', {'type': 'Adam', 'lr': 3e-05, 'weight_decay': 0, 'betas': [0.9, 0.999]}, 0.7355984449386597, 0.7569952130317688, 1.0290875656961094)]\n"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 38,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"import re\\nh=load_history()\\nfor qid in ['q_709595','q_90b402','q_3a67db','q_099d20']:\\n x=next(z for z in h if z['question_id']==qid);pre=x['question'].split('## Choices')[0];print(qid,'data',[s for s in re.sub(r'```[\\\\s\\\\S]*?```','',pre).splitlines() if 'Vocab' in s or 'Context' in s or 'Reproducibility' in s or 'Target expression' in s]);print('alpha',re.findall(r'alpha: float = ([^,]+)|alpha=([^,\\\\n]+)',pre)[-4:])\\n# New tail/count controls, preserved at fixed datasets: isolate spiral plain Adam numerical effect.\\nl=load_lab()\\nfor sid in ['exp:3dbbfee7dac2','exp:ce429ef4d3d7']:\\n xs=[z for z in l if z['set_id']==sid and z['model_type']=='mlp' and z.get('depth')==4 and z.get('residual') is False and z['optimizer']['type']=='Adam']\\n print(sid,[(z['layer_norm'],z['mean']) for z in xs])\"}"
+      }
+    ],
+    "results": [
+      "q_709595 data ['- Reproducibility: point seed `6000703264050`, spiral turns `1.5`.']\nalpha []\nq_90b402 data ['- Vocab size: 48', '- Context length: 24']\nalpha [('1.0', ''), ('1.0', ''), ('', 'alpha')]\nq_3a67db data ['- Vocab size: 48', '- Context length: 24']\nalpha [('1.4', ''), ('1.4', ''), ('', 'alpha')]\nq_099d20 data ['- Reproducibility: point seed `184862554`, calibration seed `184863554`.']\nalpha []\nexp:3dbbfee7dac2 [([False, False, False, True], 0.6819717824459076), ([True, True, True, True], 0.6608852446079254)]\nexp:ce429ef4d3d7 [([False, False, False, True], 0.6834939956665039), ([True, True, True, True], 0.6613922953605652)]\n"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 39,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "add_claim",
+        "arguments": "{\"text\": \"1.5-turn spiral CE,default residual d4w24 SiLU,Adam(.9,.999)lr3e-5/wd0,T256/b16: all4LN LOSES to terminal-only LN on splits00f3c5/01a657,CE .763938/.734455 and .756995/.735598 (+.029483/+.021397 nats;ratios1.04014/1.02909). Same residual models with SGD0 lr.003 or m.9 lr.0003 favor allLN4/4,ratios.95338-.96079. Plain versions favor allLN6/6 across these3 optimizers;plain Adam CE .660885/.681972 and .661392/.683494. Ten paired seeds/cell,2splits;contrast counts reuse splits,not independent datasets. MoreLN is not a universal residual/optimizer score;no measured scale/gradient cause(Reb8454abdf).\", \"source_question_ids\": [], \"reason\": \"New empirical matched normalization-by-residual-by-optimizer stamp from Reb8454abdf,independently recomputed within exp:3dbbfee7dac2/ce429ef4d3d7. No retraining. Preserve optimizer/residual strata,ten paired seeds, two allowed point splits. This is an empirical interaction,not a universal LN-count override.\", \"refines\": \"K1020\", \"regime\": {\"family\": [\"spiral_classification\"], \"model_type\": [\"mlp\"], \"optimizer\": [\"Adam\", \"SGD\"], \"steps\": [256], \"activation\": [\"silu\"], \"depth\": [4], \"width\": [24], \"data\": [\"1.5turns\", \"spiralcls_00f3c5\", \"spiralcls_01a657\"], \"note\": \"Default init,b16,wd0. allLN1111 vs terminal0001;plain/residual crossed.10paired seeds/cell.Reb8454abdf.\"}, \"phase\": \"Within exp:3dbbfee7dac2/ce429ef4d3d7:residual Adam3e-5 all/terminal CE ratios1.040143/1.029088;plain Adam.969080/.967664. ResidualSGD0.003 or m.9/.0003 allLN4/4,ratios.953378-.960786. Plain across3optimizers6/6. Two fixed splits;report240 configs/2400 seed evaluations zero failures for entire matched audit,not independent replications.\", \"mechanism\": \"The LN-count/residual/optimizer interaction in mean held-out CE is measured. Initial feature scale,gradients,parameter movement,normalization geometry and calibrated logit confidence were not measured. Scalar-tail rescue remains unexecuted; endpoint effects do not identify a unique mechanism.\"}"
+      }
+    ],
+    "results": [
+      "added K1124"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 40,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "annotate_claim",
+        "arguments": "{\"claim_id\": \"K1059\", \"phase\": \"Legacy SGD31/31(.69),Adam70/102(.92) filters underidentified. New Reb8454abdf:d4w24 plainSiLU,default,T256/b16/wd0,2splits/family XOR4/sparse2/spiral1.5:terminal/early winsSGD0.003 6/6,m.9/.0003 5/6,Adam3e-5 6/6. Momentum tabular reversal ratio1.000695. Weaker-Adam prediction fails4/6 cells;tail/count/residual effects must remain separate(K1124).\", \"reason\": \"Add completed matched terminal-placement evidence from latest Reb8454abdf without replacing legacy filters or asserting weaker adaptive/gradient-attenuation effects. The existing solver text remains a scoped SGD tendency; new Adam comparisons are empirical,not mechanism.\"}"
+      }
+    ],
+    "results": [
+      "annotated K1059 (phase)"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 41,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "kb_open",
+        "arguments": "{\"targets\": [\"Jb132c3ee1518\", \"Ja412e95637cf\", \"Jc60aaee7d435\"]}"
+      }
+    ],
+    "results": [
+      "no matching KB entries or reports"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 42,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "python",
+        "arguments": "{\"code\": \"import json\\nks=load_kb(); ids={'K1065','K1066','K1069','K1076','K1114','K1123','K1124','K1075','K1059'}\\nprint('claims',len(ks),'epoch6new',[x['id'] for x in ks if x.get('created_epoch')==6])\\nfor x in ks:\\n if x['id'] not in ids:continue\\n print(x['id'],'textchars',len(x['text']),'phasechars',len(x.get('phase') or ''),'regimechars',len(json.dumps(x.get('regime'),separators=(',',':'))),'s/f',x['support_count'],x['failure_count'],'lead',x['text'][:200])\\nprint('finite/report check ratios',.6608852446079254/.6819717824459076,.6613922953605652/.6834939956665039)\"}"
+      }
+    ],
+    "results": [
+      "claims 70 epoch6new ['K1114', 'K1115', 'K1116', 'K1117', 'K1118', 'K1119', 'K1120', 'K1121', 'K1122']\nK1059 textchars 605 phasechars 293 regimechars 335 s/f 2.25 0.75 lead Classification plain(nonresidual) MLP,d>=2,SHARED SGD/lr/T: terminal-block pre-LN is a preference,not a guaranteed winner. Legacy31/31 labpairs(14sets,CEratio.69),including fewer-totalLN11/11(.76),use\nK1065 textchars 579 phasechars 139 regimechars 228 s/f 2.0 3.0 lead XOR with ≥8 input features, once trained (shared optimizer, Δ≥0.05): depth helps only WITH residuals. A deeper NON-residual MLP loses to a shallower one even at a 1-2 block gap (lab deeper wins 1/31, \nK1066 textchars 654 phasechars 142 regimechars 201 s/f 7.0 5.0 lead TWO-SPIRAL classification, DEEP vs SHALLOW (same optimizer): a deeper (≥3 block) RESIDUAL MLP with MORE LayerNorms than a shallow (≤2 block) net wins almost always — lab 51/55 (adaptive Δ≥0.05 34/35, \nK1069 textchars 532 phasechars 154 regimechars 191 s/f 12.75 2.25 lead BIGRAM LM post-LN TRANSFORMER head count (same d_model/layers/optimizer/T): fewer heads (2 vs 4) wins 12/15 lab pairs. At Δ<0.5 it is only a tie-break (CE ratio ≈1.00); at Δ≥0.5 it matters (lab 4/4, r\nK1075 textchars 614 phasechars 295 regimechars 332 s/f 5.5 7.5 lead Bigram GRU vs post-LN transformer,shared Adam(.9,.999),wd0/lr/T: no universal Delta=.02 switch. Default-init V48/L12,bs16,d64x2,TF heads4/FF128,T256/1024: at Delta.0256 GRU/TF CE ratios .9914/.9917 on\nK1076 textchars 638 phasechars 256 regimechars 308 s/f 2.0 2.0 lead Multivariate MSE,both calibrated Delta<.1,ratio.5-2: plain+1LN vs residual is a mixed-recipe preference,NOT a reliable matched-optimizer rule. Lab plain wins23/31 in25sets,median MSE ratio.906;matched\nK1114 textchars 573 phasechars 309 regimechars 295 s/f 0.0 0.0 lead Two-input POLYNOMIAL MSE,default plain d3/w256 LeakyReLU(.01),LN[T,F,T],AdamW(.9,.999),wd1e-5,bs16: lr.001/3e-5 test-MSE ratio on mvar_5a829e reverses .1754 atT256 to2.3590 atT2048 (margins -.004299,+\nfinite/report check ratios 0.9690800435138902 0.9676636511131507\n"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 43,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "kb_view",
+        "arguments": "{\"ids\": [\"K1123\", \"K1124\", \"K1076\", \"K1069\"], \"limit\": 4}"
+      }
+    ],
+    "results": [
+      "[K1069] cred=0.809 s=12.75 f=2.25 ep=0 src=[]\nBigram post-LN TF,head-only twins (same width/layers/FF,optimizer/lr/T): evidence does NOT support an Adagrad head rule. Matched d64x2/FF256,Adam,T256/b16 on bg_206d10/2e7010:2heads beats4 in9/12 mean pairs;atlr.003 6/6,CE -0.04844 to -0.06739 nats;at3e-5 3/6,margins <=.000302. Three beta/decay recipes share each dataset,not12 independent tests(R02d63c19c2). Legacy12/15 and highDelta4/4 mix filters;old d128 AdamW.003 head contrast -0.18nats is separate. No matched Adagrad pairs in current lab; q_9bff6e at long-budget Adagrad reverses the 2-head prediction. Head count is not a tie-break across unequal FF/depth/width bundles.\n[K1123] cred=0.500 s=0.00 f=0.00 ep=6 src=['q_e8a05a', 'q_a3b0c0']\nBigram CE,V24/L24,800train/200test,default init,b16,T256/512: GRU64x1 beats post-LN TF32x4,2heads/FF128 at shared wd0 SGD(m0) lr.0001/.001/.003:36/36 matched means,6 tables(alpha.8/1/1.4,2 each),median CE -0.09844 nats,ratio.9700. Shared Adam(.9,.999),Delta.01/.0256/.064:36/36,median -0.03918,ratio.9873. Ten seeds/cell; rates/budgets reuse tables,not72 independent samples. Shape audit at Adam Delta.0256,T256: TF64x4 beats GRU64x1 on4/4 tables. Do not transfer to equal widths,GRU2-layer,V48/L12 or arbitrary optimizers; causal init mechanism unresolved(R58730d84ac).\n[K1124] cred=0.500 s=0.00 f=0.00 ep=6 src=[]\n1.5-turn spiral CE,default residual d4w24 SiLU,Adam(.9,.999)lr3e-5/wd0,T256/b16: all4LN LOSES to terminal-only LN on splits00f3c5/01a657,CE .763938/.734455 and .756995/.735598 (+.029483/+.021397 nats;ratios1.04014/1.02909). Same residual models with SGD0 lr.003 or m.9 lr.0003 favor allLN4/4,ratios.95338-.96079. Plain versions favor allLN6/6 across these3 optimizers;plain Adam CE .660885/.681972 and .661392/.683494. Ten paired seeds/cell,2splits;contrast counts reuse splits,not independent datasets. MoreLN is not a universal residual/optimizer score;no measured scale/gradient cause(Reb8454abdf).\n[K1076] cred=0.500 s=2.00 f=2.00 ep=2 src=['q_1f04dc', 'q_06b6b2', 'q_189fd5', 'q_2d3370', 'q_331b38']\nMultivariate MSE,shared Adagrad.001/wd.001,T256/b64,default init: plain d2w192 SiLU/2LN vs residual d1w192 Leaky(.01)/1LN reverses by target/split: q_1f04dc gold plain,q_c692d1 residual. Both8inputs/16384samples;2 ordinal winners,no numerical MSE margin. Thus extraLN or residual is NOT decisive across activation/depth bundles. Older lowDelta mixed lab plain+1LN wins23/31 in25sets,ratio.906;matched type/lr4/6,no full-config pairs;plain+1depth4/9(1.166). History41/53 in32questions,Adagrad13/18 is confounded,not an architecture law. Lab4096/8192 budgets differ. Equal-depth controlled GELU supports one recipe only."
+    ],
+    "usage": null
+  },
+  {
+    "turn": 44,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "kb_view",
+        "arguments": "{\"limit\": 150, \"sort\": \"id\"}"
+      }
+    ],
+    "results": [
+      "[K1001] cred=0.642 s=56.75 f=31.25 ep=0 src=[]\nOptimizer comparison,SAME model/data/budget: use Delta as a progress proxy ONLY below task/model saturation. T256 can be32epochs; neither step count nor nominal parity proves adaptive or max-Delta wins. Adam/AdamW/RMSprop:lr*T;Adagrad:2*lr*sqrt(T);SGD:lr*T*|g|/(1-m),g~.01 (bigram.003,momentumMSE.03,K1019). Check K1004/K1071-K1073 and target/batch first;close mixed-recipe estimates:K1012. Old largerDelta~85% backtests were ceiling-filtered,not a law. Byte-identical q_561d81/q_21a335 recipes reverse winners on different targets/splits. Long XOR optimizer reversal K1119 is NOT a low-rate rule;no universal ceiling.\n[K1002] cred=0.663 s=31.50 f=15.50 ep=0 src=[]\nAdagrad vs Adam/AdamW on the SAME architecture/budget: Adagrad Δ≈2·lr·√T, so comparable progress needs lr≈√T/2 (8-23×) higher. At lr_Adagrad/lr_Adam≤3, Adam-family wins65/70; ratio10 is mixed4/7; ratio≥30 Adagrad wins9/9. For shared-architecture Adagrad rate comparisons, larger lr usually wins (original40/41; broader univariate lab73/78, history13/16), not always; lr3e-3 is not a universal safety guarantee. Do not use this rate preference to settle LN/activation changes (q_cd8a07). At lr≤1e-4, Δ≤0.01 over T≤2048 indicates little progress relative to adaptive rates≥3e-5, but freezing is approximate.\n[K1003] cred=0.643 s=17.00 f=9.00 ep=0 src=[]\nNormalized MLPs or bigram LMs,SGD vs adaptive BELOW saturation: plain SGD is often slow,NOT automatically frozen or last. It lost138/141 pairs when adaptiveDelta>15x its estimate(K1019); old all-family appearance wins~8% are pooled,not same-model controls. Momentum.9 lr.001-.003 is a contender,not guaranteed winner: general Adam-equivalent rate~lr/10,bigram~lr/30,MSE~lr/3. At lr<=.0003 it usually loses to same-lr adaptive below saturation. Calibration is a proxy,NOT proof momentum beats plain at equal lr/(1-m);q_0a12ba favors plain at parity,with decay differing. Deep zeroLN smooth MLPs need task-specific scope(K1038).\n[K1004] cred=0.458 s=1.75 f=2.25 ep=0 src=[]\nLR/Δ exceptions: do NOT assume maximum Δ or lr3e-3 is always safe. MSE RMSprop lr≥1e-3: versus ≥3× smaller Δ, wins22/36 corpus (better MLP6/6, equal12/22, worse4/8); at equal lr prefer Adam (RMSprop3e-3 loses33/35). Univariate lower-RMSprop-rate preference can occur even below this ceiling (K1063). Bigram optima depend on model width (K1071); wide multilayer univariate high-Δ fitting risk is comparative, not automatic last place (K1072). Tabular optimum changes with epochs/data rule (K1073). Short-budget XOR/spiral often benefit from high rates, but T2048 winners q_46d72e/q_fb4a7f refute blanket long-budget safety; no general replacement ceiling is validated.\n[K1005] cred=0.571 s=15.00 f=11.00 ep=0 src=[]\nShared-model optimizer comparisons BELOW saturation: minor decay/beta differences are weak tie-breakers,not universal noise; a clear undertraining gap usually matters more. Older same-arch higher-wd3/13,all loss gaps<1%;equal-lr Adam/AdamW5/10,beta2.95vs.9997/11. Do NOT assume those knobs are harmless in converged CE or long-budget recipes. Matched easy-spiral controls show coupled-Adam decay penalties atwd>=.001 AND wd1e-4(K1040);different lr/net recipes cannot be ranked from decay alone. q_a57013 at32epochs and q_38909f atT2048 change rate/betas/decay together;their gold does not isolate a 'minor knob' cause or justify blindly maximizing Delta.\n[K1006] cred=0.593 s=34.00 f=23.00 ep=0 src=[]\nMLPs,shared optimizer/lr/T,lowDelta: LN count is task-specific evidence,NOT LN+residual scoring or a deterministic rank. Older moreLN corpus:multivariate61/72,univariate57/69,tabular41/45;not factor-isolated. Multivariate plain+1LN vsres(K1076):mixed lab23/31,median MSE ratio.906;matched type/lr4/6,no full-config pairs;plain+1depth4/9(ratio1.166) opposes it. Equal-LN regression rectifier evidence(K1008) is not a forced tie-break across residual/tail differences. Regression depth:K1074;multivariate limit:K1080;SGD:K1039;spiral:K1020/K1066;pl"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 45,
+    "content": null,
+    "reasoning": null,
+    "tool_calls": [
+      {
+        "name": "finish",
+        "arguments": "{\"science\": \"Epoch6 COLLECT continuation completed; earlier persisted work was retained. Added K1123/K1124,bringing epoch6 additions to11/12 and live KB to72 claims. K1123: default V24/L24 bigram,GRU64x1 vs post-LN TF32x4,heads2/FF128,T256/512,b16,wd0 won36/36 shared-SGD and36/36 shared-Adam mean comparisons across6 fixed tables,10seeds/cell;median CE differences -.09844/-.03918 nats. Equal-width TF64 wins4/4 Adam checks; no architecture/initialization/alpha law follows(R58730d84ac). K1124: fixed d4w24 residualSiLU,1.5-turn spirals,T256/b16,Adam3e-5,allLN loses to terminal-only on2splits by+.02948/+.02140 CE;SGD counterparts favor allLN4/4 and plain versions6/6. Strata retained,not pooled(Reb8454abdf).\\nRewrote solver-visible K1114 to expose the existing matched polynomial T1024 AdamW .001/.0001 MSE ratio4.31265 and nonmonotonic/target counterexamples(R1e820ab3a7). Narrowed K1065/K1066 residual/depth transfer,K1069 head-count transfer and K1076 normalization-count transfer. Head-only audit found9/12 Adam mean wins on2datasets,6/6 at.003 versus3/6 tiny-margin at3e-5;matched Adagrad0(R02d63c19c2). Identical Adagrad recipes in q_1f04dc/q_c692d1 reverse ordinal winners by target/split;no isolated mechanism. q_b3f618 is not an analogue of q_526f1b. Annotated matched terminal-placement evidence and distinguished measured V24 initial CE gaps from untested causal mediation. Counts unchanged;no pooled consolidation or evaluation answers used.\\nReviewed deferred J15dc9d06803c:000002,J50bc0cf08c29:000002,J290340c95a93:000005 against newer reports/current repaired claims. Do not restore their stale overwrites or historical count resets;current K1075/K1040/K1006/K1018/K1009/K1038 wording survives.\\nOpen persistent investigations:Jb132c3ee1518,bigram momentum-SGD versus aggressive AdamW dataset/budget reversal;Ja412e95637cf,long-budget multivariate conservative-SGD versus deep residual AdamW full recipes;Jc60aaee7d435,target-dependent low-progress LN/residual reversals. Existing mechanism investigations remain unfinished;endpoint facts are usable now.\"}"
+      }
+    ],
+    "results": [
+      "ok"
+    ],
+    "usage": null
+  },
+  {
+    "turn": 46,
+    "content": "Epoch 6 curation finished. Added two scoped empirical claims, narrowed five existing claim texts, and preserved earlier changes and feedback counts.\n\nThe KB now has 72 claims, with 11 additions this epoch. Three persistent investigations remain open on bigram optimizer reversals and target-dependent multivariate failures.",
+    "reasoning": null,
+    "tool_calls": [],
+    "usage": {
+      "input_tokens": 4074948,
+      "cached_input_tokens": 3916544,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 25340,
+      "reasoning_output_tokens": 8923
+    }
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "id": "J7c8703f24e3b",
+  "kind": "research",
+  "status": "completed",
+  "origin_epoch": 4,
+  "current_epoch": 5,
+  "member_epoch": 4,
+  "label": "e0004",
+  "report_id": "R02d63c19c2",
+  "checkpoint_commit": "70b4981dd5e09653ab10048ac2d21686942f84cd"
+}

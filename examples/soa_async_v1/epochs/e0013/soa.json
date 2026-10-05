@@ -1,0 +1,25 @@
+{
+  "n_claims": 127,
+  "epoch": 13,
+  "mechanism_coverage": 0.528,
+  "mechanism_coverage_veteran": 0.844,
+  "regime_annotation": 0.819,
+  "regime_completeness_cells": 1.0,
+  "uncovered_cells": [],
+  "regime_completeness_optimizer": 1.0,
+  "regime_completeness_activation": 0.8,
+  "global_claims": 25,
+  "conditional_claims": 102,
+  "refinement_depth_max": 6,
+  "phase_mapped": 0.644,
+  "growth": {
+    "commits_by_op": {
+      "seed": 1,
+      "credit": 360,
+      "async_apply": 430
+    },
+    "research_tasks": 0,
+    "experiments": 0,
+    "experiment_candidates": 0
+  }
+}

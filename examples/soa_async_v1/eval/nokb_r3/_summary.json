@@ -1,0 +1,10 @@
+{
+  "label": "nokb_r3",
+  "n": 105,
+  "mean": 0.6857,
+  "by_source": {
+    "ranking_v2": 0.8083,
+    "ranking_v3": 0.5222
+  },
+  "errors": 0
+}

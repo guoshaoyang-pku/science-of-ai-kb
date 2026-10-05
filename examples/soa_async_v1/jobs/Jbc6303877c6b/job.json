@@ -1,0 +1,11 @@
+{
+  "id": "Jbc6303877c6b",
+  "kind": "local_analysis",
+  "status": "completed",
+  "origin_epoch": 5,
+  "current_epoch": 5,
+  "member_epoch": 5,
+  "label": "e0005 · local saved-data audit",
+  "report_id": "Rd72f26bd7e",
+  "checkpoint_commit": "7a44afbe9b6594f96996b5c6aa26725c17438af4"
+}

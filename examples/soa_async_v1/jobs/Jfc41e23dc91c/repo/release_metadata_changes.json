@@ -1,0 +1,236 @@
+[
+  {
+    "file": "evidence/125c984b3c783f8915a441b0541d5d53e22a9e447f0bad6d90d2a408d41a545e.json",
+    "original_sha256": "125c984b3c783f8915a441b0541d5d53e22a9e447f0bad6d90d2a408d41a545e",
+    "public_sha256": "02c4ce90af22b0e8a3643dc9d9772a1e05c0057c4a2a0b305f1b9486703cc670",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/128da30cec605dba498994472cb528652c0321f9f6824c9b460c441ef8e7f9f7.json",
+    "original_sha256": "128da30cec605dba498994472cb528652c0321f9f6824c9b460c441ef8e7f9f7",
+    "public_sha256": "ff5f25b2faff3f7e164bdd70f40374cab7855bb88422e07017ebeb47700428db",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/1e44cbd47b926897f68b04df6d0bd944e6b99601bd06f14812f916e2b554474a.json",
+    "original_sha256": "1e44cbd47b926897f68b04df6d0bd944e6b99601bd06f14812f916e2b554474a",
+    "public_sha256": "27d3a9921b51d8788dd861bb16389787ec207edbe756abc8dac5dcf76a16eb61",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/24935505524e4d0ebfa58403525164fd9b7947c1ea85fb755ccb5eb34bdd78d1.json",
+    "original_sha256": "24935505524e4d0ebfa58403525164fd9b7947c1ea85fb755ccb5eb34bdd78d1",
+    "public_sha256": "1a3f386628cf67eb49015f85f5d216b2db3eed9bcc5db18fbd88a44a671b367b",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/29ee68e6e6ee45d14225405c9b090ae3b4b60e2aba60fddb6846bb3bdfbd7a7a.json",
+    "original_sha256": "29ee68e6e6ee45d14225405c9b090ae3b4b60e2aba60fddb6846bb3bdfbd7a7a",
+    "public_sha256": "35e58c42059449dc5734c2ae15979dcefdcffa286f3868c50eb186c9ff387985",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/441bed81e5416d09837e04b955b01bacbb2fcc833bd552e2f51f2972f3c45352.json",
+    "original_sha256": "441bed81e5416d09837e04b955b01bacbb2fcc833bd552e2f51f2972f3c45352",
+    "public_sha256": "3224377b72d108d0cf0ced83d6fff7f8a7ddc9f4f6e77f3f0161a41465ea710a",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/4bf81562330b0520461ca09ea4daf2d2c4d63cabda35580a1f6b1eed05cb7ae1.json",
+    "original_sha256": "4bf81562330b0520461ca09ea4daf2d2c4d63cabda35580a1f6b1eed05cb7ae1",
+    "public_sha256": "add0ffa74679bf087e09f1c87ee5853079e0d2476e1314cd4c1e0d94e7ee0f84",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/4c30f9a5deb1623d55dd27ea99ce8ae301a6c732c57228bf433634a45f54eeea.json",
+    "original_sha256": "4c30f9a5deb1623d55dd27ea99ce8ae301a6c732c57228bf433634a45f54eeea",
+    "public_sha256": "ae70f8c39d363dbf8c791f6af5ccb2a87330d2df2da556f8d095a28ae65b3647",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/54d0b085a325097f2f60921709dafd34705bbeee988541355332c6ce7291573a.json",
+    "original_sha256": "54d0b085a325097f2f60921709dafd34705bbeee988541355332c6ce7291573a",
+    "public_sha256": "b28a2c9133c7237f67684e766d4e38c80d5e995c56adf31b51e6e89b2fd3a9d2",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/673aecdd9f4f8006111a73e9c7398628bf67c7e508bd62f86186a20be182db7d.json",
+    "original_sha256": "673aecdd9f4f8006111a73e9c7398628bf67c7e508bd62f86186a20be182db7d",
+    "public_sha256": "dec40fe1e03741ea22a1d40041f17e9eccc965ddd26fb6e9a32989a9f13d89ad",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/68f843dcbf49d7e15fa7b0b1d4f053c6cb70e6580a1be305e441b8cfc137801e.json",
+    "original_sha256": "68f843dcbf49d7e15fa7b0b1d4f053c6cb70e6580a1be305e441b8cfc137801e",
+    "public_sha256": "adb99f665dad837a57068bef026a3a47214fa13e209c39bd480e3d2cd3dff690",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/698aac6b379135a18987b843e4085041f245ec4d59a876d722e828c050bafb68.json",
+    "original_sha256": "698aac6b379135a18987b843e4085041f245ec4d59a876d722e828c050bafb68",
+    "public_sha256": "7cecf870ea668a314d1bb60ea880b15cc949d1299383ccc541fb93d7806614cd",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/6a07b5b00c9fad937e94ecc58ce2e49e20dda7443566c88cd7910996c51a34a4.json",
+    "original_sha256": "6a07b5b00c9fad937e94ecc58ce2e49e20dda7443566c88cd7910996c51a34a4",
+    "public_sha256": "d832a08468a523bd8e33d3992318bd027ab20a370774ab36625547584591f084",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/82c259d9e03214e1d27e26365f78449a42bd27565300ef8199c03b2109dfcdc0.json",
+    "original_sha256": "82c259d9e03214e1d27e26365f78449a42bd27565300ef8199c03b2109dfcdc0",
+    "public_sha256": "7f7116ca39542c5dcb2ab5a8d4380a8142fdabca5b16c7e8e0a7510fb3fd6625",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/938ff24938c589307d81527585a9a8c94a9b7a9944c7a7e7e4d849eea786d837.json",
+    "original_sha256": "938ff24938c589307d81527585a9a8c94a9b7a9944c7a7e7e4d849eea786d837",
+    "public_sha256": "943c0ec470e22e7753f3b4bd1137687f349364f555374dbffade6fe3d864f564",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/988414f16b313b132b9534cea54a50ed2f288858d3e1429c2f4962d6736b9c75.json",
+    "original_sha256": "988414f16b313b132b9534cea54a50ed2f288858d3e1429c2f4962d6736b9c75",
+    "public_sha256": "87e344b41d2e42654174dd38c0a4ccc6c2034e3d271f57d286810a74aa34b09b",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/9a295ae41b488c1205c9eb139378cccc5eb23c4ded47db0e3b92c4040cf8fac8.json",
+    "original_sha256": "9a295ae41b488c1205c9eb139378cccc5eb23c4ded47db0e3b92c4040cf8fac8",
+    "public_sha256": "a37bd31e6dc0bdf457368850a9ce80ab3114e033f92587159b920c103b86d838",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/b61709155903283b1951fd2405feb45af7216059f8680be4a8caef630d255fb0.json",
+    "original_sha256": "b61709155903283b1951fd2405feb45af7216059f8680be4a8caef630d255fb0",
+    "public_sha256": "ca6d8547b0498ad1e2be6eda8641f4cc7a3ff1aeb6771608341a2eeb7c98b4ef",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/b6f9242ac24a530fce46dad8329973653511ee4c4dcd6dcd6cdf79c39c1873d7.json",
+    "original_sha256": "b6f9242ac24a530fce46dad8329973653511ee4c4dcd6dcd6cdf79c39c1873d7",
+    "public_sha256": "669a2db303f29337826b3fbcb1692698861e4d79547ad8b2c1a9840fa2297799",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/bb1064713f4a6f5abf6d7f4d23c28d7bd21e180dd7fa1f8c7c31a8484115480d.json",
+    "original_sha256": "bb1064713f4a6f5abf6d7f4d23c28d7bd21e180dd7fa1f8c7c31a8484115480d",
+    "public_sha256": "349376bad0de4e841918d7e10a9ad6b6630fbbcc8b08f9e0d36365014285325c",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/c9412630dcb1ef7a5c2581a570d02b47d3e8376d143484da93833be983dc262c.json",
+    "original_sha256": "c9412630dcb1ef7a5c2581a570d02b47d3e8376d143484da93833be983dc262c",
+    "public_sha256": "f503d3cd6915f5dd56bccce2733822af94e945299699f8c1a5c66a5a7eded3c1",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/d1883dd71e0eaaf1273332817f04b9f02d34a4205e09236a3b9527c9e441fc2f.json",
+    "original_sha256": "d1883dd71e0eaaf1273332817f04b9f02d34a4205e09236a3b9527c9e441fc2f",
+    "public_sha256": "f3e837ab9aab1090d67e7f7ae2c712df71eb0e1c466141522800e894087c7da7",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/f8d5597cc1f7a6281a493e6d3270dc4e08b4262c9b51ddc5c0606a36fa8dc690.json",
+    "original_sha256": "f8d5597cc1f7a6281a493e6d3270dc4e08b4262c9b51ddc5c0606a36fa8dc690",
+    "public_sha256": "640bed6c75fabe1d98220437274dfe41345bbbd93ba2c69900655f8dc0ba389f",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence/fb319a510d722231198ec483cf7705f26282b64d97f5134b364141b85c341312.json",
+    "original_sha256": "fb319a510d722231198ec483cf7705f26282b64d97f5134b364141b85c341312",
+    "public_sha256": "9cb1822fcf106714a3fd6dc848830eb830fd5816a56d6036a96c08a5059b3c45",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "evidence_manifest.json",
+    "original_sha256": "0abfa6385dcee1e5bdd654d8990eaf2055df5dd06064fb4ec802e7f8b89a905b",
+    "public_sha256": "5cf575ab4537fa6c847a093ddf7d7e26934e0d8dd44fe10c5eb13c1f4603213d",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "inputs.json",
+    "original_sha256": "10df7eb070ec3bcc724a062ef4b202e15abf6ce3ee77672c176106d4b8007e7d",
+    "public_sha256": "48dc5778edcd56cc47564c183996b644378920de78c17c1fcdbfaf1b393c9b59",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "results/mvar_02036a_c0.json",
+    "original_sha256": "58c5de94b79f870486afa825a37d5ad6930632304f6161fd0edc85cc0c05800a",
+    "public_sha256": "5f3cd67e580cfd88099ec78baf3711c308956e48d7871375353b280fd0580f14",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "results/mvar_02036a_c1.json",
+    "original_sha256": "2dfa4dc034172ecefab9e48b1ce8a912a6257c0a9f2bf7245fc693fa57155325",
+    "public_sha256": "a79d9b3a343d714dccf6d781253d37f4db79480f39b4b8b8b84e75cb5b34849f",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "results/mvar_02036a_c2.json",
+    "original_sha256": "15e7dce17386a03f0cdc5df0c2fe68a011307899cdfcd79f941c8977f808fc16",
+    "public_sha256": "d47dbb1801710df58d8a743da9d174e08872d3f14a4400258977c2efffdd2572",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "results/mvar_02036a_c3.json",
+    "original_sha256": "9c5869211ac6ab58f5f3f3a8dcf29032ea786f68c52f9640bc0c0dd3d3a41b72",
+    "public_sha256": "9461a8b4d87aee51de4518a1f1e078ac45506e7845257fd53f3f939ad02d70ea",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "results/mvar_071e42_c0.json",
+    "original_sha256": "22f1649c3339249e6f8d656bc69513cd5cb0e0ce46e0d6477eabc00c80c6b20e",
+    "public_sha256": "80f952caeeb8cd484808278ae7e93a29573d897339625a6947dbf84fbddb37dd",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "results/mvar_071e42_c1.json",
+    "original_sha256": "7b35fa5aebd0c75ee0163d98274cc21546dcf073ccfce0ccf3e4571314d98674",
+    "public_sha256": "8ea38dec60aee2def6ce84e83afa7c415582603a8dba2f7a54683074d6aa1d63",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "results/mvar_071e42_c2.json",
+    "original_sha256": "56a82cd2af4e8e6934258242ce537571cc7dfae7e08148e920849fa91a2ec9b7",
+    "public_sha256": "b4ab679c71ce4a845ced1a2570c599633ff5b5529835807fd47cf192b8f7ed04",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "results/mvar_071e42_c3.json",
+    "original_sha256": "9bb16331ef823f16463e9fdba633be6f3de109f558383ff5ab7abfd293d2140b",
+    "public_sha256": "53c67941065e32a14612adb685e3f7a1b3f5c9ae624e2f6203a07c73a9b7220c",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "results/mvar_0852dd_c0.json",
+    "original_sha256": "ceda915fa95aa168ce13087d2aadef83dd1a5e00fa2b7166ffa97226d4c93aea",
+    "public_sha256": "96249c732b8b521410ea924251c456c4f6f0b3e2f4928c9707153c63d313afb3",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "results/mvar_0852dd_c1.json",
+    "original_sha256": "2adf66e92189acf51578418cf5e510ddcee4e45ac382cd90990f3212b776dc00",
+    "public_sha256": "1fbbc1abdaa2d29663f86aa3cd7da799c1cf850cfce7636e388ffe5f16bc0fe0",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "results/mvar_0852dd_c2.json",
+    "original_sha256": "2364e5a6a6e26cf30f21b4033dcb0fd43a20f47e84c5e0b5c2d04ccf3b00cfa5",
+    "public_sha256": "1e73667592d608679a6d4a73ddeeba701efc1f20309ba5b754c1c6b1d9fb14d9",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "results/mvar_0852dd_c3.json",
+    "original_sha256": "4d91ff7199cb3305b97d49122dea0429307eb9454beff49ed776ae47a04111c6",
+    "public_sha256": "03408b7fac82e26a481fae4228af35873cabecab1fa18c0b5a264f16ed0403e2",
+    "reason": "Normalize metadata paths; numerical arrays and executed source unchanged."
+  },
+  {
+    "file": "analyze_results.py",
+    "original_sha256": "16d6f862fb44b98c479f2398c95f8b256e7441c51fe5fa5517febe36ed6765d6",
+    "public_sha256": "f1dac18df49249c6219c217b899a94d60823f61e514def72ae35d319c54cdcf9",
+    "reason": "Use original evidence identity to locate sanitized metadata; verify its public SHA256."
+  }
+]

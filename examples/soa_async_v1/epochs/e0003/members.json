@@ -1,0 +1,82 @@
+[
+  {
+    "id": "Jd09d39a4add3",
+    "kind": "summarizer",
+    "origin_epoch": 1,
+    "current_epoch": 1,
+    "member_epoch": 1,
+    "label": "e0001",
+    "status": "completed",
+    "report_id": null
+  },
+  {
+    "id": "Jbb8de54d2489",
+    "kind": "research",
+    "origin_epoch": 1,
+    "current_epoch": 2,
+    "member_epoch": 2,
+    "label": "e0002 [from e0001]",
+    "status": "completed",
+    "report_id": "R7dd7d943d3"
+  },
+  {
+    "id": "J290340c95a93",
+    "kind": "research",
+    "origin_epoch": 1,
+    "current_epoch": 2,
+    "member_epoch": 1,
+    "label": "e0001",
+    "status": "completed",
+    "report_id": "R04f88f629b"
+  },
+  {
+    "id": "J15dc9d06803c",
+    "kind": "research",
+    "origin_epoch": 1,
+    "current_epoch": 2,
+    "member_epoch": 2,
+    "label": "e0002 [from e0001]",
+    "status": "completed",
+    "report_id": "R634304faf1"
+  },
+  {
+    "id": "J50bc0cf08c29",
+    "kind": "research",
+    "origin_epoch": 1,
+    "current_epoch": 2,
+    "member_epoch": 1,
+    "label": "e0001",
+    "status": "completed",
+    "report_id": "R2ffac818b0"
+  },
+  {
+    "id": "J4d0fa2669fbb",
+    "kind": "summarizer",
+    "origin_epoch": 2,
+    "current_epoch": 3,
+    "member_epoch": 3,
+    "label": "e0003 [from e0002]",
+    "status": "running",
+    "report_id": null
+  },
+  {
+    "id": "J12f6dceed691",
+    "kind": "research",
+    "origin_epoch": 2,
+    "current_epoch": 2,
+    "member_epoch": 2,
+    "label": "e0002",
+    "status": "completed",
+    "report_id": "Rc5401dd3c0"
+  },
+  {
+    "id": "J53825749cbda",
+    "kind": "research",
+    "origin_epoch": 2,
+    "current_epoch": 2,
+    "member_epoch": 2,
+    "label": "e0002",
+    "status": "completed",
+    "report_id": "R1dd74ea5c0"
+  }
+]

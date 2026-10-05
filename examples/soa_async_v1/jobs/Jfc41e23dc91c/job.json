@@ -1,0 +1,11 @@
+{
+  "id": "Jfc41e23dc91c",
+  "kind": "local_analysis",
+  "status": "completed",
+  "origin_epoch": 16,
+  "current_epoch": 16,
+  "member_epoch": 16,
+  "label": "e0016",
+  "report_id": "R613055ebce",
+  "checkpoint_commit": "44b021dec5f5349960da03162810a50493d192b4"
+}

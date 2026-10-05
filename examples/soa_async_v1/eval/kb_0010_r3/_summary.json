@@ -1,0 +1,10 @@
+{
+  "label": "kb_0010_r3",
+  "n": 105,
+  "mean": 0.7048,
+  "by_source": {
+    "ranking_v2": 0.7917,
+    "ranking_v3": 0.5889
+  },
+  "errors": 0
+}

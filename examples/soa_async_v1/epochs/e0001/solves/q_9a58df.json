@@ -1,0 +1,72 @@
+{
+  "kb_queries": [],
+  "kb_retrieved": [],
+  "kb_explained": [],
+  "solver_snapshot": "solve_e0001",
+  "kb_snapshot": "6f5f9e83744250337a8cdb231a38ff35fae15bb7d8afc23d1fbd3af3bfacb232",
+  "report_versions": {},
+  "question_id": "q_9a58df",
+  "epoch": 1,
+  "source": "ranking_v2",
+  "task": "ranking",
+  "type": "optimizer_only",
+  "family": "bigram_lm",
+  "group": "G0c2eb2c60d74f80ea6276da2",
+  "answer": "B<E<C<A<D",
+  "prediction": "B<E<C<A<D",
+  "score": 1.0,
+  "inversions": 0,
+  "correct": true,
+  "cited": [
+    "K1001",
+    "K1002",
+    "K1005",
+    "K1071"
+  ],
+  "explanation": "<cited>K1001,K1002,K1005,K1071</cited>\n<answer>B<E<C<A<D</answer>",
+  "solution": "<cited>K1001,K1002,K1005,K1071</cited>\n<answer>B<E<C<A<D</answer>",
+  "solver_reasoning": null,
+  "solve_usage": {
+    "input_tokens": 24179,
+    "cached_input_tokens": 7808,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 130,
+    "reasoning_output_tokens": 96
+  },
+  "solve_secs": 15.3,
+  "finish": "stop",
+  "solver_backend": "codex",
+  "solve_refused_tool_calls": 0,
+  "discover_effort": "low",
+  "discover_model": "gpt-6.1-sol",
+  "skipped": false,
+  "comment": "The displacement rule correctly ordered this optimizer-only set: B/E Δ≈0.0256, C≈0.0096, A≈0.00768, D≈0.00096. K1001 and K1002 supported C narrowly ahead of A and D last. K1071 confirmed that none approached the GRU overshoot regime. B and E were near-twins under K1005; AdamW’s first place should not be generalized into a strong AdamW-over-Adam rule. No new tested hypothesis.",
+  "hypothesis": null,
+  "discover_final": "<comment>The displacement rule correctly ordered this optimizer-only set: B/E Δ≈0.0256, C≈0.0096, A≈0.00768, D≈0.00096. K1001 and K1002 supported C narrowly ahead of A and D last. K1071 confirmed that none approached the GRU overshoot regime. B and E were near-twins under K1005; AdamW’s first place should not be generalized into a strong AdamW-over-Adam rule. No new tested hypothesis.</comment>",
+  "discover_trace": [
+    {
+      "turn": 0,
+      "content": "<comment>The displacement rule correctly ordered this optimizer-only set: B/E Δ≈0.0256, C≈0.0096, A≈0.00768, D≈0.00096. K1001 and K1002 supported C narrowly ahead of A and D last. K1071 confirmed that none approached the GRU overshoot regime. B and E were near-twins under K1005; AdamW’s first place should not be generalized into a strong AdamW-over-Adam rule. No new tested hypothesis.</comment>",
+      "reasoning": null,
+      "tool_calls": [],
+      "usage": {
+        "input_tokens": 48822,
+        "cached_input_tokens": 31872,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 245,
+        "reasoning_output_tokens": 96
+      },
+      "secs": 15.5
+    }
+  ],
+  "discover_usage": {
+    "input_tokens": 48822,
+    "cached_input_tokens": 31872,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 245,
+    "reasoning_output_tokens": 96
+  },
+  "discover_secs": 15.5,
+  "discover_reasoning": null,
+  "experiments": []
+}

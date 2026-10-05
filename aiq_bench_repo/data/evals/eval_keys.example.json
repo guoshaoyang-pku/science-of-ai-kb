@@ -1,0 +1,17 @@
+{
+  "vapi": {
+    "base_url": "https://example.invalid/v1",
+    "api_key": "replace-with-your-own-key",
+    "models": []
+  },
+  "cctq": {
+    "base_url": "https://example.invalid/v1",
+    "api_key": "replace-with-your-own-key",
+    "models": []
+  },
+  "cctq_claude": {
+    "base_url": "https://example.invalid/v1",
+    "api_key": "replace-with-your-own-key",
+    "models": []
+  }
+}

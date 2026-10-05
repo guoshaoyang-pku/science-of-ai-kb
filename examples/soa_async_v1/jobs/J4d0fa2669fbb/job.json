@@ -1,0 +1,9 @@
+{
+  "id": "J4d0fa2669fbb",
+  "kind": "summarizer",
+  "status": "completed",
+  "origin_epoch": 2,
+  "current_epoch": 3,
+  "member_epoch": 3,
+  "label": "e0003 [from e0002]"
+}

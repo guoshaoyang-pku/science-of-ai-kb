@@ -1,0 +1,77 @@
+{
+  "kb_queries": [],
+  "kb_retrieved": [],
+  "kb_explained": [],
+  "solver_snapshot": "solve_e0003",
+  "kb_snapshot": "01775f610136dd467d4aaf988d40ca54f6e1689638490c03d15f28bd59c9511f",
+  "report_versions": {
+    "R7dd7d943d3": "4b55a660e0615effa0770f7a78e6aac418dadeb7",
+    "R634304faf1": "cb0e75d15229971b3a9c8351d8cec00903ca3df2",
+    "R04f88f629b": "0c676d9d5b42ccf0b715c62f8996ab9f0c124039",
+    "R2ffac818b0": "1ca756a4c129f87cf61f647e42436f7736ec9775",
+    "Rc5401dd3c0": "a8c1b1ba9c833458b28c37809aae6526b065ebfb",
+    "R1dd74ea5c0": "443e941de2fd8864a9a5f8f12efc7a33b8f59997"
+  },
+  "question_id": "q_0f0a08",
+  "epoch": 3,
+  "source": "ranking_v2",
+  "task": "ranking",
+  "type": "architecture_only",
+  "family": "bigram_lm",
+  "group": "G1a4bc1c90a256c5cfcf38307",
+  "answer": "D<A<B<E<C",
+  "prediction": "D<A<B<E<C",
+  "score": 1.0,
+  "inversions": 0,
+  "correct": true,
+  "cited": [
+    "K1017",
+    "K1069"
+  ],
+  "explanation": "<answer>D<A<B<E<C</answer>\n<cited>K1017,K1069</cited>",
+  "solution": "<answer>D<A<B<E<C</answer>\n<cited>K1017,K1069</cited>",
+  "solver_reasoning": null,
+  "solve_usage": {
+    "input_tokens": 28528,
+    "cached_input_tokens": 7808,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 221,
+    "reasoning_output_tokens": 193
+  },
+  "solve_secs": 18.0,
+  "finish": "stop",
+  "solver_backend": "codex",
+  "solve_refused_tool_calls": 0,
+  "discover_effort": "low",
+  "discover_model": "gpt-6.1-sol",
+  "skipped": false,
+  "comment": "All candidates shared Adam and nominal displacement 0.0512. K1017 supported larger feedforward width at equal depth, favoring D over E and A over C; K1069 supplied the weaker two-head preference favoring A over B. Depth was explicitly uncertain under K1017 in this regime. The gold places the three-layer, FF128 candidates between the two-layer FF256 and FF128 candidates, suggesting a modest depth benefit here, but one instance does not establish a general depth ordering.",
+  "hypothesis": null,
+  "discover_final": "<comment>All candidates shared Adam and nominal displacement 0.0512. K1017 supported larger feedforward width at equal depth, favoring D over E and A over C; K1069 supplied the weaker two-head preference favoring A over B. Depth was explicitly uncertain under K1017 in this regime. The gold places the three-layer, FF128 candidates between the two-layer FF256 and FF128 candidates, suggesting a modest depth benefit here, but one instance does not establish a general depth ordering.</comment>",
+  "discover_trace": [
+    {
+      "turn": 0,
+      "content": "<comment>All candidates shared Adam and nominal displacement 0.0512. K1017 supported larger feedforward width at equal depth, favoring D over E and A over C; K1069 supplied the weaker two-head preference favoring A over B. Depth was explicitly uncertain under K1017 in this regime. The gold places the three-layer, FF128 candidates between the two-layer FF256 and FF128 candidates, suggesting a modest depth benefit here, but one instance does not establish a general depth ordering.</comment>",
+      "reasoning": null,
+      "tool_calls": [],
+      "usage": {
+        "input_tokens": 57611,
+        "cached_input_tokens": 36096,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 331,
+        "reasoning_output_tokens": 193
+      },
+      "secs": 11.8
+    }
+  ],
+  "discover_usage": {
+    "input_tokens": 57611,
+    "cached_input_tokens": 36096,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 331,
+    "reasoning_output_tokens": 193
+  },
+  "discover_secs": 11.8,
+  "discover_reasoning": null,
+  "experiments": []
+}

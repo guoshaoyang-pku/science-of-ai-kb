@@ -1,0 +1,76 @@
+{
+  "kb_queries": [],
+  "kb_retrieved": [],
+  "kb_explained": [],
+  "solver_snapshot": "solve_e0002",
+  "kb_snapshot": "6272001e3e3dc1fd8ab06236e34a2bca4b1807c2c37c7d6cb88235fd3991c2cf",
+  "report_versions": {
+    "R7dd7d943d3": "04d719dddff41995b12722f46a19d12995867485",
+    "R634304faf1": "64128d28c4214bf2be5fd26f01b3c6a57ca53519",
+    "R04f88f629b": "cb33cd2ae5c1a4970939141a51134287b3b9959f"
+  },
+  "question_id": "q_a7db61",
+  "epoch": 2,
+  "source": "ranking_v2",
+  "task": "ranking",
+  "type": "architecture_only",
+  "family": "bigram_lm",
+  "group": "Gf631b80d053540e5131d00ff",
+  "answer": "C<A<B<E<D",
+  "prediction": "C<A<B<E<D",
+  "score": 1.0,
+  "inversions": 0,
+  "correct": true,
+  "cited": [
+    "K1001",
+    "K1017",
+    "K1068",
+    "K1069"
+  ],
+  "explanation": "<cited>K1001,K1017,K1068,K1069</cited>\n<answer>C<A<B<E<D</answer>",
+  "solution": "<cited>K1001,K1017,K1068,K1069</cited>\n<answer>C<A<B<E<D</answer>",
+  "solver_reasoning": null,
+  "solve_usage": {
+    "input_tokens": 24832,
+    "cached_input_tokens": 7808,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 78,
+    "reasoning_output_tokens": 44
+  },
+  "solve_secs": 11.9,
+  "finish": "stop",
+  "solver_backend": "codex",
+  "solve_refused_tool_calls": 0,
+  "discover_effort": "low",
+  "discover_model": "gpt-6.1-sol",
+  "skipped": false,
+  "comment": "Shared Adam lr and budget give Δ=0.06144. K1017 and K1068 favor d_model=128 over 64 in this regime, placing C/A/B ahead of E/D. At equal width and depth, K1017’s larger-feedforward tie-break selects C over A. B’s smaller feedforward dimension supports placing it behind both, although the depth difference alone is inconclusive at this Δ. E over D is supported by its larger feedforward dimension and K1069’s fewer-head tie-break; depth alone is again inconclusive. No new general rule is needed.",
+  "hypothesis": null,
+  "discover_final": "<comment>Shared Adam lr and budget give Δ=0.06144. K1017 and K1068 favor d_model=128 over 64 in this regime, placing C/A/B ahead of E/D. At equal width and depth, K1017’s larger-feedforward tie-break selects C over A. B’s smaller feedforward dimension supports placing it behind both, although the depth difference alone is inconclusive at this Δ. E over D is supported by its larger feedforward dimension and K1069’s fewer-head tie-break; depth alone is again inconclusive. No new general rule is needed.</comment>",
+  "discover_trace": [
+    {
+      "turn": 0,
+      "content": "<comment>Shared Adam lr and budget give Δ=0.06144. K1017 and K1068 favor d_model=128 over 64 in this regime, placing C/A/B ahead of E/D. At equal width and depth, K1017’s larger-feedforward tie-break selects C over A. B’s smaller feedforward dimension supports placing it behind both, although the depth difference alone is inconclusive at this Δ. E over D is supported by its larger feedforward dimension and K1069’s fewer-head tie-break; depth alone is again inconclusive. No new general rule is needed.</comment>",
+      "reasoning": null,
+      "tool_calls": [],
+      "usage": {
+        "input_tokens": 50076,
+        "cached_input_tokens": 32512,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 207,
+        "reasoning_output_tokens": 44
+      },
+      "secs": 14.9
+    }
+  ],
+  "discover_usage": {
+    "input_tokens": 50076,
+    "cached_input_tokens": 32512,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 207,
+    "reasoning_output_tokens": 44
+  },
+  "discover_secs": 14.9,
+  "discover_reasoning": null,
+  "experiments": []
+}

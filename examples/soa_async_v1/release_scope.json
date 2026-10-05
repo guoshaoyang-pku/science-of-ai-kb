@@ -1,0 +1,10 @@
+{
+  "run": "soa_async_v1",
+  "saved_kb_training_solves": 450,
+  "saved_nokb_training_solves": 450,
+  "training_prompt_count": 450,
+  "final_benchmark_test_included": false,
+  "validation": "Saved development validation summaries only; no evaluation questions.",
+  "research": "600 controlled training runs; internal evaluation tensors are not final benchmark test.",
+  "historical_imports": "Earlier training history referenced by comments is not fully bundled."
+}
