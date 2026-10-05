@@ -40,8 +40,21 @@ def download(manifest):
             continue
         with tempfile.TemporaryDirectory(prefix='science-download-') as temporary:
             archive = Path(temporary) / asset['name']
-            print('Downloading ' + asset['name'], flush=True)
-            urllib.request.urlretrieve(asset['url'], archive)
+            parts = asset.get('parts')
+            if parts:
+                with archive.open('wb') as assembled:
+                    for part in parts:
+                        fragment = Path(temporary) / part['name']
+                        print('Downloading ' + part['name'], flush=True)
+                        urllib.request.urlretrieve(part['url'], fragment)
+                        if fragment.stat().st_size != part['bytes'] or sha(fragment) != part['sha256']:
+                            raise RuntimeError('Release part fingerprint mismatch: ' + part['name'])
+                        with fragment.open('rb') as source:
+                            shutil.copyfileobj(source, assembled)
+                        fragment.unlink()
+            else:
+                print('Downloading ' + asset['name'], flush=True)
+                urllib.request.urlretrieve(asset['url'], archive)
             if archive.stat().st_size != asset['bytes'] or sha(archive) != asset['sha256']:
                 raise RuntimeError('Release asset fingerprint mismatch: ' + asset['name'])
             unpacked = Path(temporary) / 'unpacked'
